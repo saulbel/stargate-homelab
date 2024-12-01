@@ -14,6 +14,7 @@ stargate-homelab
     └── terraform
 └── docker   
 └── observability
+    └── prometheus  
 └── proxmox
 ```
 
@@ -28,6 +29,7 @@ stargate-homelab
 
 ## Where to start
 ## 1) [Proxmox](./proxmox/README.md)
+## 2) [Observability](./observability/prometheus/README.md)
 
 
 ## Next steps
