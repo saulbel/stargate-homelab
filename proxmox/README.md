@@ -1,4 +1,6 @@
 # Proxmox
+![proxmox-1](https://github.com/user-attachments/assets/cea61399-5e2a-4172-954b-8d7f728e0596)
+
 ## Why Proxmox
 Proxmox is an Hypervisor Type 1 based on `KVM`. It is just Debian + KVM + UI. I prefer it for a homelab because it is pure `Linux` under the hood, plus you do not need specific hardware unlike `ESXi`.
 
@@ -7,11 +9,9 @@ This is the hardware used for hosting proxmox :
 
 The storage distribution is the following:
 
-- NVME 2242 256GB : Proxmox OS, VM ISOs and Container template
-
-- NVME 2280 1TB: VMs and CTs storages
- 
-- HDD 2.5 2TB: Media
+- NVME 2242 256GB : ``Proxmox OS``, ``VM ISOs`` and ``Container templates``
+- NVME 2280 1TB: ``VMs and CTs storage``
+- HDD 2.5 2TB: ``Media``
 
  ## Selfhosted
  Right now I have the following stuff hosted on my `NUC`:
