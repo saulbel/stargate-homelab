@@ -26,7 +26,7 @@ stargate-homelab
 ![proxmox-oci](https://github.com/user-attachments/assets/a87cfc0b-6dde-4e19-b056-27e5fb1dc427)
 ![homepage](https://github.com/user-attachments/assets/2509cfa7-9892-4038-93bc-b2a60b66cecd)
 
-# Where to start
+## Where to start
 ## 1) [Proxmox](./proxmox/README.md)
 
 
