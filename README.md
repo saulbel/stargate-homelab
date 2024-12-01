@@ -24,7 +24,7 @@ stargate-homelab
 ## First Look
 ![proxmox-hw](https://github.com/user-attachments/assets/52d64f7f-adcc-47c4-8ab5-a477c270549c)
 ![proxmox-only](https://github.com/user-attachments/assets/69344b26-58cf-436a-bf06-be1c5d5f8f80)
-![proxmox-oci](https://github.com/user-attachments/assets/a87cfc0b-6dde-4e19-b056-27e5fb1dc427)
+![proxmox-oci](https://github.com/user-attachments/assets/0b16a6a5-398f-40bd-8d3a-20415cb49ef0)
 ![homepage](https://github.com/user-attachments/assets/2509cfa7-9892-4038-93bc-b2a60b66cecd)
 
 ## Where to start
