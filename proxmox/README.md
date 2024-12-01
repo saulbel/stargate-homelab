@@ -1,5 +1,4 @@
 # Proxmox
-![proxmox-1](https://github.com/user-attachments/assets/cea61399-5e2a-4172-954b-8d7f728e0596)
 
 ## Why Proxmox
 Proxmox is an Hypervisor Type 1 based on `KVM`. It is just Debian + KVM + UI. I prefer it for a homelab because it is pure `Linux` under the hood, plus you do not need specific hardware unlike `ESXi`.
