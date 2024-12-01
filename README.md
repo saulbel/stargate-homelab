@@ -3,7 +3,7 @@
 ## Prerequisites
 Things you need before starting:
 * `Some spare hardware`
-* `Time :)`
+* `Time and will to have fun :)`
 
 ## Project structure
 ```
