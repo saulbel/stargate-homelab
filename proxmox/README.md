@@ -46,75 +46,8 @@ I do not recommend messing up with proxmox host but you might wanna add some stu
 - ``PVE exporter``: to be able to scrape metrics and store them in an OCI server (yes, tailscale is pretty much needed for this)
 
  ## Proxmox Metrics
-The idea is to be able to gather metrics about CPU, RAM, disk and network resources of proxmox guests (vms or lxc) via prometheus
+I use [PVE exporter](/observability/prometheus/README.md) in order to expose all the metrics from proxmox vms/lxcs.
 
-- Create proxmox `API user`
-```
-pveum user add pve-exporter@pve -password <password>
-# add role PVEAuditor
-pveum acl modify / -user pve-exporter@pve -role PVEAuditor
-```
-- Create `Linux user`
-```
-useradd -s /bin/false pve-exporter
-```
-- Create `venv`
-```
-# install python3-venv
-apt update
-apt install -y python3-venv
-# create venv
-python3 -m venv /opt/prometheus-pve-exporter
-```
-- Install `prometheus proxmox ve exporter`
-```
-# active venv
-source /opt/prometheus-pve-exporter/bin/activate
-# install prometheus-pve-exporter
-pip install prometheus-pve-exporter
-# to leave venv
-deactivate
-```
-- Create `systemd-service`
-```
-# add this to /etc/systemd/system/prometheus-pve-exporter.service
-[Unit]
-Description=Prometheus Proxmox VE Exporter
-Documentation=https://github.com/prometheus-pve/prometheus-pve-exporter
-
-[Service]
-Restart=always
-User=pve-exporter
-ExecStart=/opt/prometheus-pve-exporter/bin/pve_exporter --config.file /etc/prometheus/pve.yml
-
-[Install]
-WantedBy=multi-user.target
-
-# reload systemd, enable and start service
-systemctl daemon-reload
-systemctl enable prometheus-pve-exporter.service
-systemctl start prometheus-pve-exporter.service
-
-# verify pve_exporter is listening to TCP 9221
-ss -lntp | grep 9221
-tcp        0      0 0.0.0.0:9221            0.0.0.0:*               LISTEN      915/python3
-```
-- Test funcionality
-```
-curl --silent http://127.0.0.1:9221/pve | grep pve_version_info
-http://192.168.1.127:9221/pve?target=192.168.1.127&cluster=1&node=1
-```
-- Add to `prometheus.yml` config
-```
-- job_name: 'pve-exporter'
-static_configs:
-    - targets:
-                # I have tailscale ip here instead of localhost
-    - 127.0.0.1:9221
-metrics_path: /pve
-params:
-    module: [default]
-```
 ## Proxmox Template
 ``Cloud-init`` is a service used for customizing Linux-based operating systems in the cloud. It allows you to customize virtual machines provided by a cloud vendor by modifying the generic OS configuration on boot.
  
@@ -132,5 +65,3 @@ qm set 200 --serial0 socket --vga serial0
 qm set 200 --agent enabled=1
 qm template 200
 ```
-
-
