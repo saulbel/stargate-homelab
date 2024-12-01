@@ -16,6 +16,7 @@ stargate-homelab
 └── observability
     └── prometheus  
 └── proxmox
+└── tailscale
 ```
 
 ## Tasks to accomplish
