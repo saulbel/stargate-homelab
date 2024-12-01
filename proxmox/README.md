@@ -1,7 +1,7 @@
 # Proxmox
 
 ## Why Proxmox
-Proxmox is an Hypervisor Type 1 based on `KVM`. It is just Debian + KVM + UI. I prefer it for a homelab because it is pure `Linux` under the hood, plus you do not need specific hardware unlike `ESXi`.
+Proxmox is a `Type 1 hypervisor` based on `KVM`. It is just `Debian + KVM + GUI`. I prefer it for a homelab because it is pure `Linux` under the hood, plus you do not need specific hardware unlike `ESXi`.
 
 This is the hardware used for hosting proxmox :
 ![proxmox-hw](https://github.com/user-attachments/assets/52d64f7f-adcc-47c4-8ab5-a477c270549c)
@@ -14,7 +14,7 @@ The storage distribution is the following:
 
  ## Selfhosted
  Right now I have the following stuff hosted on my `NUC`:
-![proxmox-only](https://github.com/user-attachments/assets/69344b26-58cf-436a-bf06-be1c5d5f8f80)
+![proxmox-only](https://github.com/user-attachments/assets/cb60ca76-07f9-4811-a177-aca02df8119f)
 - 3 VMS (K3s cluster):
   - ``ArgoCD``: gitops
   - ``Certmanager``: certificates
