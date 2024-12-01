@@ -17,28 +17,27 @@ The storage distribution is the following:
  Right now I have the following stuff hosted on my `NUC`:
 ![proxmox-only](https://github.com/user-attachments/assets/69344b26-58cf-436a-bf06-be1c5d5f8f80)
 - 3 VMS (K3s cluster):
-  - ArgoCD: gitops
-  - Certmanager: certificates
-  - Keycloak: IAM
-  - Metallb: loadbalancer
-  - Traefik: ingress
-  - Longhorn: distributed storage
+  - ``ArgoCD``: gitops
+  - ``Certmanager``: certificates
+  - ``Metallb``: loadbalancer
+  - ``Traefik``: ingress
+  - ``Longhorn``: distributed storage
 - 15 LXC containers:
-  - adguard: adblock + dns server
-  - amule: p2p downloads
-  - bookstack: wiki
-  - deluge: torrent downloads
-  - handbraker: transcoder
-  - jackett: trackers
-  - kavita: library
-  - homepage: dashboard solution
-  - npm: reverse proxy
-  - plex: media players
-  - radarr: movie collection manager
-  - sonarr: tv show collection manager
-  - tautulli: stats for plex and user management
-  - tools: packer + network utilities
-  - vaultwarden: password vault
+  - ``adguard``: adblock + dns server
+  - ``amule``: p2p downloads
+  - ``bookstack``: wiki
+  - ``deluge``: torrent downloads
+  - ``handbrake``: transcoder
+  - ``jackett``: trackers
+  - ``kavita``: library
+  - ``homepage``: dashboard solution
+  - ``npm``: reverse proxy
+  - ``plex``: media player
+  - ``radarr``: movie collection manager
+  - ``sonarr``: tv show collection manager
+  - ``tautulli``: stats for plex and user management
+  - ``tools``: packer + network utilities
+  - ``vaultwarden``: password vault
 
  ## Proxmox Addons
 I do not recommend messing up with proxmox host but you might wanna add some stuff to it. In my case I have a couple of things installed:
