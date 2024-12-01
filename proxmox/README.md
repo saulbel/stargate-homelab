@@ -42,8 +42,8 @@ The storage distribution is the following:
  ## Proxmox Addons
 I do not recommend messing up with proxmox host but you might wanna add some stuff to it. In my case I have a couple of things installed:
 
-- Tailscale: to be able to access proxmox from anywhere
-- PVE exporter: to be able to scrape metrics and store them in an OCI server (yes, tailscale is pretty much needed for this)
+- ``Tailscale``: to be able to access proxmox from anywhere
+- ``PVE exporter``: to be able to scrape metrics and store them in an OCI server (yes, tailscale is pretty much needed for this)
 
  ## Proxmox Metrics
 The idea is to be able to gather metrics about CPU, RAM, disk and network resources of proxmox guests (vms or lxc) via prometheus
