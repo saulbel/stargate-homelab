@@ -8,7 +8,7 @@ I use ``PVE exporter`` in order to expose all the metrics from proxmox vms/lxcs.
 
 ``Tailscale`` is used in order to prometheus to be able to scrape from my proxmox without exposing anything to internet.
 
-![prometheus](https://github.com/user-attachments/assets/08328bf1-516a-4727-abbe-3da864bb49cd)
+![prometheus](https://github.com/user-attachments/assets/16d2d0ee-8641-4217-b74a-1a740161496b)
 
 ## PVE Exporter Setup
 The idea is to be able to gather metrics about CPU, RAM, disk and network resources of proxmox guests (vms or lxc) via prometheus
