@@ -74,8 +74,8 @@ http://192.168.1.127:9221/pve?target=192.168.1.127&cluster=1&node=1
 - job_name: 'pve-exporter'
 static_configs:
     - targets:
-                # I have tailscale ip here instead of localhost
-    - 127.0.0.1:9221
+      
+    - 127.0.0.1:9221 # I have tailscale ip here instead of localhost
 metrics_path: /pve
 params:
 ```   
