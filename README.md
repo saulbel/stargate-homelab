@@ -23,7 +23,7 @@ stargate-homelab
 - The idea of this project is to build a homelab using `proxmox` where we can have tools for daily use and to test things for work or just for fun.
 
 ## First Look
-![proxmox-only](https://github.com/user-attachments/assets/49a34acc-5f34-4ea6-aa23-311a855af721)
+![proxmox-oci](https://github.com/user-attachments/assets/b7e62e28-5a6d-44fb-b0c6-90f289c1c81d)
 
 ## Where to start
 ## 1) [Proxmox](./proxmox/README.md)
