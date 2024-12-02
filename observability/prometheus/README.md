@@ -72,12 +72,11 @@ http://192.168.1.127:9221/pve?target=192.168.1.127&cluster=1&node=1
 - Add to `prometheus.yml` config
 ```
 - job_name: 'pve-exporter'
-static_configs:
+  static_configs:
     - targets:
-      
-    - 127.0.0.1:9221 # I have tailscale ip here instead of localhost
-metrics_path: /pve
-params:
+      - 127.0.0.1:9221 # I have tailscale ip here instead of localhost
+  metrics_path: /pve
+  params:
 ```   
 
 ## Prometheus config
