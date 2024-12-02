@@ -8,7 +8,7 @@ This way you can have all your servers connected and you can even give access to
 I use it for external access without exposing anything to the internet and to send all the metrics/logs to `prometheus and loki` which are hosted on an `OCI` server.
 
 ## Install Tailscale
-- Install tailscale on ``Linux VM``
+- Install ``tailscale`` on ``Linux VM``
 ```
 sudo apt update
 sudo apt upgrade -y
