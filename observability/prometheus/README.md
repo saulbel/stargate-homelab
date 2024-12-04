@@ -87,3 +87,7 @@ There are 4 dashboards, just in case you may wonder what they are for:
   - ``win-exporter.json``: It's a dashboard for a ``windows-exporter`` that I use on my own pc.
   - ``loki-k3s.json``: It`s a kubernetes ``loki`` dashboard.
   - ``prometheus-k3s.json``: It`s a kubernets ``prometheus`` dashboard.
+
+## To improve
+- Configure ``alertmanager`` and send those alerts to a ``telegram channel``
+- Study whether to add ``promtail`` to proxmox node or to each lxc individually
