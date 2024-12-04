@@ -1,0 +1,50 @@
+version: '3.9'
+services:
+  amule:
+    image: ngosang/amule
+    container_name: amule
+    env_file: .env
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      # included in .env file
+      # - GUI_PWD= 
+      # - WEBUI_PWD=
+      - MOD_AUTO_RESTART_ENABLED=true
+      - MOD_AUTO_RESTART_CRON=0 6 * * *
+      - MOD_AUTO_SHARE_ENABLED=false
+      - MOD_AUTO_SHARE_DIRECTORIES=/incoming;/my_movies
+      - MOD_FIX_KAD_GRAPH_ENABLED=true
+    ports:
+      - "4711:4711" # web ui
+      - "4712:4712" # remote gui, webserver, cmd ...
+      - "4662:4662" # ed2k tcp
+      - "4665:4665/udp" # ed2k global search udp (tcp port +3)
+      - "4672:4672/udp" # ed2k udp
+    volumes:
+      - ./config:/home/amule/.aMule
+      - /mnt/local-storage/amule:/incoming
+      - /mnt/local-storage/amule:/temp
+    restart: unless-stopped
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    env_file: .env
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TZ=Europe/Madrid
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_RESTARTING=true
+      - WATCHTOWER_INCLUDE_STOPPED=true
+      - WATCHTOWER_REVIVE_STOPPED=false
+      - WATCHTOWER_NO_RESTART=false
+      - WATCHTOWER_TIMEOUT=30s
+      - WATCHTOWER_NOTIFICATIONS_HOSTNAME=amule
+      - WATCHTOWER_SCHEDULE=0 0 12 * * 0
+      - WATCHTOWER_DEBUG=false
+      # included in .env file
+      # - WATCHTOWER_NOTIFICATION_URL=
