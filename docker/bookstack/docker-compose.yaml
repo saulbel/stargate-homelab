@@ -1,0 +1,61 @@
+version: "3.9"
+services:
+  bookstack:
+    image: lscr.io/linuxserver/bookstack
+    container_name: bookstack
+    env_file: .env
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - APP_URL=http://bookstack.home
+      - DB_HOST=bookstack_db
+      - DB_PORT=3306
+      - DB_USER=bookstack
+      - DB_DATABASE=bookstackapp
+      # included in .env file
+      # - DB_PASS=
+    volumes:
+      - ./bookstack:/config
+    ports:
+      - 6875:80
+    restart: unless-stopped
+    depends_on:
+      - bookstack_db
+
+  bookstack_db:
+    image: lscr.io/linuxserver/mariadb
+    container_name: bookstack_db
+    env_file: .env
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - MYSQL_DATABASE=bookstackapp
+      - MYSQL_USER=bookstack
+      # included in .env file
+      # - MYSQL_ROOT_PASSWORD=
+      # - MYSQL_PASSWORD=
+    volumes:
+      - ./bookstack_db:/config
+    restart: unless-stopped
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    env_file: .env
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TZ=Europe/Madrid
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_RESTARTING=true
+      - WATCHTOWER_INCLUDE_STOPPED=true
+      - WATCHTOWER_REVIVE_STOPPED=false
+      - WATCHTOWER_NO_RESTART=false
+      - WATCHTOWER_TIMEOUT=30s
+      - WATCHTOWER_NOTIFICATIONS_HOSTNAME=bookstack
+      - WATCHTOWER_SCHEDULE=0 0 12 * * 0
+      - WATCHTOWER_DEBUG=false
+      # included in .env file
+      # - WATCHTOWER_NOTIFICATION_URL=

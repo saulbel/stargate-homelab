@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  lookbusy:
+    image: fogforest/lookbusy:latest
+    container_name: lookbusy
+    hostname: lookbusy
+    restart: always
+    environment:
+      - CPU_UTIL=20-30
+      - CPU_CORE=1
+      - MEM_UTIL=15
+      - SPEEDTEST_INTERVAL=120
