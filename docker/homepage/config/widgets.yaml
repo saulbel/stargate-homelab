@@ -1,0 +1,30 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/widgets
+
+#- logo:
+#    icon: https://cdn.onlinewebfonts.com/svg/img_506819.png
+
+- resources:
+    cpu: true
+    memory: true
+    disk: /local-storage
+    cputemp: true
+    uptime: true
+
+- openmeteo:
+    label: Guadalajara # optional
+    latitude: 40.63
+    longitude: -3.16
+    timezone: Europe/Madrid # optional
+    units: metric # or imperial
+    cache: 5 # Time in minutes to cache API responses, to stay within limits
+
+#- datetime:
+#    text_size: xl
+#    format:
+#      timeStyle: short
+
+#- search:
+#    provider: duckduckgo
+#   target: _blank

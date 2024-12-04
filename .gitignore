@@ -2,4 +2,4 @@
 *.env*
 
 # config directories
-config
+.config
