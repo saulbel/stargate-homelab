@@ -26,6 +26,7 @@ stargate-homelab
 
 ## First Look
 ![proxmox-oci](https://github.com/user-attachments/assets/b7e62e28-5a6d-44fb-b0c6-90f289c1c81d)
+![homepage](https://github.com/user-attachments/assets/36d4a50f-627d-42a8-996e-558ea6a5a8f3)
 
 ## Where to start
 ## 1) [Proxmox](./proxmox/README.md)
