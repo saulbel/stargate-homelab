@@ -82,7 +82,6 @@ http://192.168.1.127:9221/pve?target=192.168.1.127&cluster=1&node=1
 ## Grafana dashboards
 You can import my grafana dashboards from [here](/docker/prometheus-loki/grafana-dashboards/).
 There are 4 dashboards, just in case you may wonder what they are for:
-  
   - ``proxmox.json``: This is the one that shows everything the ``pve-exporter`` scrapes from. 
   - ``win-exporter.json``: It's a dashboard for a ``windows-exporter`` that I use on my own pc.
   - ``loki-k3s.json``: It`s a kubernetes ``loki`` dashboard.
