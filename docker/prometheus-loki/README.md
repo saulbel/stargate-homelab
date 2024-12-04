@@ -1,6 +1,6 @@
 # prometheus-loki
 ```
-stargate-docker
+prometheus-loki
 └── config
     └── alertmanager.yml
     └── prometheus.yml
