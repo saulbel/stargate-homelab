@@ -88,6 +88,9 @@ There are 4 dashboards, just in case you may wonder what they are for:
   - ``loki-k3s.json``: It`s a kubernetes ``loki`` dashboard.
   - ``prometheus-k3s.json``: It`s a kubernets ``prometheus`` dashboard.
 
+## Prometheus configuration
+You can check all prometheus configuration [here](/docker/prometheus-loki/).
+
 ## To improve
 - Configure ``alertmanager`` and send those alerts to a ``telegram channel``
 - Study whether to add ``promtail`` to proxmox node or to each lxc individually

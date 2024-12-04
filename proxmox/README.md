@@ -12,8 +12,8 @@ The storage distribution is the following:
 - NVME 2280 1TB: ``VMs and CTs storage``
 - HDD 2.5 2TB: ``Media``
 
- ## Selfhosted
- Right now I have the following stuff hosted on my `NUC`:
+## Selfhosted
+Right now I have the following stuff hosted on my `NUC`:
 ![proxmox-only](https://github.com/user-attachments/assets/cb60ca76-07f9-4811-a177-aca02df8119f)
 - ``VMS`` (K3s cluster):
   - ``ArgoCD``: gitops
@@ -42,13 +42,13 @@ The storage distribution is the following:
   - [Tautulli](/docker/tautulli): stats for plex
   - [Vaultwarden](/docker/vaultwarden): password vault
 
- ## Proxmox Addons
+## Proxmox Addons
 I do not recommend messing up with proxmox host but you might wanna add some stuff to it. In my case I have a couple of things installed:
 
 - ``Tailscale``: to be able to access proxmox from anywhere
 - ``PVE exporter``: to be able to scrape metrics and store them in an OCI server (yes, tailscale is pretty much needed for this)
 
- ## Proxmox Metrics
+## Proxmox Metrics
 I use [PVE exporter](/observability/prometheus/README.md) in order to expose all the metrics from proxmox vms/lxcs.
 
 ## Proxmox Template
