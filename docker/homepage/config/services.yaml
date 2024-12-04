@@ -1,0 +1,202 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/services
+
+- Hardware:
+    - Proxmox:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/proxmox-light.png?raw=true
+        href: https://proxmox.home/
+        description: Server
+        #siteMonitor: https://proxmox.home/
+        widget:
+            type: proxmox
+            url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+            username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
+            password: "{{HOMEPAGE_VAR_PROXMOX_PASS}}"
+
+- Applications:
+    - Adguard:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/adguard-home.png?raw=true
+        href: http://adguard.home/
+        description: DNS
+        siteMonitor: http://adguard.home/
+        #widget:
+        #    type: adguard
+        #    url: "{{HOMEPAGE_VAR_ADGUARD_URL}}"
+        #    username: "{{HOMEPAGE_VAR_ADGUARD_USER}}"
+        #    password: "{{HOMEPAGE_VAR_ADGUARD_PASS}}"
+        
+
+    - Nginx:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/nginxproxymanager.png?raw=true
+        href: http://nginx.home/
+        description: Proxy Manager
+        siteMonitor: http://nginx.home/
+        #widget:
+        #    type: npm
+        #    url: "{{HOMEPAGE_VAR_NGINX_URL}}"
+        #    username: "{{HOMEPAGE_VAR_NGINX_USER}}"
+        #    password: "{{HOMEPAGE_VAR_NGINX_PASS}}"
+
+    - Kavita:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/kavita%20(1).png?raw=true
+        href: http://kavita.home/
+        description: Books and Comics
+        siteMonitor: http://kavita.home/
+        #widget:
+        #    type: kavita
+        #    url: "{{HOMEPAGE_VAR_KAVITA_URL}}"
+        #    username: "{{HOMEPAGE_VAR_KAVITA_USER}}"
+        #    password: "{{HOMEPAGE_VAR_KAVITA_PASS}}"
+
+    - Amule:
+        icon: https://icons.iconarchive.com/icons/pit-tux/crystal-bw/256/eMule-icon.png
+        href: http://amule.home/
+        description: P2P
+        siteMonitor: http://amule.home/
+
+#    - Project Zomboid:
+#        icon: https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d1deb658-b63d-49dc-a1ab-25eeb1e52cd6/dcuk919-d579beb5-e983-4cc3-a855-e90a8d05ca4a.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2QxZGViNjU4LWI2M2QtNDlkYy1hMWFiLTI1ZWViMWU1MmNkNlwvZGN1azkxOS1kNTc5YmViNS1lOTgzLTRjYzMtYTg1NS1lOTBhOGQwNWNhNGEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ICAPXQSjCvEKyhWHYnCl3hHaaW3CrF58anQLYCFhorE
+#        description: Server
+#        server: zomboid
+#        container: zomboid
+
+    - Vaultwarden:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/vaultwarden.png?raw=true
+        href: https://vaultwarden.home/
+        description: Password vault
+        siteMonitor: https://vaultwarden.home/
+
+    - Bookstack:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/bookstack%20(1).png?raw=true
+        href: http://bookstack.home/
+        description: Wiki
+        siteMonitor: http://bookstack.home/
+
+    - Handbrake:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/handbrake.png?raw=true
+        href: http://handbrake.home/
+        description: Transcoder
+        siteMonitor: http://handbrake.home/
+
+    - Nfs:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/diskover.png?raw=true
+        description: Server
+        ping: 192.168.1.26
+
+    - Minio:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/minio-light.png?raw=true
+        href: http://minio.home/
+        description: S3
+        siteMonitor: http://minio.home/
+
+- Kubernetes:
+    - ArgoCD:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/arggocd.png?raw=true
+        href: https://argocd.home/
+        description: GitOps
+        siteMonitor: https://argocd.home/
+
+    - Longhorn:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/longhorn.png?raw=true
+        href: http://longhorn.home/
+        description: Storage
+        siteMonitor: http://longhorn.home/
+        
+    - Traefik:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/traefik%20(1).png?raw=true
+        href: http://traefik.home/dashboard/#/
+        description: Ingress
+        siteMonitor: http://traefik.home/dashboard/#/
+
+
+- Media:
+    - Plex:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/plex%20(1).png?raw=true
+        href: http://plex.home/
+        description: Cinema
+        siteMonitor: http://plex.home/
+        widget:
+           type: plex
+           fields: ["movies", "tv"]
+           url: "{{HOMEPAGE_VAR_PLEX_URL}}"
+           key: "{{HOMEPAGE_VAR_PLEX_KEY}}"
+
+    - Tautulli:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/tautulli.png?raw=true
+        href: http://tautulli.home/
+        description: Plex stats
+        siteMonitor: http://tautulli.home/
+        widget:
+           type: tautulli
+           url: "{{HOMEPAGE_VAR_TAUTULLI_URL}}"
+           key: "{{HOMEPAGE_VAR_TAUTULLI_KEY}}"
+
+    - Deluge:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/deluge%20(1).png?raw=true
+        href: http://deluge.home/
+        description: Torrents
+        siteMonitor: http://deluge.home/
+        widget:
+           type: deluge
+           fields: ["download", "upload", "seed", "leech"]
+           url: "{{HOMEPAGE_VAR_DELUGE_URL}}"
+           password: "{{HOMEPAGE_VAR_DELUGE_PASS}}"
+
+    - Jackett:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/jackett.png?raw=true
+        href: http://jackett.home/
+        description: Indexers
+        siteMonitor: http://jackett.home/
+        #widget:
+        #    type: jackett
+        #    url: "{{HOMEPAGE_VAR_JACKETT_URL}}"
+
+    - Sonarr:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/sonarr%20(1).png?raw=true
+        href: http://sonarr.home/
+        description: Series
+        siteMonitor: http://sonarr.home/
+        #widget:
+        #    type: sonarr
+        #    url: "{{HOMEPAGE_VAR_SONARR_URL}}"
+        #    key: "{{HOMEPAGE_VAR_SONARR_KEY}}"
+
+    - Radarr:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/radarr.png?raw=true
+        href: http://radarr.home/
+        description: Movies
+        siteMonitor: http://radarr.home/
+        #widget:
+        #    type: radarr
+        #    fields: ["wanted", "queued", "movies"]
+        #    url: "{{HOMEPAGE_VAR_RADARR_KEY}}"
+        #    key: "{{HOMEPAGE_VAR_RADARR_KEY}}"
+
+- Monitoring:
+    - Grafana:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/grafana%20(1).png?raw=true
+        href: "{{HOMEPAGE_VAR_GRAFANA_HREF}}"
+        description: Dashboards
+        siteMonitor: "{{HOMEPAGE_VAR_GRAFANA_URL}}"
+        #widget:
+        #    type: grafana
+        #    fields: ["dashboards", "datasources", "totalalerts"]
+        #    url: "{{HOMEPAGE_VAR_GRAFANA_URL}}"
+        #    username: "{{HOMEPAGE_VAR_GRAFANA_USER}}"
+        #    password: "{{HOMEPAGE_VAR_GRAFANA_PASS}}"
+
+    - Prometheus:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/prometheus%20(1).png?raw=true
+        href: "{{HOMEPAGE_VAR_PROMETHEUS_URL}}"
+        description: Metrics
+        siteMonitor: "{{HOMEPAGE_VAR_PROMETHEUS_URL}}"
+        #widget:
+        #    type: prometheus
+        #    url: "{{HOMEPAGE_VAR_PROMETHEUS_URL}}"
+
+    - Loki:
+        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/loki.png?raw=true
+        href: "{{HOMEPAGE_VAR_LOKI_URL}}"
+        description: Logs
+        siteMonitor: "{{HOMEPAGE_VAR_LOKI_URL}}/ready"

@@ -1,0 +1,36 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/settings
+
+#providers:
+#  openweathermap: openweathermapapikey
+##  weatherapi: weatherapiapikey
+
+title: Stargate
+color: gray
+theme: dark
+fiveColumns: true
+hideVersion: true
+statusStyle: dot
+headerStyle: boxed
+layout:
+  Hardware:
+    style: column
+    columns: 3
+    icon: mdi-server
+  Applications:
+    style: row
+    columns: 3
+    icon: mdi-apps
+  Kubernetes:
+    style: row
+    columns: 3
+    icon: mdi-kubernetes
+  Media:
+    style: row
+    columns: 3
+    icon: mdi-folder-multiple-image
+  Monitoring:
+    style: row
+    columns: 3
+    icon: mdi-desktop-classic
