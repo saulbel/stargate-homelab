@@ -15,28 +15,32 @@ The storage distribution is the following:
  ## Selfhosted
  Right now I have the following stuff hosted on my `NUC`:
 ![proxmox-only](https://github.com/user-attachments/assets/cb60ca76-07f9-4811-a177-aca02df8119f)
-- 3 VMS (K3s cluster):
+- ``VMS`` (K3s cluster):
   - ``ArgoCD``: gitops
   - ``Certmanager``: certificates
-  - ``Metallb``: loadbalancer
+  - ``External-dns``: dynamic dns updater
   - ``Traefik``: ingress
   - ``Longhorn``: distributed storage
-- 15 LXC containers:
-  - ``adguard``: adblock + dns server
-  - ``amule``: p2p downloads
-  - ``bookstack``: wiki
-  - ``deluge``: torrent downloads
-  - ``handbrake``: transcoder
-  - ``jackett``: trackers
-  - ``kavita``: library
-  - ``homepage``: dashboard solution
-  - ``npm``: reverse proxy
-  - ``plex``: media player
-  - ``radarr``: movie collection manager
-  - ``sonarr``: tv show collection manager
-  - ``tautulli``: stats for plex and user management
-  - ``tools``: packer + network utilities
-  - ``vaultwarden``: password vault
+  - ``Prometheus``: metrics solution, configured as remote writer
+  - ``Promtail``: logs solution
+  - ``Tailscale``: zero config vpn
+  - ``Velero``: backup solution
+- ``LXC``:
+  - [Adguard](/docker/adguard): adblock + dns server
+  - [Amule](/docker/amule): p2p downloads
+  - [Bookstack](/docker/bookstack): wiki
+  - [Deluge](/docker/deluge): torrent downloads
+  - [Handbrake](/docker/handbrake): transcoder
+  - [Jackett](/docker/jackett): trackers
+  - [Kavita](/docker/kavita): library
+  - [Homepage](/docker/homepage): dashboard
+  - [Minio](/docker/minio): s3 
+  - [Npm](/docker/nginx): reverse proxy
+  - [Plex](/docker/plex): media player
+  - [Radarr](/docker/radarr): movie collection manager
+  - [Sonarr](/docker/sonarr): tv show collection manager
+  - [Tautulli](/docker/tautulli): stats for plex
+  - [Vaultwarden](/docker/vaultwarden): password vault
 
  ## Proxmox Addons
 I do not recommend messing up with proxmox host but you might wanna add some stuff to it. In my case I have a couple of things installed:
