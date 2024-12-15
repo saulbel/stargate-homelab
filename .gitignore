@@ -3,3 +3,19 @@
 
 # config directories
 .config
+
+# terraform state files
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate
+*.tfstate.backup
+
+# terraform variable files
+*.tfvars
+*.tfvars.json
+
+# terraform modules
+.terraform/
+
+# terraform locks
+.terraform.lock*
