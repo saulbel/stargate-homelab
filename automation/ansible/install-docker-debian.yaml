@@ -1,0 +1,21 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install some tools
+      apt:
+        pkg:
+          - curl
+          - vim
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+    - name: Install Docker Compose
+      apt:
+        name: docker-compose
+        state: present
+    - name: Add Debian user to docker group
+      user:
+        name: debian
+        groups: docker
+        append: yes

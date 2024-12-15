@@ -1,0 +1,9 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Reboot the host
+      reboot:
+        msg: "Reboot initiated by Ansible"
+    - name: Wait for the host to come back up
+      wait_for_connection:
+        timeout: 300

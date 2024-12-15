@@ -1,0 +1,43 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Install system package
+      apt:
+        pkg:
+          - ufw
+        state: latest
+        update_cache: true
+    - name: Enable ufw
+      ufw:
+        state: enabled
+        policy: reject
+    - name: Open port 22
+      ufw:
+        rule: allow
+        port: '22'
+        proto: tcp
+    - name: Open port '16262:16272'
+      ufw:
+        rule: allow
+        port: '16262:16272'
+        proto: tcp
+    - name: Open port 27015
+      ufw:
+        rule: allow
+        port: '27015'
+        proto: tcp
+    - name: Open port 8766
+      ufw:
+        rule: allow
+        port: '8766'
+        proto: udp
+    - name: Open port 8767
+      ufw:
+        rule: allow
+        port: '8767'
+        proto: udp
+    - name: Open port 16261
+      ufw:
+        rule: allow
+        port: '16261'
+        proto: udp
