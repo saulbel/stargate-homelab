@@ -10,8 +10,8 @@ Things you need before starting:
 stargate-homelab
 └── automation
     └── ansible    
-    └── scripts  
     └── terraform
+    └── scripts  
 └── docker  
 └── kubernetes
     └── argocd
