@@ -1,0 +1,42 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Install system package
+      apt:
+        pkg:
+          - firewalld
+        state: latest
+        update_cache: true
+    - name: Enable firewalld
+      service:
+        name: firewalld.service
+        enabled: true
+        use: service
+    - name: Open port 9987
+      firewalld:
+        zone: public
+        port: 9987/udp
+        permanent: true
+        state: enabled
+    - name: Open port 8000
+      firewalld:
+        zone: public
+        port: 8000/tcp
+        permanent: true
+        state: enabled
+    - name: Open port 10011
+      firewalld:
+        zone: public
+        port: 10011/tcp
+        permanent: true
+        state: enabled
+    - name: Open port 30033
+      firewalld:
+        zone: public
+        port: 30033/tcp
+        permanent: true
+        state: enabled
+    - name: Reload firewalld
+      service:
+        name: firewalld
+        state: restarted
