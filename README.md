@@ -31,9 +31,9 @@ stargate-homelab
 ## Where to start
 ## 1) [Proxmox](./proxmox/README.md)
 ## 2) [Observability](./observability/prometheus/README.md)
-## 3) [Tailscale](./tailscale/README.md)
-## 4) [Docker](./docker/README.md)
-
+## 3) [Docker](./docker/README.md)
+## 4) [Tailscale](./tailscale/README.md)
+## 5) [Automation](./automation/README.md)
 
 ## Next steps
 - I will document everything so you can mirror it.
