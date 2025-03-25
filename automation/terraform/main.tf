@@ -397,6 +397,16 @@ resource "proxmox_virtual_environment_container" "plex" {
         path   = "/mnt/local-storage"
     }
 
+    device_passthrough {
+        path = "/dev/dri/renderD128"
+        gid = 103
+    }
+
+    device_passthrough {
+        path = "/dev/dri/card0"
+        gid = 44
+    }
+
     cpu {
         cores = 2
     }
@@ -1559,6 +1569,7 @@ resource "proxmox_virtual_environment_vm" "k3s" {
     }
 
     cpu {
+        architecture = "x86_64"
         cores = 2
         type = "host"
     }
