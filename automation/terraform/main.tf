@@ -414,7 +414,7 @@ resource "proxmox_virtual_environment_container" "plex" {
     }
 
     memory {
-        dedicated = 4096
+        dedicated = 8192
     }
 
     operating_system {
