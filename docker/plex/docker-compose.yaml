@@ -4,6 +4,8 @@ services:
     image: ghcr.io/linuxserver/plex
     container_name: plex
     network_mode: host
+    devices:
+      - /dev/dri:/dev/dri # hardware transcoding
     environment:
       - PUID=1000
       - PGID=1000
@@ -12,6 +14,7 @@ services:
     volumes:
       - ./config:/config
       - /mnt/local-storage/plex:/media
+      - /dev/shm:/data/transcode # offload transcoding to 50% ram
     restart: unless-stopped
 
   watchtower:
