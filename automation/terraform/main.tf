@@ -400,11 +400,13 @@ resource "proxmox_virtual_environment_container" "plex" {
     device_passthrough {
         path = "/dev/dri/renderD128"
         gid = 103
+        mode = "0666"
     }
 
     device_passthrough {
         path = "/dev/dri/card0"
         gid = 44
+        mode = "0666"
     }
 
     cpu {
