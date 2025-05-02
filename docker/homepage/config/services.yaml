@@ -4,7 +4,7 @@
 
 - Hardware:
     - Proxmox:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/proxmox-light.png?raw=true
+        icon: /icons/proxmox.png
         href: https://proxmox.home/
         description: Server
         #siteMonitor: https://proxmox.home/
@@ -16,7 +16,7 @@
 
 - Applications:
     - Adguard:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/adguard-home.png?raw=true
+        icon: /icons/adguard-home.png
         href: http://adguard.home/
         description: DNS
         siteMonitor: http://adguard.home/
@@ -28,7 +28,7 @@
         
 
     - Nginx:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/nginxproxymanager.png?raw=true
+        icon: /icons/nginxproxymanager.png
         href: http://nginx.home/
         description: Proxy Manager
         siteMonitor: http://nginx.home/
@@ -39,7 +39,7 @@
         #    password: "{{HOMEPAGE_VAR_NGINX_PASS}}"
 
     - Kavita:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/kavita%20(1).png?raw=true
+        icon: /icons/kavita.png
         href: http://kavita.home/
         description: Books and Comics
         siteMonitor: http://kavita.home/
@@ -50,7 +50,7 @@
         #    password: "{{HOMEPAGE_VAR_KAVITA_PASS}}"
 
     - Amule:
-        icon: https://icons.iconarchive.com/icons/pit-tux/crystal-bw/256/eMule-icon.png
+        icon: /icons/eMule.png
         href: http://amule.home/
         description: P2P
         siteMonitor: http://amule.home/
@@ -62,49 +62,49 @@
 #        container: zomboid
 
     - Vaultwarden:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/vaultwarden.png?raw=true
+        icon: /icons/vaultwarden.png
         href: https://vaultwarden.home/
         description: Password vault
         siteMonitor: https://vaultwarden.home/
 
     - Bookstack:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/bookstack%20(1).png?raw=true
+        icon: /icons/bookstack.png
         href: http://bookstack.home/
         description: Wiki
         siteMonitor: http://bookstack.home/
 
     - Handbrake:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/handbrake.png?raw=true
+        icon: /icons/handbrake.png
         href: http://handbrake.home/
         description: Transcoder
         siteMonitor: http://handbrake.home/
 
     - Nfs:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/diskover.png?raw=true
+        icon: /icons/nfs.png
         description: Server
         ping: 192.168.1.26
 
     - Minio:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/minio-light.png?raw=true
+        icon: /icons/minio.png
         href: http://minio.home/
         description: S3
         siteMonitor: http://minio.home/
 
 - Kubernetes:
     - ArgoCD:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/arggocd.png?raw=true
+        icon: /icons/argocd.png
         href: https://argocd.home/
         description: GitOps
         siteMonitor: https://argocd.home/
 
     - Longhorn:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/longhorn.png?raw=true
+        icon: /icons/longhorn.png
         href: http://longhorn.home/
         description: Storage
         siteMonitor: http://longhorn.home/
         
     - Traefik:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/traefik%20(1).png?raw=true
+        icon: /icons/traefik.png
         href: http://traefik.home/dashboard/#/
         description: Ingress
         siteMonitor: http://traefik.home/dashboard/#/
@@ -112,7 +112,7 @@
 
 - Media:
     - Plex:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/plex%20(1).png?raw=true
+        icon: /icons/plex.png
         href: http://plex.home/
         description: Cinema
         siteMonitor: http://plex.home/
@@ -123,7 +123,7 @@
            key: "{{HOMEPAGE_VAR_PLEX_KEY}}"
 
     - Tautulli:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/tautulli.png?raw=true
+        icon: /icons/tautulli.png
         href: http://tautulli.home/
         description: Plex stats
         siteMonitor: http://tautulli.home/
@@ -133,7 +133,7 @@
            key: "{{HOMEPAGE_VAR_TAUTULLI_KEY}}"
 
     - Deluge:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/deluge%20(1).png?raw=true
+        icon: /icons/deluge.png
         href: http://deluge.home/
         description: Torrents
         siteMonitor: http://deluge.home/
@@ -144,7 +144,7 @@
            password: "{{HOMEPAGE_VAR_DELUGE_PASS}}"
 
     - Jackett:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/jackett.png?raw=true
+        icon: /icons/jackett.png
         href: http://jackett.home/
         description: Indexers
         siteMonitor: http://jackett.home/
@@ -153,7 +153,7 @@
         #    url: "{{HOMEPAGE_VAR_JACKETT_URL}}"
 
     - Sonarr:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/sonarr%20(1).png?raw=true
+        icon: /icons/sonarr.png
         href: http://sonarr.home/
         description: Series
         siteMonitor: http://sonarr.home/
@@ -163,7 +163,7 @@
         #    key: "{{HOMEPAGE_VAR_SONARR_KEY}}"
 
     - Radarr:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/radarr.png?raw=true
+        icon: /icons/radarr.png
         href: http://radarr.home/
         description: Movies
         siteMonitor: http://radarr.home/
@@ -175,7 +175,7 @@
 
 - Monitoring:
     - Grafana:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/grafana%20(1).png?raw=true
+        icon: /icons/grafana.png
         href: "{{HOMEPAGE_VAR_GRAFANA_HREF}}"
         description: Dashboards
         siteMonitor: "{{HOMEPAGE_VAR_GRAFANA_URL}}"
@@ -187,7 +187,7 @@
         #    password: "{{HOMEPAGE_VAR_GRAFANA_PASS}}"
 
     - Prometheus:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/prometheus%20(1).png?raw=true
+        icon: /icons/prometheus.png
         href: "{{HOMEPAGE_VAR_PROMETHEUS_URL}}"
         description: Metrics
         siteMonitor: "{{HOMEPAGE_VAR_PROMETHEUS_URL}}"
@@ -196,7 +196,7 @@
         #    url: "{{HOMEPAGE_VAR_PROMETHEUS_URL}}"
 
     - Loki:
-        icon: https://github.com/Jas-SinghFSU/homepage-catppuccin/blob/main/catppuccin_icons/loki.png?raw=true
+        icon: /icons/loki.png
         href: "{{HOMEPAGE_VAR_LOKI_URL}}"
         description: Logs
         siteMonitor: "{{HOMEPAGE_VAR_LOKI_URL}}/ready"

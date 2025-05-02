@@ -8,6 +8,7 @@ services:
       - 3000:3000
     volumes:
       - ./config:/app/config # Make sure your local config directory exists
+      - ./icons:/app/public/icons
         #- /var/run/docker.sock:/var/run/docker.sock:ro # (optional) For docker integrations
       - /mnt/local-storage:/local-storage # For disk api info
     restart: unless-stopped
