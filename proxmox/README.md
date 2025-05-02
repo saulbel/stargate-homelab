@@ -19,6 +19,7 @@ Right now I have the following stuff hosted on my `NUC`:
   - ``ArgoCD``: gitops
   - ``Certmanager``: certificates
   - ``External-dns``: dynamic dns updater
+  - ``External Secrets Operator``: secrets
   - ``Traefik``: ingress
   - ``Longhorn``: distributed storage
   - ``Prometheus``: metrics solution, configured as remote writer

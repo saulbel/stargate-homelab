@@ -35,6 +35,7 @@ stargate-homelab
 ## 3) [Docker](./docker/README.md)
 ## 4) [Tailscale](./tailscale/README.md)
 ## 5) [Automation](./automation/README.md)
+## 6) [Kubernetes](./kubernetes/README.md)
 
 ## Next steps
 - I will document everything so you can mirror it.
