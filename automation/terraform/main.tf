@@ -40,7 +40,7 @@ resource "proxmox_virtual_environment_container" "homepage" {
 
     disk {
         datastore_id = "local-lvm"
-        size = 8
+        size = 10
     }
 
     cpu {
@@ -153,7 +153,7 @@ resource "proxmox_virtual_environment_container" "adguard" {
 
     disk {
         datastore_id = "local-lvm"
-        size = 5
+        size = 10
     }
 
     cpu {
@@ -414,7 +414,7 @@ resource "proxmox_virtual_environment_container" "plex" {
     }
 
     memory {
-        dedicated = 8192
+        dedicated = 4096
     }
 
     operating_system {
@@ -918,7 +918,7 @@ resource "proxmox_virtual_environment_container" "nginx" {
 
     disk {
         datastore_id = "local-lvm"
-        size = 8
+        size = 10
     }
 
     cpu {
