@@ -1574,7 +1574,7 @@ resource "proxmox_virtual_environment_container" "infisical" {
     }
 
     memory {
-        dedicated = 512
+        dedicated = 1024
     }
 
     operating_system {
