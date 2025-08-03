@@ -31,7 +31,7 @@ services:
     networks:
       - infisical
     volumes:
-      - redis_data:/data
+      - ./redis_data:/data
 
   db:
     container_name: infisical-db
@@ -39,7 +39,7 @@ services:
     restart: always
     env_file: .env
     volumes:
-      - pg_data:/var/lib/postgresql/data
+      - ./pg_data:/var/lib/postgresql/data
     networks:
       - infisical
     healthcheck:
@@ -47,6 +47,18 @@ services:
       interval: 5s
       timeout: 10s
       retries: 10
+
+  db-migration:
+    container_name: infisical-db-migration
+    depends_on:
+      db:
+        condition: service_healthy
+    image: infisical/infisical:latest-postgres
+    env_file: .env
+    command: npm run migration:latest
+    pull_policy: always
+    networks:
+      - infisical
 
 volumes:
   pg_data:
