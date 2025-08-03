@@ -90,6 +90,17 @@
         description: S3
         siteMonitor: http://minio.home/
 
+    - Infisical:
+        icon: /icons/infisical.png
+        href: http://infisical.home/
+        description: Secrets
+        siteMonitor: http://infisical.home/
+
+    - Playground:
+        icon: /icons/playground-1.png
+        description: Testing
+        ping: 192.168.1.21
+
 - Kubernetes:
     - ArgoCD:
         icon: /icons/argocd.png
