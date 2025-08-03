@@ -966,7 +966,7 @@ resource "proxmox_virtual_environment_container" "playground" {
     description = "playground lxc"
     unprivileged = true
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -1518,6 +1518,89 @@ resource "proxmox_virtual_environment_container" "nfs" {
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
         command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.26,"
+    }
+
+}
+
+#########################################################
+# Ubuntu 22 lxc ct for infisical --> infisical 127      #
+#########################################################
+resource "proxmox_virtual_environment_container" "infisical" {
+    node_name = "pve1"
+    vm_id = 127
+    description = "infisical lxc"
+    unprivileged = true
+    start_on_boot = false
+    started = true
+
+    features {
+        nesting = true
+    }
+
+    initialization {
+        hostname = "infisical"
+        ip_config {
+            ipv4 {
+                address = "192.168.1.27/24"
+                gateway = "192.168.1.127"
+            }
+        }
+        dns {
+                domain = "home-network.io"
+                servers = ["192.168.1.225"]
+        }
+        user_account {
+                keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
+        }
+    }
+
+    network_interface {
+        name = "eth0"
+        bridge = "vmbr0"
+    }
+
+    disk {
+        datastore_id = "local-lvm"
+        size = 5
+    }
+
+    mount_point {
+        volume = "/mnt/pve/local-storage"
+        path   = "/mnt/local-storage"
+    }
+
+    cpu {
+        cores = 1
+    }
+
+    memory {
+        dedicated = 512
+    }
+
+    operating_system {
+        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
+        type             = "ubuntu"
+    }
+
+    # do not change dns
+    provisioner "remote-exec" {
+        inline = [
+        "apt upgrade -y",
+        "touch /etc/.pve-ignore.resolv.conf",
+        "reboot -f"
+        ]
+        connection {
+        type        = "ssh"
+        user        = "root"
+        host        = "192.168.1.27"
+        private_key = file ("/home/saul/.ssh/prox_ssh")
+        }  
+    }
+
+    # install docker
+    provisioner "local-exec" {
+        working_dir = "/home/saul/ansible/"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.27,"
     }
 
 }
