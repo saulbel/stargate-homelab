@@ -17,21 +17,21 @@
 - Applications:
     - Adguard:
         icon: /icons/adguard-home.png
-        href: http://adguard.home/
+        href: https://adguard.home/
         description: DNS
-        siteMonitor: http://adguard.home/
+        siteMonitor: https://adguard.home/
         #widget:
         #    type: adguard
         #    url: "{{HOMEPAGE_VAR_ADGUARD_URL}}"
         #    username: "{{HOMEPAGE_VAR_ADGUARD_USER}}"
         #    password: "{{HOMEPAGE_VAR_ADGUARD_PASS}}"
-        
+
 
     - Nginx:
         icon: /icons/nginxproxymanager.png
-        href: http://nginx.home/
+        href: https://nginx.home/
         description: Proxy Manager
-        siteMonitor: http://nginx.home/
+        siteMonitor: https://nginx.home/
         #widget:
         #    type: npm
         #    url: "{{HOMEPAGE_VAR_NGINX_URL}}"
@@ -40,9 +40,9 @@
 
     - Kavita:
         icon: /icons/kavita.png
-        href: http://kavita.home/
+        href: https://kavita.home/
         description: Books and Comics
-        siteMonitor: http://kavita.home/
+        siteMonitor: https://kavita.home/
         #widget:
         #    type: kavita
         #    url: "{{HOMEPAGE_VAR_KAVITA_URL}}"
@@ -51,9 +51,9 @@
 
     - Amule:
         icon: /icons/eMule.png
-        href: http://amule.home/
+        href: https://amule.home/
         description: P2P
-        siteMonitor: http://amule.home/
+        siteMonitor: https://amule.home/
 
 #    - Project Zomboid:
 #        icon: https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d1deb658-b63d-49dc-a1ab-25eeb1e52cd6/dcuk919-d579beb5-e983-4cc3-a855-e90a8d05ca4a.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2QxZGViNjU4LWI2M2QtNDlkYy1hMWFiLTI1ZWViMWU1MmNkNlwvZGN1azkxOS1kNTc5YmViNS1lOTgzLTRjYzMtYTg1NS1lOTBhOGQwNWNhNGEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ICAPXQSjCvEKyhWHYnCl3hHaaW3CrF58anQLYCFhorE
@@ -69,15 +69,15 @@
 
     - Bookstack:
         icon: /icons/bookstack.png
-        href: http://bookstack.home/
+        href: https://bookstack.home/
         description: Wiki
-        siteMonitor: http://bookstack.home/
+        siteMonitor: https://bookstack.home/
 
     - Handbrake:
         icon: /icons/handbrake.png
-        href: http://handbrake.home/
+        href: https://handbrake.home/
         description: Transcoder
-        siteMonitor: http://handbrake.home/
+        siteMonitor: https://handbrake.home/
 
     - Nfs:
         icon: /icons/nfs.png
@@ -86,15 +86,15 @@
 
     - Minio:
         icon: /icons/minio.png
-        href: http://minio.home/
+        href: https://minio.home/
         description: S3
-        siteMonitor: http://minio.home/
+        siteMonitor: https://minio.home/
 
     - Infisical:
         icon: /icons/infisical.png
-        href: http://infisical.home/
+        href: https://infisical.home/
         description: Secrets
-        siteMonitor: http://infisical.home/
+        siteMonitor: https://infisical.home/
 
     - Playground:
         icon: /icons/playground-1.png
@@ -113,7 +113,7 @@
         href: http://longhorn.home/
         description: Storage
         siteMonitor: http://longhorn.home/
-        
+
     - Traefik:
         icon: /icons/traefik.png
         href: http://traefik.home/dashboard/#/
@@ -124,9 +124,9 @@
 - Media:
     - Plex:
         icon: /icons/plex.png
-        href: http://plex.home/
+        href: https://plex.home/
         description: Cinema
-        siteMonitor: http://plex.home/
+        siteMonitor: https://plex.home/
         widget:
            type: plex
            fields: ["movies", "tv"]
@@ -135,9 +135,9 @@
 
     - Tautulli:
         icon: /icons/tautulli.png
-        href: http://tautulli.home/
+        href: https://tautulli.home/
         description: Plex stats
-        siteMonitor: http://tautulli.home/
+        siteMonitor: https://tautulli.home/
         widget:
            type: tautulli
            url: "{{HOMEPAGE_VAR_TAUTULLI_URL}}"
@@ -145,9 +145,9 @@
 
     - Deluge:
         icon: /icons/deluge.png
-        href: http://deluge.home/
+        href: https://deluge.home/
         description: Torrents
-        siteMonitor: http://deluge.home/
+        siteMonitor: https://deluge.home/
         widget:
            type: deluge
            fields: ["download", "upload", "seed", "leech"]
@@ -156,7 +156,7 @@
 
     - Jackett:
         icon: /icons/jackett.png
-        href: http://jackett.home/
+        href: https://jackett.home/
         description: Indexers
         siteMonitor: http://jackett.home/
         #widget:
@@ -165,9 +165,9 @@
 
     - Sonarr:
         icon: /icons/sonarr.png
-        href: http://sonarr.home/
+        href: https://sonarr.home/
         description: Series
-        siteMonitor: http://sonarr.home/
+        siteMonitor: https://sonarr.home/
         #widget:
         #    type: sonarr
         #    url: "{{HOMEPAGE_VAR_SONARR_URL}}"
@@ -175,9 +175,9 @@
 
     - Radarr:
         icon: /icons/radarr.png
-        href: http://radarr.home/
+        href: https://radarr.home/
         description: Movies
-        siteMonitor: http://radarr.home/
+        siteMonitor: https://radarr.home/
         #widget:
         #    type: radarr
         #    fields: ["wanted", "queued", "movies"]
