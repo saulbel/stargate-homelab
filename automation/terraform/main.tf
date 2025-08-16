@@ -25,7 +25,7 @@ resource "proxmox_virtual_environment_container" "homepage" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -216,7 +216,7 @@ resource "proxmox_virtual_environment_container" "kavita" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -298,7 +298,7 @@ resource "proxmox_virtual_environment_container" "vaultwarden" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -375,7 +375,7 @@ resource "proxmox_virtual_environment_container" "plex" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -501,7 +501,7 @@ resource "proxmox_virtual_environment_container" "deluge" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -568,7 +568,7 @@ resource "proxmox_virtual_environment_container" "jackett" {
     description = "jackett lxc"
     unprivileged = true
     start_on_boot = true
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -584,7 +584,7 @@ resource "proxmox_virtual_environment_container" "jackett" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -646,7 +646,7 @@ resource "proxmox_virtual_environment_container" "radarr" {
     description = "radarr lxc"
     unprivileged = true
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -662,7 +662,7 @@ resource "proxmox_virtual_environment_container" "radarr" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -729,7 +729,7 @@ resource "proxmox_virtual_environment_container" "sonarr" {
     description = "sonarr lxc"
     unprivileged = true
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -745,7 +745,7 @@ resource "proxmox_virtual_environment_container" "sonarr" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -827,7 +827,7 @@ resource "proxmox_virtual_environment_container" "tautulli" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -883,10 +883,10 @@ resource "proxmox_virtual_environment_container" "tautulli" {
 #########################################################
 # Ubuntu 22 lxc ct for nginx --> nginx 120              #
 #########################################################
-resource "proxmox_virtual_environment_container" "nginx" {
+resource "proxmox_virtual_environment_container" "caddy" {
     node_name = "pve1"
     vm_id = 120
-    description = "nginx lxc"
+    description = "caddy lxc"
     unprivileged = true
     start_on_boot = true
 
@@ -895,7 +895,7 @@ resource "proxmox_virtual_environment_container" "nginx" {
     }
 
     initialization {
-        hostname = "nginx"
+        hostname = "caddy"
         ip_config {
             ipv4 {
                 address = "192.168.1.20/24"
@@ -904,7 +904,7 @@ resource "proxmox_virtual_environment_container" "nginx" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -918,7 +918,7 @@ resource "proxmox_virtual_environment_container" "nginx" {
 
     disk {
         datastore_id = "local-lvm"
-        size = 10
+        size = 5
     }
 
     cpu {
@@ -966,7 +966,7 @@ resource "proxmox_virtual_environment_container" "playground" {
     description = "playground lxc"
     unprivileged = true
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -982,7 +982,7 @@ resource "proxmox_virtual_environment_container" "playground" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -1059,7 +1059,7 @@ resource "proxmox_virtual_environment_container" "amule" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -1126,7 +1126,7 @@ resource "proxmox_virtual_environment_container" "handbrake" {
     description = "handbrake lxc"
     unprivileged = true
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -1142,7 +1142,7 @@ resource "proxmox_virtual_environment_container" "handbrake" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -1224,7 +1224,7 @@ resource "proxmox_virtual_environment_container" "bookstack" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -1322,7 +1322,7 @@ resource "proxmox_virtual_environment_container" "minio" {
     description = "minio lxc"
     unprivileged = true
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -1338,7 +1338,7 @@ resource "proxmox_virtual_environment_container" "minio" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -1404,7 +1404,7 @@ resource "proxmox_virtual_environment_container" "nfs" {
     description = "nfs lxc"
     unprivileged = false
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -1420,7 +1420,7 @@ resource "proxmox_virtual_environment_container" "nfs" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -1547,7 +1547,7 @@ resource "proxmox_virtual_environment_container" "infisical" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
                 keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
@@ -1632,7 +1632,7 @@ resource "proxmox_virtual_environment_vm" "k3s" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
           username = "ubuntu"
@@ -1808,7 +1808,7 @@ resource "proxmox_virtual_environment_vm" "k3s" {
     node_name = "pve1"
     vm_id     = 211
     on_boot = false
-    started = false
+    started = true
 
     agent {
         enabled = true
@@ -1823,7 +1823,7 @@ resource "proxmox_virtual_environment_vm" "k3s" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
           username = "ubuntu"
@@ -1889,7 +1889,7 @@ resource "proxmox_virtual_environment_vm" "k3s-worker-1" {
     node_name = "pve1"
     vm_id     = 212
     on_boot = false
-    started = false
+    started = true
 
     agent {
         enabled = true
@@ -1904,7 +1904,7 @@ resource "proxmox_virtual_environment_vm" "k3s-worker-1" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
           username = "ubuntu"
@@ -1970,7 +1970,7 @@ resource "proxmox_virtual_environment_vm" "k3s-worker-2" {
     node_name = "pve1"
     vm_id     = 213
     on_boot = false
-    started = false
+    started = true
 
     agent {
         enabled = true
@@ -1985,7 +1985,7 @@ resource "proxmox_virtual_environment_vm" "k3s-worker-2" {
         }
         dns {
                 domain = "home-network.io"
-                servers = ["192.168.1.225"]
+                servers = ["192.168.1.225", "192.168.1.1"]
         }
         user_account {
           username = "ubuntu"
