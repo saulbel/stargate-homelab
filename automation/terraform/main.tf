@@ -966,7 +966,7 @@ resource "proxmox_virtual_environment_container" "playground" {
     description = "playground lxc"
     unprivileged = true
     start_on_boot = false
-    started = true
+    started = false
 
     features {
         nesting = true
@@ -1617,7 +1617,7 @@ resource "proxmox_virtual_environment_vm" "k3s" {
     node_name = "pve1"
     vm_id     = 210
     on_boot = false
-    started = false
+    started = true
 
     agent {
         enabled = true
@@ -1785,280 +1785,280 @@ resource "proxmox_virtual_environment_vm" "k3s" {
         command = "./install.sh"
     }     
 
-    # reboot host
-    provisioner "remote-exec" {
-        inline = [
-        "sudo reboot"
-        ]
-        connection {
-        type        = "ssh"
-        user        = "ubuntu"
-        host        = "192.168.1.50"
-        private_key = file ("/home/saul/.ssh/prox_ssh")
-        }  
-    }
+    # # reboot host
+    # provisioner "remote-exec" {
+    #     inline = [
+    #     "sudo reboot"
+    #     ]
+    #     connection {
+    #     type        = "ssh"
+    #     user        = "ubuntu"
+    #     host        = "192.168.1.50"
+    #     private_key = file ("/home/saul/.ssh/prox_ssh")
+    #     }  
+    # }
 }
 
 #############################################################
 # ubuntu 22 master --> k3s (using template)                 #
 #############################################################
-resource "proxmox_virtual_environment_vm" "k3s-master" {
-    name        = "k3s-master"
-    description = "k3s master"
-    node_name = "pve1"
-    vm_id     = 211
-    on_boot = false
-    started = false
+# resource "proxmox_virtual_environment_vm" "k3s-master" {
+#     name        = "k3s-master"
+#     description = "k3s master"
+#     node_name = "pve1"
+#     vm_id     = 211
+#     on_boot = false
+#     started = false
 
-    agent {
-        enabled = true
-    }
+#     agent {
+#         enabled = true
+#     }
 
-    initialization {
-        ip_config {
-            ipv4 {
-                address = "192.168.1.51/24"
-                gateway = "192.168.1.127"
-        }
-        }
-        dns {
-                domain = "home-network.io"
-                servers = ["192.168.1.225"]
-        }
-        user_account {
-          username = "ubuntu"
-          keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
-        }
+#     initialization {
+#         ip_config {
+#             ipv4 {
+#                 address = "192.168.1.51/24"
+#                 gateway = "192.168.1.127"
+#         }
+#         }
+#         dns {
+#                 domain = "home-network.io"
+#                 servers = ["192.168.1.225"]
+#         }
+#         user_account {
+#           username = "ubuntu"
+#           keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
+#         }
 
-    }
+#     }
 
-    network_device {
-        bridge = "vmbr0"
-    }
+#     network_device {
+#         bridge = "vmbr0"
+#     }
 
-    disk {
-        datastore_id = "local-lvm"
-        interface    = "scsi0"
-        file_format = "raw"
-        size = 30
-        path_in_datastore = "vm-211-disk-0" 
-    }
+#     disk {
+#         datastore_id = "local-lvm"
+#         interface    = "scsi0"
+#         file_format = "raw"
+#         size = 30
+#         path_in_datastore = "vm-211-disk-0" 
+#     }
 
-    cpu {
-        architecture = "x86_64"
-        cores = 2
-        type = "host"
-    }
+#     cpu {
+#         architecture = "x86_64"
+#         cores = 2
+#         type = "host"
+#     }
 
-    memory {
-        dedicated = 4096
-    }
+#     memory {
+#         dedicated = 4096
+#     }
 
-    clone {
-        vm_id = 201
-        full = true
-    }
+#     clone {
+#         vm_id = 201
+#         full = true
+#     }
 
-    # skip pending kernel upgrade 
-    provisioner "remote-exec" {
-        inline = [
-        "echo '$nrconf{restart} = 'a';' | sudo tee -a /etc/needrestart/conf.d/no-prompt.conf"
-        ]
-        connection {
-        type        = "ssh"
-        user        = "ubuntu"
-        host        = "192.168.1.51"
-        private_key = file ("/home/saul/.ssh/prox_ssh")
-        }  
-    }
+#     # skip pending kernel upgrade 
+#     provisioner "remote-exec" {
+#         inline = [
+#         "echo '$nrconf{restart} = 'a';' | sudo tee -a /etc/needrestart/conf.d/no-prompt.conf"
+#         ]
+#         connection {
+#         type        = "ssh"
+#         user        = "ubuntu"
+#         host        = "192.168.1.51"
+#         private_key = file ("/home/saul/.ssh/prox_ssh")
+#         }  
+#     }
 
-    # remove ssh key from known hosts
-    provisioner "local-exec" {
-        working_dir = "/home/saul"
-        command = "ssh-keygen -f '/home/saul/.ssh/known_hosts' -R '192.168.1.51'"
-    } 
+#     # remove ssh key from known hosts
+#     provisioner "local-exec" {
+#         working_dir = "/home/saul"
+#         command = "ssh-keygen -f '/home/saul/.ssh/known_hosts' -R '192.168.1.51'"
+#     } 
 
-}
+# }
 
-#############################################################
-# ubuntu 22 worker node 1 --> k3s (using template)          #
-#############################################################
-resource "proxmox_virtual_environment_vm" "k3s-worker-1" {
-    name        = "k3s-worker-1"
-    description = "k3s worker 1"
-    node_name = "pve1"
-    vm_id     = 212
-    on_boot = false
-    started = false
+# #############################################################
+# # ubuntu 22 worker node 1 --> k3s (using template)          #
+# #############################################################
+# resource "proxmox_virtual_environment_vm" "k3s-worker-1" {
+#     name        = "k3s-worker-1"
+#     description = "k3s worker 1"
+#     node_name = "pve1"
+#     vm_id     = 212
+#     on_boot = false
+#     started = false
 
-    agent {
-        enabled = true
-    }
+#     agent {
+#         enabled = true
+#     }
 
-    initialization {
-        ip_config {
-            ipv4 {
-                address = "192.168.1.52/24"
-                gateway = "192.168.1.127"
-        }
-        }
-        dns {
-                domain = "home-network.io"
-                servers = ["192.168.1.225"]
-        }
-        user_account {
-          username = "ubuntu"
-          keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
-        }
+#     initialization {
+#         ip_config {
+#             ipv4 {
+#                 address = "192.168.1.52/24"
+#                 gateway = "192.168.1.127"
+#         }
+#         }
+#         dns {
+#                 domain = "home-network.io"
+#                 servers = ["192.168.1.225"]
+#         }
+#         user_account {
+#           username = "ubuntu"
+#           keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
+#         }
 
-    }
+#     }
 
-    network_device {
-        bridge = "vmbr0"
-    }
+#     network_device {
+#         bridge = "vmbr0"
+#     }
 
-    disk {
-        datastore_id = "local-lvm"
-        interface    = "scsi0"
-        file_format = "raw"
-        size = 30
-        path_in_datastore = "vm-212-disk-0" 
-    }
+#     disk {
+#         datastore_id = "local-lvm"
+#         interface    = "scsi0"
+#         file_format = "raw"
+#         size = 30
+#         path_in_datastore = "vm-212-disk-0" 
+#     }
 
-    cpu {
-        architecture = "x86_64"
-        cores = 2
-        type = "host"
-    }
+#     cpu {
+#         architecture = "x86_64"
+#         cores = 2
+#         type = "host"
+#     }
 
-    memory {
-        dedicated = 4096
-    }
+#     memory {
+#         dedicated = 4096
+#     }
 
-    clone {
-        vm_id = 201
-        full = true
-    }
+#     clone {
+#         vm_id = 201
+#         full = true
+#     }
 
-    # skip pending kernel upgrade 
-    provisioner "remote-exec" {
-        inline = [
-        "echo '$nrconf{restart} = 'a';' | sudo tee -a /etc/needrestart/conf.d/no-prompt.conf"
-        ]
-        connection {
-        type        = "ssh"
-        user        = "ubuntu"
-        host        = "192.168.1.52"
-        private_key = file ("/home/saul/.ssh/prox_ssh")
-        }  
-    }
+#     # skip pending kernel upgrade 
+#     provisioner "remote-exec" {
+#         inline = [
+#         "echo '$nrconf{restart} = 'a';' | sudo tee -a /etc/needrestart/conf.d/no-prompt.conf"
+#         ]
+#         connection {
+#         type        = "ssh"
+#         user        = "ubuntu"
+#         host        = "192.168.1.52"
+#         private_key = file ("/home/saul/.ssh/prox_ssh")
+#         }  
+#     }
 
-    # remove ssh key from known hosts
-    provisioner "local-exec" {
-        working_dir = "/home/saul"
-        command = "ssh-keygen -f '/home/saul/.ssh/known_hosts' -R '192.168.1.52'"
-    } 
+#     # remove ssh key from known hosts
+#     provisioner "local-exec" {
+#         working_dir = "/home/saul"
+#         command = "ssh-keygen -f '/home/saul/.ssh/known_hosts' -R '192.168.1.52'"
+#     } 
 
-}
+# }
 
-#############################################################
-# ubuntu 22 worker node 2 --> k3s (using template)          #
-#############################################################
-resource "proxmox_virtual_environment_vm" "k3s-worker-2" {
-    name        = "k3s-worker-2"
-    description = "k3s worker 2"
-    node_name = "pve1"
-    vm_id     = 213
-    on_boot = false
-    started = false
+# #############################################################
+# # ubuntu 22 worker node 2 --> k3s (using template)          #
+# #############################################################
+# resource "proxmox_virtual_environment_vm" "k3s-worker-2" {
+#     name        = "k3s-worker-2"
+#     description = "k3s worker 2"
+#     node_name = "pve1"
+#     vm_id     = 213
+#     on_boot = false
+#     started = false
 
-    agent {
-        enabled = true
-    }
+#     agent {
+#         enabled = true
+#     }
 
-    initialization {
-        ip_config {
-            ipv4 {
-                address = "192.168.1.53/24"
-                gateway = "192.168.1.127"
-        }
-        }
-        dns {
-                domain = "home-network.io"
-                servers = ["192.168.1.225"]
-        }
-        user_account {
-          username = "ubuntu"
-          keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
-        }
+#     initialization {
+#         ip_config {
+#             ipv4 {
+#                 address = "192.168.1.53/24"
+#                 gateway = "192.168.1.127"
+#         }
+#         }
+#         dns {
+#                 domain = "home-network.io"
+#                 servers = ["192.168.1.225"]
+#         }
+#         user_account {
+#           username = "ubuntu"
+#           keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
+#         }
 
-    }
+#     }
 
-    network_device {
-        bridge = "vmbr0"
-    }
+#     network_device {
+#         bridge = "vmbr0"
+#     }
 
-    disk {
-        datastore_id = "local-lvm"
-        interface    = "scsi0"
-        file_format = "raw"
-        size = 30
-        path_in_datastore = "vm-213-disk-0" 
-    }
+#     disk {
+#         datastore_id = "local-lvm"
+#         interface    = "scsi0"
+#         file_format = "raw"
+#         size = 30
+#         path_in_datastore = "vm-213-disk-0" 
+#     }
 
-    cpu {
-        architecture = "x86_64"
-        cores = 2
-        type = "host"
-    }
+#     cpu {
+#         architecture = "x86_64"
+#         cores = 2
+#         type = "host"
+#     }
 
-    memory {
-        dedicated = 4096
-    }
+#     memory {
+#         dedicated = 4096
+#     }
 
-    clone {
-        vm_id = 201
-        full = true
-    }
+#     clone {
+#         vm_id = 201
+#         full = true
+#     }
     
-    # depends on
-    depends_on = [proxmox_virtual_environment_vm.k3s-master, proxmox_virtual_environment_vm.k3s-worker-1]
+#     # depends on
+#     depends_on = [proxmox_virtual_environment_vm.k3s-master, proxmox_virtual_environment_vm.k3s-worker-1]
 
-    # skip pending kernel upgrade 
-    provisioner "remote-exec" {
-        inline = [
-        "echo '$nrconf{restart} = 'a';' | sudo tee -a /etc/needrestart/conf.d/no-prompt.conf"
-        ]
-        connection {
-        type        = "ssh"
-        user        = "ubuntu"
-        host        = "192.168.1.53"
-        private_key = file ("/home/saul/.ssh/prox_ssh")
-        }  
-    }
+#     # skip pending kernel upgrade 
+#     provisioner "remote-exec" {
+#         inline = [
+#         "echo '$nrconf{restart} = 'a';' | sudo tee -a /etc/needrestart/conf.d/no-prompt.conf"
+#         ]
+#         connection {
+#         type        = "ssh"
+#         user        = "ubuntu"
+#         host        = "192.168.1.53"
+#         private_key = file ("/home/saul/.ssh/prox_ssh")
+#         }  
+#     }
 
-    # remove ssh key from known hosts
-    provisioner "local-exec" {
-        working_dir = "/home/saul"
-        command = "ssh-keygen -f '/home/saul/.ssh/known_hosts' -R '192.168.1.53'"
-    } 
+#     # remove ssh key from known hosts
+#     provisioner "local-exec" {
+#         working_dir = "/home/saul"
+#         command = "ssh-keygen -f '/home/saul/.ssh/known_hosts' -R '192.168.1.53'"
+#     } 
 
-    # install K3S
-    provisioner "local-exec" {
-        working_dir = "/home/saul/ansible/k3s-ansible/"
-        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook site.yml -i ./inventory/my-cluster/hosts.ini"
-    }
+#     # install K3S
+#     provisioner "local-exec" {
+#         working_dir = "/home/saul/ansible/k3s-ansible/"
+#         command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook site.yml -i ./inventory/my-cluster/hosts.ini"
+#     }
 
-    # retrieve kubeconfig
-    provisioner "local-exec" {
-        working_dir = "/home/saul"
-        command = "scp k3s-master:~/.kube/config /home/saul/.kube/config"
-    } 
+#     # retrieve kubeconfig
+#     provisioner "local-exec" {
+#         working_dir = "/home/saul"
+#         command = "scp k3s-master:~/.kube/config /home/saul/.kube/config"
+#     } 
 
-    # install argocd and apps
-    provisioner "local-exec" {
-        working_dir = "/home/saul/k3s"
-        command = "./install.sh"
-    }    
+#     # install argocd and apps
+#     provisioner "local-exec" {
+#         working_dir = "/home/saul/k3s"
+#         command = "./install.sh"
+#     }    
 
-}
+# }
