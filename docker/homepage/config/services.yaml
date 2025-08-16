@@ -7,7 +7,6 @@
         icon: /icons/proxmox.png
         href: https://proxmox.home/
         description: Server
-        #siteMonitor: https://proxmox.home/
         widget:
             type: proxmox
             url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
@@ -26,17 +25,10 @@
         #    username: "{{HOMEPAGE_VAR_ADGUARD_USER}}"
         #    password: "{{HOMEPAGE_VAR_ADGUARD_PASS}}"
 
-
-    - Nginx:
-        icon: /icons/nginxproxymanager.png
-        href: https://nginx.home/
-        description: Proxy Manager
-        siteMonitor: https://nginx.home/
-        #widget:
-        #    type: npm
-        #    url: "{{HOMEPAGE_VAR_NGINX_URL}}"
-        #    username: "{{HOMEPAGE_VAR_NGINX_USER}}"
-        #    password: "{{HOMEPAGE_VAR_NGINX_PASS}}"
+    - Caddy:
+        icon: /icons/caddy.png
+        description: Reverse Proxy
+        ping: 192.168.1.20
 
     - Kavita:
         icon: /icons/kavita.png
@@ -54,12 +46,6 @@
         href: https://amule.home/
         description: P2P
         siteMonitor: https://amule.home/
-
-#    - Project Zomboid:
-#        icon: https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d1deb658-b63d-49dc-a1ab-25eeb1e52cd6/dcuk919-d579beb5-e983-4cc3-a855-e90a8d05ca4a.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2QxZGViNjU4LWI2M2QtNDlkYy1hMWFiLTI1ZWViMWU1MmNkNlwvZGN1azkxOS1kNTc5YmViNS1lOTgzLTRjYzMtYTg1NS1lOTBhOGQwNWNhNGEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ICAPXQSjCvEKyhWHYnCl3hHaaW3CrF58anQLYCFhorE
-#        description: Server
-#        server: zomboid
-#        container: zomboid
 
     - Vaultwarden:
         icon: /icons/vaultwarden.png
