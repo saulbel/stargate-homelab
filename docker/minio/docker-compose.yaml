@@ -4,7 +4,7 @@ services:
     image: minio/minio:latest
     container_name: minio
     env_file: .env
-    environment:
+    #environment:
       # included in .env file
       # - MINIO_ROOT_USER=
       # - MINIO_ROOT_PASSWORD=

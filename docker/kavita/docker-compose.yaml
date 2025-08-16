@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   kavita:
-    image: kizaing/kavita:latest    # Change latest to nightly for latest develop builds (can't go back to stable)
+    image: jvmilazz0/kavita:latest    # Change latest to nightly for latest develop builds (can't go back to stable)
     container_name: kavita
     volumes:
         - /mnt/local-storage/kavita/manga:/manga            # Manga is just an example you can have the name you want. See the following
