@@ -346,7 +346,7 @@ resource "proxmox_virtual_environment_container" "vaultwarden" {
     # install docker 
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.12,"
+        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.13,"
     }
 
 }
