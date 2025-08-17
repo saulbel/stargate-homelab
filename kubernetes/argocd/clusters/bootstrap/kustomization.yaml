@@ -1,0 +1,5 @@
+resources:
+  - software-base.yaml
+  - monitoring.yaml
+  - jobs.yaml
+  - apps.yaml

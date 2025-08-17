@@ -1,0 +1,47 @@
+# Enable access log
+logs:
+  access:
+    enabled: true
+    format: json
+# This is translated to traefik parameters
+# "--metrics.prometheus=true"
+# "--accesslog"
+# "--accesslog.format=json"
+
+# Print access log to file instead of stdout
+additionalArguments:
+  - "--accesslog.filepath=/data/access.log"
+  - "--api.insecure=true"
+  #- "--serversTransport.insecureSkipVerify=true"
+  #- "--api.debug=true"
+  #- "--log.level=DEBUG"
+deployment:
+  # Adding access logs sidecar
+  additionalContainers:
+    - name: stream-accesslog
+      image: busybox
+      args:
+      - /bin/sh
+      - -c
+      - tail -n+1 -F /data/access.log
+      imagePullPolicy: Always
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /data
+        name: data
+service:
+  spec:
+    # Set load balancer external IP
+    loadBalancerIP: 192.168.1.200
+
+providers:
+  # Enable cross namespace references
+  kubernetesCRD:
+    enabled: true
+    allowCrossNamespace: true
+  # Enable published service
+  kubernetesIngress:
+    publishedService:
+      enabled: true

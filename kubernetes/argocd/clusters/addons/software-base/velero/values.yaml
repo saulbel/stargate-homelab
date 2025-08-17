@@ -1,0 +1,84 @@
+initContainers:
+  - name: velero-plugin-for-aws
+    image: velero/velero-plugin-for-aws:v1.9.0
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+      - mountPath: /target
+        name: plugins
+
+configuration:
+  backupStorageLocation: 
+  - name: default
+    provider: aws
+    bucket: velero
+    caCert:
+    prefix:
+    default:
+    validationFrequency:
+    accessMode: ReadWrite
+    credential:
+      name: 
+      key: 
+    config: 
+      region: None
+      s3ForcePathStyle: true
+      s3Url: http://minio.home
+
+  volumeSnapshotLocation:
+  - name: default
+    provider: aws
+    credential:
+      name:
+      key:
+    config: {}
+
+  uploaderType: restic
+  backupSyncPeriod:
+  fsBackupTimeout:
+  clientBurst:
+  clientPageSize:
+  clientQPS:
+  defaultBackupStorageLocation:
+  defaultItemOperationTimeout:
+  defaultBackupTTL:
+  defaultVolumeSnapshotLocations:
+  disableControllers:
+  garbageCollectionFrequency:
+  logFormat:
+  logLevel:
+  metricsAddress:
+  pluginDir:
+  profilerAddress:
+  restoreOnlyMode:
+  restoreResourcePriorities:
+  storeValidationFrequency:
+  terminatingResourceTimeout:
+  defaultSnapshotMoveData:
+  features:
+  namespace: velero
+  extraEnvVars: {}
+  defaultVolumesToFsBackup: true
+  defaultRepoMaintainFrequency:
+
+credentials:
+  useSecret: true
+  name:
+  existingSecret: velero-credentials
+  secretContents: 
+  extraEnvVars: {}
+  extraSecretRef: ""
+
+backupsEnabled: true
+snapshotsEnabled: true
+deployNodeAgent: true
+
+nodeAgent:
+  podVolumePath: /var/lib/kubelet/pods
+  priorityClassName: ""
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 1024Mi

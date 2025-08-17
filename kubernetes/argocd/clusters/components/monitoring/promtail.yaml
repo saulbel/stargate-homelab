@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: promtail
+  namespace: argocd
+spec:
+  destination:
+    namespace: promtail
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - chart: promtail
+      repoURL: https://grafana.github.io/helm-charts
+      targetRevision: 6.15.5
+      helm:
+        valueFiles:
+          - $values/kubernetes/argocd/clusters/addons/monitoring/promtail/values.yaml
+    - path: clusters/addons/monitoring/promtail
+      repoURL: git@github.com:saulbel/stargate-homelab.git
+      targetRevision: main
+      ref: values
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+    automated:
+      prune: true
+      selfHeal: true

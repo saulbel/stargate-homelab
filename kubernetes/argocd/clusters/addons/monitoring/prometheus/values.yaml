@@ -1,0 +1,39 @@
+prometheus:
+  enabled: true
+
+  agentMode: true
+
+  prometheusSpec:
+    remoteWrite: 
+      - url: "http://ubuntu-arm.tail991cf.ts.net:9090/api/v1/write"
+
+  ingress:
+    enabled: true
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: prometheus.k3s.home
+    hosts: 
+      - prometheus.k3s.home
+    paths: []
+
+kubeApiServer:
+  enabled: true
+  tlsConfig:
+    serverName: kubernetes
+    insecureSkipVerify: true
+
+kubeControllerManager:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    insecureSkipVerify: true
+
+kubeScheduler:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    insecureSkipVerify: true
+
+prometheusOperator:
+  enabled: true
+  tls:
+    enabled: false

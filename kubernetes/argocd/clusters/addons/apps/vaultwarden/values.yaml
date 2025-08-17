@@ -1,0 +1,235 @@
+image:
+  registry: docker.io
+  repository: vaultwarden/server
+  tag: "1.30.3-alpine"
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+
+fullnameOverride: ""
+
+resourceType: ""
+
+commonAnnotations: {}
+
+configMapAnnotations: {}
+
+podAnnotations: {}
+
+commonLabels: {}
+
+podLabels: {}
+
+initContainers: []
+
+sidecars: []
+
+nodeSelector: {}
+
+affinity: {}
+
+tolerations: []
+
+serviceAccount:
+  create: true
+  name: "vaultwarden-svc"
+
+podSecurityContext: {}
+
+securityContext: {}
+
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 5
+  timeoutSeconds: 1
+  periodSeconds: 10
+  successThreshold: 1
+  failureThreshold: 10
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 5
+  timeoutSeconds: 1
+  periodSeconds: 10
+  successThreshold: 1
+  failureThreshold: 3
+
+startupProbe:
+  enabled: false
+  initialDelaySeconds: 5
+  timeoutSeconds: 1
+  periodSeconds: 10
+  successThreshold: 1
+  failureThreshold: 10
+
+resources: {}
+
+strategy: {}
+
+podDisruptionBudget:
+  enabled: false
+  minAvailable: 1
+  maxUnavailable: null
+
+data: 
+  name: "vaultwarden-data"
+  size: "5Gi"
+  class: "longhorn"
+  path: "/data"
+  keepPvc: true
+
+attachments: {}
+
+webVaultEnabled: "true"
+
+database:
+  type: "default"
+  host: ""
+  port: ""
+  username: ""
+  password: ""
+  dbName: ""
+  uriOverride: ""
+  existingSecret: ""
+  existingSecretKey: ""
+  connectionRetries: 15
+  maxConnections: 10
+
+pushNotifications: {}
+
+emergencyNotifReminderSched: "0 3 * * * *"
+
+emergencyRqstTimeoutSched: "0 7 * * * *"
+
+eventCleanupSched: "0 10 0 * * *"
+
+eventsDayRetain: ""
+
+domain: "https://vaultwarden.k3s.home"
+
+sendsAllowed: "true"
+
+hibpApiKey: ""
+
+orgAttachmentLimit: ""
+
+userAttachmentLimit: ""
+
+userSendLimit: ""
+
+trashAutoDeleteDays: ""
+
+signupsAllowed: true
+
+signupsVerify: "true"
+
+signupDomains: ""
+
+orgEventsEnabled: "false"
+
+orgCreationUsers: ""
+
+invitationsAllowed: true
+
+invitationOrgName: "Vaultwarden"
+
+invitationExpirationHours: "120"
+
+emergencyAccessAllowed: "true"
+
+emailChangeAllowed: "true"
+
+showPassHint: "false"
+
+ipHeader: "X-Real-IP"
+
+iconService: "internal"
+
+iconRedirectCode: "302"
+
+iconBlacklistNonGlobalIps: "true"
+
+experimentalClientFeatureFlags: null
+
+requireDeviceEmail: "false"
+
+extendedLogging: "true"
+
+logTimestampFormat: "%Y-%m-%d %H:%M:%S.%3f"
+
+logging:
+  logLevel: ""
+  logFile: ""
+
+adminToken:
+  existingSecret: vaultwarden-admin-token
+  existingSecretKey: ADMIN_TOKEN
+  value: ""
+
+adminRateLimitSeconds: "300"
+
+adminRateLimitMaxBurst: "3"
+
+timeZone: ""
+
+orgGroupsEnabled: "false"
+
+yubico:
+  clientId: ""
+  secretKey: ""
+  server: ""
+
+duo:
+  ikey: ""
+  secretKey: ""
+  hostname: ""
+
+smtp:
+  existingSecret: ""
+  host: ""
+  security: "starttls"
+  port: 25
+  from: ""
+  fromName: ""
+  username:
+    value: ""
+    existingSecretKey: ""
+  password:
+    value: ""
+    existingSecretKey: ""
+  authMechanism: "Plain"
+  acceptInvalidHostnames: "false"
+  acceptInvalidCerts: "false"
+  debug: false
+
+websocket:
+  enabled: true
+  address: "0.0.0.0"
+  port: 3012
+
+rocket:
+  address: "0.0.0.0"
+  port: "8080"
+  workers: "10"
+
+service:
+  type: "ClusterIP"
+  annotations: {}
+  labels: {}
+  ipFamilyPolicy: "SingleStack"
+
+ingress:
+  enabled: true
+  class: "traefik"
+  nginxIngressAnnotations: false
+  additionalAnnotations: 
+    external-dns.alpha.kubernetes.io/hostname: vaultwarden.k3s.home
+  labels: {}
+  tls: false
+  hostname: "vaultwarden.k3s.home"
+  additionalHostnames: []
+  path: "/"
+  pathWs: "/notifications/hub"
+  pathType: "Prefix"
+  pathTypeWs: "Exact"
+  tlsSecret: ""
+  nginxAllowList: ""

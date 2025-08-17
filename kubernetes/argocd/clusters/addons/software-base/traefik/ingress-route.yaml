@@ -1,0 +1,27 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: ServersTransport
+metadata:
+  name: traefik-dashboard-transport
+  namespace: traefik
+spec:
+  serverName: traefik-dashboard
+  insecureSkipVerify: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: dashboard
+  namespace: traefik
+  annotations:
+    external-dns.alpha.kubernetes.io/target: traefik.home
+    kubernetes.io/ingress.class: traefik
+spec:
+  entryPoints:
+    - web
+  routes:
+  - kind: Rule
+    match: Host(`traefik.home`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    services:
+    - kind: TraefikService
+      name: api@internal
+      serversTransport: traefik-dashboard-transport

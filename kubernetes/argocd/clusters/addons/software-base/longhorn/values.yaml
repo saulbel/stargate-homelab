@@ -1,0 +1,21 @@
+persistence:
+  defaultClassReplicaCount: 1
+
+longhornUI:
+  replicas: 1
+
+ingress:
+  enabled: true
+  ingressClassName: traefik
+  host: longhorn.home
+  path: /
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: longhorn.home
+
+preUpgradeChecker:
+  jobEnabled: false
+  upgradeVersionCheck: true
+
+defaultSettings:
+  backupTarget: s3://longhorn@dummyregion/
+  backupTargetCredentialSecret: longhorn-minio-credentials

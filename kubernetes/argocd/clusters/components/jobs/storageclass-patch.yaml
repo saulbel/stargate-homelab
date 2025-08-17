@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: storageclass-patch
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:saulbel/stargate-homelab.git
+    targetRevision: main
+    path: kubernetes/argocd/clusters/addons/jobs/storageclass-patch
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false # Don't try to re-create the Job

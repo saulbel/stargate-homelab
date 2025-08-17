@@ -1,0 +1,34 @@
+installCRDs: true
+
+operatorConfig:
+  defaultTags:
+    - "tag:k8s-operator"
+  image:
+    repo: tailscale/k8s-operator
+    tag: ""
+    digest: ""
+    pullPolicy: Always
+  logging: "info" 
+  hostname: "tailscale-operator"
+  watchNamespace: ""
+  nodeSelector:
+    kubernetes.io/os: linux
+  resources: {}
+  podAnnotations: {}
+  tolerations: []
+  affinity: {}
+  podSecurityContext: {}
+  securityContext: {}
+
+proxyConfig:
+  image:
+    repo: tailscale/tailscale
+    tag: ""
+    digest: ""
+  defaultTags: "tag:k8s"
+  firewallMode: auto
+
+apiServerProxyConfig:
+  mode: "false" 
+
+imagePullSecrets: []

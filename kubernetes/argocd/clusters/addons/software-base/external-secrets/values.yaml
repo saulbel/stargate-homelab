@@ -1,0 +1,369 @@
+global:
+  nodeSelector: {}
+  tolerations: []
+  topologySpreadConstraints: []
+  affinity: {}
+  compatibility:
+    openshift:
+      adaptSecurityContext: auto
+
+replicaCount: 1
+
+bitwarden-sdk-server:
+  enabled: false
+
+revisionHistoryLimit: 10
+
+image:
+  repository: oci.external-secrets.io/external-secrets/external-secrets
+  pullPolicy: IfNotPresent
+  tag: ""
+  flavour: ""
+
+installCRDs: true
+
+crds:
+  createClusterExternalSecret: true
+  createClusterSecretStore: true
+  createClusterGenerator: true
+  createClusterPushSecret: true
+  createPushSecret: true
+  annotations: {}
+  conversion:
+    enabled: false
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+namespaceOverride: ""
+
+commonLabels: {}
+
+leaderElect: false
+
+controllerClass: ""
+
+extendedMetricLabels: false
+
+scopedNamespace: ""
+
+scopedRBAC: false
+
+openshiftFinalizers: true
+
+processClusterExternalSecret: true
+
+processClusterPushSecret: true
+
+processClusterStore: true
+
+processPushSecret: true
+
+createOperator: true
+
+concurrent: 1
+log:
+  level: info
+  timeEncoding: epoch
+service:
+  ipFamilyPolicy: ""
+  ipFamilies: []
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  extraLabels: {}
+  name: ""
+
+rbac:
+  create: true
+
+  servicebindings:
+    create: true
+
+  aggregateToView: true
+
+  aggregateToEdit: true
+
+extraEnv: []
+
+extraArgs: {}
+
+extraVolumes: []
+
+extraObjects: []
+
+extraVolumeMounts: []
+
+extraContainers: []
+
+deploymentAnnotations: {}
+
+podAnnotations: {}
+
+podLabels: {}
+
+podSecurityContext:
+  enabled: true
+
+securityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+  enabled: true
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+  seccompProfile:
+    type: RuntimeDefault
+
+resources: {}
+
+serviceMonitor:
+  enabled: false
+  namespace: ""
+  additionalLabels: {}
+  interval: 30s
+  scrapeTimeout: 25s
+  honorLabels: false
+  metricRelabelings: []
+  relabelings: []
+
+metrics:
+
+  listen:
+    port: 8080
+
+  service:
+    enabled: false
+    port: 8080
+    annotations: {}
+
+grafanaDashboard:
+  enabled: false
+  sidecarLabel: "grafana_dashboard"
+  sidecarLabelValue: "1"
+  annotations: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+topologySpreadConstraints: []
+
+affinity: {}
+
+priorityClassName: ""
+
+podDisruptionBudget:
+  enabled: false
+  minAvailable: 1
+
+hostNetwork: false
+
+webhook:
+  annotations: {}
+  create: true
+  certCheckInterval: "5m"
+  lookaheadInterval: ""
+  replicaCount: 1
+  log:
+    level: info
+    timeEncoding: epoch
+  revisionHistoryLimit: 10
+
+  certDir: /tmp/certs
+  failurePolicy: Fail
+  hostNetwork: false
+  image:
+    repository: oci.external-secrets.io/external-secrets/external-secrets
+    pullPolicy: IfNotPresent
+    tag: ""
+    flavour: ""
+  imagePullSecrets: []
+  nameOverride: ""
+  fullnameOverride: ""
+  port: 10250
+  rbac:
+    create: true
+  serviceAccount:
+    create: true
+    automount: true
+    annotations: {}
+    extraLabels: {}
+    name: ""
+  nodeSelector: {}
+
+  certManager:
+    enabled: false
+    addInjectorAnnotations: true
+    cert:
+      create: true
+      issuerRef:
+        group: cert-manager.io
+        kind: "Issuer"
+        name: "my-issuer"
+      duration: "8760h"
+      revisionHistoryLimit: 0
+      renewBefore: ""
+      annotations: {}
+
+  tolerations: []
+
+  topologySpreadConstraints: []
+
+  affinity: {}
+
+  priorityClassName: ""
+
+  podDisruptionBudget:
+    enabled: false
+    minAvailable: 1
+
+  metrics:
+
+    listen:
+      port: 8080
+
+    service:
+      enabled: false
+      port: 8080
+      annotations: {}
+
+  readinessProbe:
+    address: ""
+    port: 8081
+
+  extraEnv: []
+
+  extraArgs: {}
+
+  extraVolumes: []
+
+  extraVolumeMounts: []
+
+  secretAnnotations: {}
+
+  deploymentAnnotations: {}
+
+  podAnnotations: {}
+
+  podLabels: {}
+
+  podSecurityContext:
+    enabled: true
+
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    enabled: true
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 1000
+    seccompProfile:
+      type: RuntimeDefault
+
+  resources: {}
+
+  service:
+    enabled: true
+    annotations: {}
+    labels: {}
+    type: ClusterIP
+    loadBalancerIP: ""
+
+certController:
+  create: true
+  requeueInterval: "5m"
+  replicaCount: 1
+  log:
+    level: info
+    timeEncoding: epoch
+  revisionHistoryLimit: 10
+
+  image:
+    repository: oci.external-secrets.io/external-secrets/external-secrets
+    pullPolicy: IfNotPresent
+    tag: ""
+    flavour: ""
+  imagePullSecrets: []
+  nameOverride: ""
+  fullnameOverride: ""
+  rbac:
+    create: true
+  serviceAccount:
+    create: true
+    automount: true
+    annotations: {}
+    extraLabels: {}
+    name: ""
+  nodeSelector: {}
+
+  tolerations: []
+
+  topologySpreadConstraints: []
+
+  affinity: {}
+
+  hostNetwork: false
+
+  priorityClassName: ""
+
+  podDisruptionBudget:
+    enabled: false
+    minAvailable: 1
+
+  metrics:
+
+    listen:
+      port: 8080
+
+    service:
+      enabled: false
+      port: 8080
+      annotations: {}
+
+  readinessProbe:
+    address: ""
+    port: 8081
+
+  extraEnv: []
+
+  extraArgs: {}
+
+  extraVolumes: []
+
+  extraVolumeMounts: []
+
+  deploymentAnnotations: {}
+
+  podAnnotations: {}
+
+  podLabels: {}
+
+  podSecurityContext:
+    enabled: true
+
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    enabled: true
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 1000
+    seccompProfile:
+      type: RuntimeDefault
+
+  resources: {}
+
+dnsPolicy: ClusterFirst
+
+dnsConfig: {}
+
+podSpecExtra: {}
