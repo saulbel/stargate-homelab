@@ -1617,7 +1617,7 @@ resource "proxmox_virtual_environment_vm" "k3s" {
     node_name = "pve1"
     vm_id     = 210
     on_boot = false
-    started = false
+    started = true
 
     agent {
         enabled = true
@@ -1725,24 +1725,24 @@ resource "proxmox_virtual_environment_vm" "k3s" {
         }  
     }
 
-    # install docker 
-    provisioner "local-exec" {
-        working_dir = "/home/saul/ansible/"
-        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i ubuntu@192.168.1.50,"
-    } 
+    # # install docker 
+    # provisioner "local-exec" {
+    #     working_dir = "/home/saul/ansible/"
+    #     command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i ubuntu@192.168.1.50,"
+    # } 
 
-    # remove keyring warning
-    provisioner "remote-exec" {
-        inline = [
-        "sudo cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d"
-        ]
-        connection {
-        type        = "ssh"
-        user        = "ubuntu"
-        host        = "192.168.1.50"
-        private_key = file ("/home/saul/.ssh/prox_ssh")
-        }  
-    }
+    # # remove keyring warning
+    # provisioner "remote-exec" {
+    #     inline = [
+    #     "sudo cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d"
+    #     ]
+    #     connection {
+    #     type        = "ssh"
+    #     user        = "ubuntu"
+    #     host        = "192.168.1.50"
+    #     private_key = file ("/home/saul/.ssh/prox_ssh")
+    #     }  
+    # }
 
     # install tailscale
     provisioner "remote-exec" {
