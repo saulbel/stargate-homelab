@@ -568,7 +568,7 @@ resource "proxmox_virtual_environment_container" "jackett" {
     description = "jackett lxc"
     unprivileged = true
     start_on_boot = true
-    started = true
+    started = false
 
     features {
         nesting = true
@@ -646,7 +646,7 @@ resource "proxmox_virtual_environment_container" "radarr" {
     description = "radarr lxc"
     unprivileged = true
     start_on_boot = false
-    started = true
+    started = false
 
     features {
         nesting = true
@@ -729,7 +729,7 @@ resource "proxmox_virtual_environment_container" "sonarr" {
     description = "sonarr lxc"
     unprivileged = true
     start_on_boot = false
-    started = true
+    started = false
 
     features {
         nesting = true
@@ -966,7 +966,7 @@ resource "proxmox_virtual_environment_container" "playground" {
     description = "playground lxc"
     unprivileged = true
     start_on_boot = false
-    started = true
+    started = false
 
     features {
         nesting = true
@@ -1126,7 +1126,7 @@ resource "proxmox_virtual_environment_container" "handbrake" {
     description = "handbrake lxc"
     unprivileged = true
     start_on_boot = false
-    started = true
+    started = false
 
     features {
         nesting = true
@@ -1322,7 +1322,7 @@ resource "proxmox_virtual_environment_container" "minio" {
     description = "minio lxc"
     unprivileged = true
     start_on_boot = false
-    started = true
+    started = false
 
     features {
         nesting = true
@@ -1404,7 +1404,7 @@ resource "proxmox_virtual_environment_container" "nfs" {
     description = "nfs lxc"
     unprivileged = false
     start_on_boot = false
-    started = true
+    started = false
 
     features {
         nesting = true
@@ -1531,7 +1531,7 @@ resource "proxmox_virtual_environment_container" "infisical" {
     description = "infisical lxc"
     unprivileged = true
     start_on_boot = false
-    started = true
+    started = false
 
     features {
         nesting = true
@@ -1617,7 +1617,7 @@ resource "proxmox_virtual_environment_vm" "k3s" {
     node_name = "pve1"
     vm_id     = 210
     on_boot = false
-    started = true
+    started = false
 
     agent {
         enabled = true
@@ -1808,7 +1808,7 @@ resource "proxmox_virtual_environment_vm" "k3s" {
     node_name = "pve1"
     vm_id     = 211
     on_boot = false
-    started = true
+    started = false
 
     agent {
         enabled = true
@@ -1889,7 +1889,7 @@ resource "proxmox_virtual_environment_vm" "k3s-worker-1" {
     node_name = "pve1"
     vm_id     = 212
     on_boot = false
-    started = true
+    started = false
 
     agent {
         enabled = true
@@ -1970,7 +1970,7 @@ resource "proxmox_virtual_environment_vm" "k3s-worker-2" {
     node_name = "pve1"
     vm_id     = 213
     on_boot = false
-    started = true
+    started = false
 
     agent {
         enabled = true
