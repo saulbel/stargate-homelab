@@ -14,7 +14,7 @@ spec:
       helm:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/monitoring/promtail/values.yaml
-    - path: clusters/addons/monitoring/promtail
+    - path: kubernetes/argocd/clusters/addons/monitoring/promtail
       repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
       ref: values

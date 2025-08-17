@@ -14,7 +14,7 @@ spec:
       helm:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/monitoring/prometheus/values.yaml
-    - path: clusters/addons/monitoring/prometheus
+    - path: kubernetes/argocd/clusters/addons/monitoring/prometheus
       repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
       ref: values
