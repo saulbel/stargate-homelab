@@ -13,7 +13,7 @@ spec:
       targetRevision: 1.17.2
       helm:
         valueFiles:
-          - $values/clusters/addons/software-base/cert-manager/values.yaml
+          - $values/kubernetes/argocd/clusters/addons/software-base/cert-manager/values.yaml
     - path: kubernetes/argocd/clusters/addons/software-base/cert-manager
       repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main

@@ -14,7 +14,7 @@ spec:
       helm:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/software-base/longhorn/values.yaml
-    - path: clusters/addons/software-base/longhorn
+    - path: kubernetes/argocd/clusters/addons/software-base/longhorn
       repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
       ref: values

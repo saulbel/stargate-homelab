@@ -13,7 +13,7 @@ spec:
       targetRevision: 27.0.0
       helm:
         valueFiles:
-          - $values/clusters/addons/software-base/traefik/values.yaml
+          - $values/kubernetes/argocd/clusters/addons/software-base/traefik/values.yaml
     - path: kubernetes/argocd/clusters/addons/software-base/traefik
       repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
