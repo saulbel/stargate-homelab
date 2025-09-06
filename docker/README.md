@@ -17,7 +17,7 @@ While Proxmox offers LXC containers, I run Docker inside LXC for maximum compati
 ## 📦 Self-Hosted Services
 
 This folder contains all my `docker-compose` files and configurations for self-hosted services.  
-Feel free to use them for your own setup—or as a backup reference!
+Feel free to use them for your own setup or as a backup reference!
 
 ```
 docker
@@ -41,8 +41,6 @@ docker
 └── teamspeak
 └── vaultwarden
 ```
-
-Each subfolder contains a `docker-compose.yaml` and any necessary configuration files.
 
 ---
 

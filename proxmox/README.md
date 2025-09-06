@@ -25,16 +25,16 @@ Currently hosted on my NUC:
 ![proxmox-only](https://github.com/user-attachments/assets/cb60ca76-07f9-4811-a177-aca02df8119f)
 
 ### VMs (K3s cluster)
-- **ArgoCD:** GitOps
-- **Certmanager:** Certificates
-- **External-dns:** Dynamic DNS updater
-- **External Secrets Operator:** Secrets management
-- **Traefik:** Ingress controller
-- **Longhorn:** Distributed storage
-- **Prometheus:** Metrics (remote writer)
-- **Promtail:** Logs
-- **Tailscale:** Zero-config VPN
-- **Velero:** Backup solution
+- [ArgoCD](/kubernetes/argocd/clusters/addons/software-base/argocd): GitOps for automated deployments
+- [Certmanager](/kubernetes/argocd/clusters/addons/software-base/cert-manager): Automated certificate management
+- [External-dns](/kubernetes/argocd/clusters/addons/software-base/external-dns): Dynamic DNS updater
+- [External-secrets](/kubernetes/argocd/clusters/addons/software-base/external-secrets): Secure secrets management
+- [Traefik](/kubernetes/argocd/clusters/addons/software-base/traefik): Ingress controller for routing traffic
+- [Longhorn](/kubernetes/argocd/clusters/addons/software-base/longhorn): Distributed storage solution
+- [Prometheus](/kubernetes/argocd/clusters/addons/monitoring/prometheus): Metrics and monitoring (remote writer)
+- [Promtail](/kubernetes/argocd/clusters/addons/monitoring/promtail): Centralized logging
+- [Tailscale](/kubernetes/argocd/clusters/addons/software-base/tailscale): Zero-config VPN for secure networking
+- [Velero](/kubernetes/argocd/clusters/addons/software-base/velero): Backup and restore solution
 
 ### LXCs
 - [Adguard](/docker/adguard): Adblock + DNS server

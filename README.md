@@ -47,13 +47,13 @@ The goal of this project is to build a homelab using **Proxmox** as the backbone
 
 ## ✨ Features
 
+- **Proxmox-based virtualization** ([Proxmox](proxmox/README.md))
 - **Automated infrastructure provisioning** with [Terraform](automation/terraform/README.md)
 - **Configuration management** using [Ansible](automation/ansible/README.md)
 - **Containerized services** with [Docker](docker/README.md)
 - **Kubernetes cluster & GitOps** with [ArgoCD](kubernetes/argocd/README.md)
 - **Centralized monitoring & logging** ([Prometheus](observability/prometheus/README.md), Loki, Grafana)
 - **Secure networking** with [Tailscale](tailscale/README.md)
-- **Proxmox-based virtualization** ([Proxmox](proxmox/README.md))
 
 ---
 

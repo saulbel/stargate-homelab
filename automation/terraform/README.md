@@ -32,7 +32,7 @@ terraform
 
 **Important:**  
 Always secure your `.tfstate` file!  
-You can use an S3 bucket (for example, with [MinIO](https://min.io/)) to store your state remotely and safely.
+You can use an S3 bucket (for example, with [MinIO](/docker/minio) to store your state remotely and safely.
 
 ---
 
