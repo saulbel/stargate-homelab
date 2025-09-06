@@ -1,12 +1,26 @@
-# Docker
+# 🐳 Docker
 
-## Why Docker
-``Docker`` is the default way to build and run containers. In ``Proxmox`` we have ``LXC`` but what I do is to run a docker container inside a ``LXC`` container. Why? Because ``Docker`` is what it is used nowadays and it's important to know all the secrets of it.
+Docker is the industry-standard way to build, run, and manage containers.  
+While Proxmox offers LXC containers, I run Docker inside LXC for maximum compatibility and flexibility. Docker is widely used and knowing its ins and outs is essential for modern self-hosting.
 
-## Selfhosted
-Here is all my ``docker-compose`` files and its config so you can use them. It also serves me as a ``backup`` :)
+---
+
+## 🚀 Why Docker?
+
+- **Portability:** Run your apps anywhere, from laptops to servers.
+- **Isolation:** Each service runs in its own container.
+- **Community:** Thousands of ready-to-use images.
+- **DevOps-friendly:** Integrates with CI/CD and orchestration tools.
+
+---
+
+## 📦 Self-Hosted Services
+
+This folder contains all my `docker-compose` files and configurations for self-hosted services.  
+Feel free to use them for your own setup—or as a backup reference!
+
 ```
-stargate-docker
+docker
 └── adguard
 └── amule
 └── bookstack
@@ -27,3 +41,17 @@ stargate-docker
 └── teamspeak
 └── vaultwarden
 ```
+
+Each subfolder contains a `docker-compose.yaml` and any necessary configuration files.
+
+---
+
+## 🛠️ To Improve
+
+- Add usage instructions and environment variable examples for each service
+- Organize configs for easier updates and backups
+- Add healthcheck and monitoring examples
+
+---
+
+> _Containerize your homelab, one container at a time!_

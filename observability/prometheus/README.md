@@ -1,48 +1,62 @@
-# Prometheus
+# 📊 Prometheus
 
-## Why Prometheus
-Prometheus is a ``TSDB`` that is used to store metrics. It works just the other way around ``InfluxDB`` does, I mean, It does not expect data, it ``scrapes`` it.
+Prometheus is a powerful time-series database (**TSDB**) used to store and query metrics.  
+Unlike InfluxDB, Prometheus actively **scrapes** metrics from endpoints rather than passively receiving data.
 
-## Prometheus Setup
-I use ``PVE exporter`` in order to expose all the metrics from proxmox vms/lxcs. Why don't we install node-exporter in lxcs you may wonder? Because the metrics are wrong, it exposes host’s metrics instead of lxc’s.
+---
 
-``Tailscale`` is used in order to prometheus to be able to scrape from my proxmox without exposing anything to internet.
+## 🚀 Why Prometheus?
+
+- **Pull-based model:** Prometheus scrapes metrics endpoints on a schedule.
+- **Flexible:** Works with many exporters and integrations.
+- **Rich query language:** Powerful PromQL for analysis and alerting.
+- **Ecosystem:** Integrates with Grafana, Alertmanager, and more.
+
+---
+
+## 🛠️ Prometheus Setup
+
+I use the **PVE exporter** to expose metrics from Proxmox VMs and LXCs.  
+> **Note:** Node-exporter inside LXCs exposes host metrics, not container metrics—so PVE exporter is preferred.
+
+**Tailscale** is used to allow Prometheus to scrape metrics securely from Proxmox without exposing endpoints to the internet.
 
 ![prometheus](https://github.com/user-attachments/assets/16d2d0ee-8641-4217-b74a-1a740161496b)
 
-## PVE Exporter Setup
-The idea is to be able to gather metrics about CPU, RAM, disk and network resources of proxmox guests (vms or lxc) via prometheus
+---
 
-- Create proxmox `API user`
-```
+## 📈 PVE Exporter Setup
+
+Gather metrics about CPU, RAM, disk, and network resources of Proxmox guests (VMs or LXCs) via Prometheus.
+
+### 1. Create Proxmox API User
+```sh
 pveum user add pve-exporter@pve -password <password>
-# add role PVEAuditor
 pveum acl modify / -user pve-exporter@pve -role PVEAuditor
 ```
-- Create `Linux user`
-```
+
+### 2. Create Linux User
+```sh
 useradd -s /bin/false pve-exporter
 ```
-- Create `venv`
-```
-# install python3-venv
+
+### 3. Create Python Virtual Environment
+```sh
 apt update
 apt install -y python3-venv
-# create venv
 python3 -m venv /opt/prometheus-pve-exporter
 ```
-- Install `prometheus proxmox ve exporter`
-```
-# active venv
+
+### 4. Install Prometheus PVE Exporter
+```sh
 source /opt/prometheus-pve-exporter/bin/activate
-# install prometheus-pve-exporter
 pip install prometheus-pve-exporter
-# to leave venv
 deactivate
 ```
-- Create `systemd-service`
+
+### 5. Create systemd Service
+Add this to `/etc/systemd/system/prometheus-pve-exporter.service`:
 ```
-# add this to /etc/systemd/system/prometheus-pve-exporter.service
 [Unit]
 Description=Prometheus Proxmox VE Exporter
 Documentation=https://github.com/prometheus-pve/prometheus-pve-exporter
@@ -54,42 +68,60 @@ ExecStart=/opt/prometheus-pve-exporter/bin/pve_exporter --config.file /etc/prome
 
 [Install]
 WantedBy=multi-user.target
-
-# reload systemd, enable and start service
+```
+Reload systemd, enable and start the service:
+```sh
 systemctl daemon-reload
 systemctl enable prometheus-pve-exporter.service
 systemctl start prometheus-pve-exporter.service
-
-# verify pve_exporter is listening to TCP 9221
+```
+Verify exporter is listening on TCP 9221:
+```sh
 ss -lntp | grep 9221
-tcp        0      0 0.0.0.0:9221            0.0.0.0:*               LISTEN      915/python3
 ```
-- Test funcionality
-```
+
+### 6. Test Functionality
+```sh
 curl --silent http://127.0.0.1:9221/pve | grep pve_version_info
+# Or access via browser:
 http://192.168.1.127:9221/pve?target=192.168.1.127&cluster=1&node=1
 ```
-- Add to `prometheus.yml` config
-```
+
+### 7. Add to Prometheus Configuration
+Add to your `prometheus.yml`:
+```yaml
 - job_name: 'pve-exporter'
   static_configs:
     - targets:
-      - 127.0.0.1:9221 # I have tailscale ip here instead of localhost
+      - 127.0.0.1:9221 # Use your Tailscale IP here if needed
   metrics_path: /pve
   params:
-```   
+```
 
-## Grafana dashboards
-You can import my grafana dashboards from [here](/docker/prometheus-loki/grafana-dashboards/).
-There are 4 dashboards, just in case you may wonder what they are for:
-  - ``proxmox.json``: This is the one that shows everything the ``pve-exporter`` scrapes from. 
-  - ``win-exporter.json``: It's a dashboard for a ``windows-exporter`` that I use on my own pc.
-  - ``loki-k3s.json``: It`s a kubernetes ``loki`` dashboard.
-  - ``prometheus-k3s.json``: It`s a kubernets ``prometheus`` dashboard.
+---
 
-## Prometheus configuration
-You can check all prometheus configuration [here](/docker/prometheus-loki/).
+## 📊 Grafana Dashboards
 
-## To improve
-- Configure ``alertmanager`` and send those alerts to a ``telegram channel``
-- Study whether to add ``promtail`` to proxmox node or to each lxc individually
+Import my Grafana dashboards from [here](/docker/prometheus-loki/grafana-dashboards/):
+
+- `proxmox.json`: Shows all metrics from PVE exporter
+- `win-exporter.json`: Dashboard for Windows exporter
+- `loki-k3s.json`: Kubernetes Loki dashboard
+- `prometheus-k3s.json`: Kubernetes Prometheus dashboard
+
+---
+
+## ⚙️ Prometheus Configuration
+
+Find all Prometheus configuration files [here](/docker/prometheus-loki/).
+
+---
+
+## 🛠️ To Improve
+
+- Configure **Alertmanager** and send alerts to a Telegram channel
+- Evaluate adding **Promtail** to the Proxmox node or each LXC individually
+
+---
+
+> _Monitor your homelab, one metric at a time!_

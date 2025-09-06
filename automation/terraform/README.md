@@ -1,20 +1,47 @@
-# Terraform
+# 🌱 Terraform
 
-## Why Terraform
-Terraform is an Infra as a Code (``IaC``) tool that allows us to provision and manage our infra. It has multiple providers, in our case we are gonna use the following `proxmox` [one](https://registry.terraform.io/providers/bpg/proxmox/latest/docs)
+Terraform is an Infrastructure as Code (**IaC**) tool that lets you declaratively provision and manage your homelab infrastructure.
 
-## Selfhosted
-Here is all my ``terraform`` files so you can use them.
+---
+
+## 🚀 Why Terraform?
+
+- **Declarative:** Define your infrastructure in simple configuration files.
+- **Multi-provider support:** Works with cloud, on-prem, and virtualization platforms.
+- **Repeatable & versioned:** Track changes and roll back easily.
+- **Community-powered:** Tons of modules and providers available.
+
+For this project, we use the [`Proxmox`](https://registry.terraform.io/providers/bpg/proxmox/latest/docs) provider to automate VM and resource creation.
+
+---
+
+## 📦 Files Included
+
+All my Terraform files for self-hosting are here and ready to use:
+
 ```
-stargate-terraform
+terraform
 └── main.tf
 └── provider.tf
 └── variables.tf
 ```
 
-## Tfstate
-Remember to save and secure your ``.tfstate``. You can use a ``s3 bucket`` in ``minio`` in order to do so.
+---
 
-## To improve
-- Add a way to retrieve the different ``docker-compose.yaml`` files and start the containers automatically. 
-- Find a way to connect to avoid the use of ``local-exec`` and ``remote-exec``.
+## 🗄️ State Management
+
+**Important:**  
+Always secure your `.tfstate` file!  
+You can use an S3 bucket (for example, with [MinIO](https://min.io/)) to store your state remotely and safely.
+
+---
+
+## 🛠️ To Improve
+
+- Add automation to retrieve and start `docker-compose.yaml` files after provisioning.
+- Find a way to avoid using `local-exec` and `remote-exec` for post-provisioning tasks.
+- Add more examples and modularize resources for easier reuse.
+
+---
+
+> _Automate your infrastructure, one resource at a time!_
