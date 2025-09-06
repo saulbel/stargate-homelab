@@ -4,7 +4,7 @@ This folder contains all the automation tools and scripts used to provision, con
 
 ---
 
-## 📁 Structure
+## 📁 Project Structure
 
 ```
 automation
@@ -16,11 +16,9 @@ automation
 
 ## 🚀 Components
 
-### [Ansible](./ansible)
-Automate configuration and application deployment across your vms and containers.  
+- **[Ansible](./ansible)** : Automate configuration and application deployment across your vms and containers.  
 
-### [Terraform](./terraform)
-Provision and manage **Proxmox** infrastructure resources declaratively.  
+- **[Terraform](./terraform)** : Provision and manage **Proxmox** infrastructure resources declaratively.  
 
 ---
 
@@ -35,12 +33,6 @@ Provision and manage **Proxmox** infrastructure resources declaratively.
 3. **Run automation**  
    - Use Terraform to provision infrastructure.
    - Use Ansible to configure and deploy services.
-
----
-
-## 📚 Documentation
-
-- Each subfolder contains its own README with detailed instructions and examples.
 
 ---
 
