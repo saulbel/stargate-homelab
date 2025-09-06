@@ -30,11 +30,11 @@ Here are the most important components running on my Kubernetes cluster:
 - [Certmanager](/kubernetes/argocd/clusters/addons/software-base/cert-manager): Automated certificate management
 - [External-dns](/kubernetes/argocd/clusters/addons/software-base/external-dns): Dynamic DNS updater
 - [External-secrets](/kubernetes/argocd/clusters/addons/software-base/external-secrets): Secure secrets management
-- [Traefik](/kubernetes/argocd/clusters/addons/software-base/traefik): Ingress controller for routing traffic
 - [Longhorn](/kubernetes/argocd/clusters/addons/software-base/longhorn): Distributed storage solution
 - [Prometheus](/kubernetes/argocd/clusters/addons/monitoring/prometheus): Metrics and monitoring (remote writer)
 - [Promtail](/kubernetes/argocd/clusters/addons/monitoring/promtail): Centralized logging
 - [Tailscale](/kubernetes/argocd/clusters/addons/software-base/tailscale): Zero-config VPN for secure networking
+- [Traefik](/kubernetes/argocd/clusters/addons/software-base/traefik): Ingress controller for routing traffic
 - [Velero](/kubernetes/argocd/clusters/addons/software-base/velero): Backup and restore solution
 
 ---

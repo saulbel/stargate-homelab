@@ -29,24 +29,25 @@ Currently hosted on my NUC:
 - [Certmanager](/kubernetes/argocd/clusters/addons/software-base/cert-manager): Automated certificate management
 - [External-dns](/kubernetes/argocd/clusters/addons/software-base/external-dns): Dynamic DNS updater
 - [External-secrets](/kubernetes/argocd/clusters/addons/software-base/external-secrets): Secure secrets management
-- [Traefik](/kubernetes/argocd/clusters/addons/software-base/traefik): Ingress controller for routing traffic
 - [Longhorn](/kubernetes/argocd/clusters/addons/software-base/longhorn): Distributed storage solution
 - [Prometheus](/kubernetes/argocd/clusters/addons/monitoring/prometheus): Metrics and monitoring (remote writer)
 - [Promtail](/kubernetes/argocd/clusters/addons/monitoring/promtail): Centralized logging
 - [Tailscale](/kubernetes/argocd/clusters/addons/software-base/tailscale): Zero-config VPN for secure networking
+- [Traefik](/kubernetes/argocd/clusters/addons/software-base/traefik): Ingress controller for routing traffic
 - [Velero](/kubernetes/argocd/clusters/addons/software-base/velero): Backup and restore solution
 
 ### LXCs
 - [Adguard](/docker/adguard): Adblock + DNS server
 - [Amule](/docker/amule): P2P downloads
 - [Bookstack](/docker/bookstack): Wiki
+- [Caddy](/docker/caddy): Reverse proxy
 - [Deluge](/docker/deluge): Torrent downloads
 - [Handbrake](/docker/handbrake): Transcoder
+- [Homepage](/docker/homepage): Dashboard
+- [Infisical](/docker/infisical): Secrets management
 - [Jackett](/docker/jackett): Trackers
 - [Kavita](/docker/kavita): Library
-- [Homepage](/docker/homepage): Dashboard
 - [Minio](/docker/minio): S3 storage
-- [Npm](/docker/nginx): Reverse proxy
 - [Plex](/docker/plex): Media player
 - [Radarr](/docker/radarr): Movie manager
 - [Sonarr](/docker/sonarr): TV show manager

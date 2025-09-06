@@ -27,6 +27,7 @@ docker
 └── deluge
 └── handbrake
 └── homepage
+└── infisical
 └── jackett
 └── kavita
 └── lookbusy
