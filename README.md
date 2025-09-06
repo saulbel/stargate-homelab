@@ -1,11 +1,11 @@
-# 🚀 stargate-homelab
+# ᐰ stargate-homelab
 
 Welcome to **stargate-homelab**!  
 A modular, automated, and fun approach to building your own homelab using **Proxmox**, **Docker**, **Kubernetes**, and more.
 
 ---
 
-## 🧰 Prerequisites
+## ☑️ Prerequisites
 
 Before you start, make sure you have:
 - **Spare hardware** (old PC, server, or VM host)
@@ -49,7 +49,7 @@ The goal of this project is to build a homelab using **Proxmox** as the backbone
 
 ---
 
-## 🏗️ Architecture Overview
+## 🖥️ Infraestructure Overview
 
 ![proxmox-oci](https://github.com/user-attachments/assets/b7e62e28-5a6d-44fb-b0c6-90f289c1c81d)
 ![homepage](https://github.com/user-attachments/assets/36d4a50f-627d-42a8-996e-558ea6a5a8f3)
