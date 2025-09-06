@@ -1,4 +1,4 @@
-# 🔘 stargate-homelab
+# 💫 stargate-homelab
 
 Welcome to **stargate-homelab**!  
 A modular, automated, and fun approach to building your own homelab using **Proxmox**, **Docker**, **Kubernetes**, and more.
