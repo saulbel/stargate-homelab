@@ -78,7 +78,7 @@ Open an issue and I will be gladly attend to it.
 ## 🚧 Next Steps
 
 - Full documentation for every component so you can mirror the setup.
-- Continuous improvements and new features—stay tuned!
+- Continuous improvements and new features so stay tuned!
 
 ---
 
