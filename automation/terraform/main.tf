@@ -251,12 +251,44 @@ resource "proxmox_virtual_environment_container" "kavita" {
         type             = "ubuntu"
     }
 
-    # do not change dns
+    # allow tun access
+    provisioner "remote-exec" {
+        inline = [
+        "echo 'lxc.cgroup.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/112.conf",
+        "echo 'lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file' >> /etc/pve/lxc/112.conf"
+        ]
+        connection {
+        type        = "ssh"
+        user        = "root"
+        host        = "192.168.1.127"
+        private_key = file ("/home/saul/.ssh/prox_ssh")
+        }  
+    }
+    
+    # install tailscale on lxc 
     provisioner "remote-exec" {
         inline = [
         "apt update",
         "apt upgrade -y",
-        "touch /etc/.pve-ignore.resolv.conf"
+        "apt install curl -y",
+        "curl -fsSL https://tailscale.com/install.sh | sh",
+        "echo 'net.ipv4.ip_forward = 1' | tee -a /etc/sysctl.conf",
+        "echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.conf",
+        "sysctl -p /etc/sysctl.conf",
+        "reboot -f"
+        ]
+        connection {
+        type        = "ssh"
+        user        = "root"
+        host        = "192.168.1.12"
+        private_key = file ("/home/saul/.ssh/prox_ssh")
+        }  
+    }
+
+    # register tailscale
+    provisioner "remote-exec" {
+        inline = [
+        "tailscale up --authkey ${var.tailscale_auth_key}"
         ]
         connection {
         type        = "ssh"
