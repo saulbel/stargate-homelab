@@ -60,7 +60,7 @@ Currently hosted on my NUC:
 
 While I don't recommend heavy customization of the Proxmox host, I do use a couple of helpful addons:
 - **Tailscale:** Remote access from anywhere
-- **PVE exporter:** Scrape metrics and store them securely (Tailscale is essential for this)
+- **PVE exporter:** Scrape metrics and store them securely (I use Tailscale in order to expose those metrics safely)
 
 ---
 
@@ -72,7 +72,7 @@ I use [PVE exporter](/observability/prometheus/README.md) to expose all metrics 
 
 ## 🧩 Proxmox Template Creation
 
-`Cloud-init` customizes Linux VMs at boot—perfect for spinning up minimal images with Terraform.
+`Cloud-init` customizes Linux VMs at boot, perfect for spinning up minimal images with Terraform.
 
 **Steps to create a Proxmox cloud-init template:**
 ```sh
