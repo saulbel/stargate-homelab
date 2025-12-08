@@ -2,6 +2,89 @@
 # LXC #
 #######
 #########################################################
+# Debian 12 lxc ct for pbs --> pbs 109                  #
+#########################################################
+resource "proxmox_virtual_environment_container" "pbs" {
+    node_name = "pve1"
+    vm_id = 109
+    description = "pbs lxc"
+    unprivileged = false
+    start_on_boot = true
+
+    features {
+        nesting = true
+    }
+
+    initialization {
+        hostname = "pbs"
+        ip_config {
+            ipv4 {
+                address = "192.168.1.9/24"
+                gateway = "192.168.1.127"
+            }
+        }
+        dns {
+                domain = "home-network.io"
+                servers = ["192.168.1.225", "192.168.1.1"]
+        }
+        user_account {
+                keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
+        }
+    }
+
+    network_interface {
+        name = "eth0"
+        bridge = "vmbr0"
+    }
+
+    disk {
+        datastore_id = "local-lvm"
+        size = 10
+    }
+
+    mount_point {
+        volume = "/mnt/pve/local-storage"
+        path   = "/mnt/local-storage"
+    }
+
+    mount_point {
+        volume = "/mnt/nfs-oci"
+        path   = "/mnt/nfs"
+    }
+
+    cpu {
+        cores = 2
+    }
+
+    memory {
+        dedicated = 2048
+    }
+
+    operating_system {
+        template_file_id = "local:vztmpl/debian-12-standard_12.12-1_amd64.tar.zst"
+        type             = "debian"
+    }
+
+    # install pbs
+    provisioner "remote-exec" {
+        inline = [
+        "apt upgrade -y",
+        "echo 'deb http://download.proxmox.com/debian/pbs bookworm pbs-no-subscription' >> /etc/apt/sources.list",
+        "wget https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg",
+        "apt update",
+        "apt install proxmox-backup-server -y"
+        ]
+        connection {
+        type        = "ssh"
+        user        = "root"
+        host        = "192.168.1.9"
+        private_key = file ("/home/saul/.ssh/prox_ssh")
+        }  
+    }
+
+}
+
+#########################################################
 # Ubuntu 22 lxc ct for homepage --> homepage 110        #
 #########################################################
 resource "proxmox_virtual_environment_container" "homepage" {
@@ -1532,9 +1615,10 @@ resource "proxmox_virtual_environment_container" "nfs" {
     # configure nfs
     provisioner "remote-exec" {
         inline = [
+        "mkdir -p /mnt/nfs",    
         "echo '/mnt/nfs 192.168.1.0/24(rw,sync,no_subtree_check,no_root_squash)' >> /etc/exports",
         "exportfs -a",
-        "chown nobody:nogroup",  
+        "chown nobody:nogroup /mnt/nfs",  
         "chmod ugo+rwx /mnt/nfs",
         "systemctl restart nfs-kernel-server"
         ]
