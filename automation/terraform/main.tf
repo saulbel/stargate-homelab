@@ -1032,11 +1032,11 @@ resource "proxmox_virtual_environment_container" "playground" {
     }
 
     cpu {
-        cores = 1
+        cores = 2
     }
 
     memory {
-        dedicated = 1024
+        dedicated = 2048
     }
 
     operating_system {
@@ -1649,7 +1649,7 @@ resource "proxmox_virtual_environment_vm" "k3s" {
     node_name = "pve1"
     vm_id     = 210
     on_boot = false
-    started = true
+    started = false
 
     agent {
         enabled = true
