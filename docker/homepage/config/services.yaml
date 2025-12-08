@@ -13,6 +13,17 @@
             username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
             password: "{{HOMEPAGE_VAR_PROXMOX_PASS}}"
 
+    - PBS:
+        icon: /icons/pbs.png
+        href: https://pbs.home/
+        description: Backup
+        widget:
+            type: proxmoxbackupserver
+            url: "{{HOMEPAGE_VAR_PBS_URL}}"
+            username: "{{HOMEPAGE_VAR_PBS_USER}}"
+            password: "{{HOMEPAGE_VAR_PBS_PASS}}"
+            datastore: pbs #optional; if ommitted, will display a combination of all datastores used / total
+
 - Applications:
     - Adguard:
         icon: /icons/adguard-home.png
