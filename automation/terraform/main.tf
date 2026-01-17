@@ -1721,6 +1721,103 @@ resource "proxmox_virtual_environment_container" "infisical" {
 
 }
 
+#########################################################
+# Ubuntu 22 lxc ct for rancher --> rancher 128          #
+#########################################################
+resource "proxmox_virtual_environment_container" "rancher" {
+    node_name = "pve1"
+    vm_id = 128
+    description = "rancher lxc"
+    unprivileged = false
+    start_on_boot = false
+    started = true
+
+    features {
+        nesting = true
+        keyctl  = true
+    }
+
+    initialization {
+        hostname = "rancher"
+        ip_config {
+            ipv4 {
+                address = "192.168.1.28/24"
+                gateway = "192.168.1.127"
+            }
+        }
+        dns {
+                domain = "home-network.io"
+                servers = ["192.168.1.225", "192.168.1.1"]
+        }
+        user_account {
+                keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
+        }
+    }
+
+    network_interface {
+        name = "eth0"
+        bridge = "vmbr0"
+    }
+
+    disk {
+        datastore_id = "local-lvm"
+        size = 20
+    }
+
+    cpu {
+        cores = 2
+    }
+
+    memory {
+        dedicated = 4096
+    }
+
+    operating_system {
+        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
+        type             = "ubuntu"
+    }
+
+    # do not change dns
+    provisioner "remote-exec" {
+        inline = [
+        "apt upgrade -y",
+        "touch /etc/.pve-ignore.resolv.conf",
+        "reboot -f"
+        ]
+        connection {
+        type        = "ssh"
+        user        = "root"
+        host        = "192.168.1.28"
+        private_key = file ("/home/saul/.ssh/prox_ssh")
+        }  
+    }
+
+    # add unconfined and more permissions
+    provisioner "remote-exec" {
+        inline = [
+        "echo 'lxc.apparmor.profile: unconfined' >> /etc/pve/lxc/128.conf",
+        "echo 'lxc.cap.drop:' >> /etc/pve/lxc/128.conf",
+        "echo 'lxc.cgroup2.devices.allow: a' >> /etc/pve/lxc/128.conf",
+        "echo 'lxc.mount.auto: cgroup:rw' >> /etc/pve/lxc/128.conf",
+        "echo 'lxc.apparmor.allow_nesting: 1' >> /etc/pve/lxc/128.conf",
+        "echo 'lxc.mount.entry: /dev/kmsg dev/kmsg none bind,create=file,optional' >> /etc/pve/lxc/128.conf"
+        ]
+        connection {
+        type        = "ssh"
+        user        = "root"
+        host        = "192.168.1.127"
+        private_key = file("/home/saul/.ssh/prox_ssh")
+        }
+    }
+
+    # install docker
+    provisioner "local-exec" {
+        working_dir = "/home/saul/ansible/"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.28,"
+    }
+}
+
+
 #######
 # VMS #
 #######
