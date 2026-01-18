@@ -1,6 +1,6 @@
 kubectl:
   image:
-    repository: docker.io/bitnamilegacy/kubectl
+    repository: bitnamilegacy/kubectl
     tag: v1.33.3
 
 initContainers:
