@@ -1,12 +1,12 @@
 upgradeCRDs:
   image:
-    repository: registry.k8s.io/kubectl
-    tag: v1.30.3
+    repository: velero/velero
+    tag: v1.13.0
 
 kubectl:
   image:
-    repository: registry.k8s.io/kubectl
-    tag: v1.30.3
+    repository: alpine/k8s
+    tag: 1.30.3
 
 initContainers:
   - name: velero-plugin-for-aws
