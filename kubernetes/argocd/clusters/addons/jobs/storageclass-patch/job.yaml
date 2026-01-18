@@ -9,7 +9,7 @@ spec:
     spec:
       containers:
       - name: patch
-        image: bitnami/kubectl:latest
+        image: bitnamilegacy/kubectl:1.33.3
         command:
           - /bin/sh
           - -c
