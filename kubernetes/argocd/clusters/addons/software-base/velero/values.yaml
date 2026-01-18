@@ -1,7 +1,5 @@
 upgradeCRDs:
-  image:
-    repository: velero/velero
-    tag: v1.12.3
+  enabled: false
 
 kubectl:
   image:
