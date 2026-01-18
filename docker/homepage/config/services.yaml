@@ -98,24 +98,18 @@
         description: Testing
         ping: 192.168.1.21
 
+- Kubernetes:
     - Rancher:
         icon: /icons/rancher.png
         href: https://rancher.home/
         description: K8s
         siteMonitor: https://rancher.home/
 
-- Kubernetes:
     - ArgoCD:
         icon: /icons/argocd.png
         href: https://argocd.home/
         description: GitOps
         siteMonitor: https://argocd.home/
-
-    - Longhorn:
-        icon: /icons/longhorn.png
-        href: http://longhorn.home/
-        description: Storage
-        siteMonitor: http://longhorn.home/
 
     - Traefik:
         icon: /icons/traefik.png
