@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     namespace: kube-system
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
   sources:
     - chart: csi-driver-nfs
       repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
@@ -14,6 +14,15 @@ spec:
       helm:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/software-base/nfs/values.yaml
+        valuesFrom:
+          - kind: Secret
+            name: nfs-config
+            valuesKey: NFS_SERVER
+            targetPath: storageClass.parameters.server
+          - kind: Secret
+            name: nfs-config
+            valuesKey: NFS_PATH
+            targetPath: storageClass.parameters.share
     - path: kubernetes/argocd/clusters/addons/software-base/nfs
       repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
