@@ -4,18 +4,8 @@ storageClass:
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
   parameters:
-    server:
-      valueFrom:
-        secretKeyRef:
-          name: nfs-config
-          namespace: kube-system
-          key: NFS_SERVER
-    share:
-      valueFrom:
-        secretKeyRef:
-          name: nfs-config
-          namespace: kube-system
-          key: NFS_PATH
+    server: {{ (lookup "v1" "Secret" "kube-system" "nfs-config").data.NFS_SERVER | b64dec }}
+    share: {{ (lookup "v1" "Secret" "kube-system" "nfs-config").data.NFS_PATH | b64dec }}
   reclaimPolicy: Delete
   volumeBindingMode: Immediate
   mountOptions:
