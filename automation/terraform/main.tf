@@ -996,7 +996,7 @@ resource "proxmox_virtual_environment_container" "tautulli" {
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for nginx --> nginx 120              #
+# Ubuntu 22 lxc ct for caddy --> caddy 120              #
 #########################################################
 resource "proxmox_virtual_environment_container" "caddy" {
     node_name = "pve1"
@@ -1647,7 +1647,7 @@ resource "proxmox_virtual_environment_container" "infisical" {
     description = "infisical lxc"
     unprivileged = true
     start_on_boot = false
-    started = true
+    started = false
 
     features {
         nesting = true
@@ -1728,9 +1728,9 @@ resource "proxmox_virtual_environment_container" "rancher" {
     node_name = "pve1"
     vm_id = 128
     description = "rancher lxc"
-    unprivileged = true
+    unprivileged = false
     start_on_boot = false
-    started = true
+    #started = false
 
     features {
         nesting = true
@@ -1829,7 +1829,7 @@ resource "proxmox_virtual_environment_vm" "k3s" {
     node_name = "pve1"
     vm_id     = 210
     on_boot = false
-    started = true
+    started = false
 
     agent {
         enabled = true
