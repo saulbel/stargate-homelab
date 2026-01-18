@@ -2089,6 +2089,23 @@ resource "proxmox_virtual_environment_vm" "k3s-master" {
         }  
     }
 
+    # install tailscale
+    provisioner "remote-exec" {
+        inline = [
+        "sudo apt update",
+        "sudo apt upgrade -y",
+        "sudo curl -fsSL https://tailscale.com/install.sh | sh",
+        "sleep 20",
+        "sudo tailscale up --authkey ${var.tailscale_auth_key}"
+        ]
+        connection {
+        type        = "ssh"
+        user        = "ubuntu"
+        host        = "192.168.1.50"
+        private_key = file ("/home/saul/.ssh/prox_ssh")
+        }  
+    }
+
     # remove ssh key from known hosts
     provisioner "local-exec" {
         working_dir = "/home/saul"
@@ -2176,6 +2193,23 @@ resource "proxmox_virtual_environment_vm" "k3s-worker-1" {
         }  
     }
 
+    # install tailscale
+    provisioner "remote-exec" {
+        inline = [
+        "sudo apt update",
+        "sudo apt upgrade -y",
+        "sudo curl -fsSL https://tailscale.com/install.sh | sh",
+        "sleep 20",
+        "sudo tailscale up --authkey ${var.tailscale_auth_key}"
+        ]
+        connection {
+        type        = "ssh"
+        user        = "ubuntu"
+        host        = "192.168.1.51"
+        private_key = file ("/home/saul/.ssh/prox_ssh")
+        }  
+    }
+
     # remove ssh key from known hosts
     provisioner "local-exec" {
         working_dir = "/home/saul"
@@ -2254,6 +2288,23 @@ resource "proxmox_virtual_environment_vm" "k3s-worker-2" {
     provisioner "remote-exec" {
         inline = [
         "echo '$nrconf{restart} = 'a';' | sudo tee -a /etc/needrestart/conf.d/no-prompt.conf"
+        ]
+        connection {
+        type        = "ssh"
+        user        = "ubuntu"
+        host        = "192.168.1.52"
+        private_key = file ("/home/saul/.ssh/prox_ssh")
+        }  
+    }
+
+    # install tailscale
+    provisioner "remote-exec" {
+        inline = [
+        "sudo apt update",
+        "sudo apt upgrade -y",
+        "sudo curl -fsSL https://tailscale.com/install.sh | sh",
+        "sleep 20",
+        "sudo tailscale up --authkey ${var.tailscale_auth_key}"
         ]
         connection {
         type        = "ssh"
