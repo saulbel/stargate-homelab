@@ -72,8 +72,8 @@ podDisruptionBudget:
 
 data: 
   name: "vaultwarden-data"
-  size: "5Gi"
-  class: "longhorn"
+  size: "2Gi"
+  class: "nfs-csi"
   path: "/data"
   keepPvc: true
 
