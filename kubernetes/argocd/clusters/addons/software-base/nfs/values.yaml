@@ -4,8 +4,8 @@ storageClass:
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
   parameters:
-    server: ""
-    share: ""
+    server: 192.168.1.26
+    share: /mnt/nfs
   reclaimPolicy: Delete
   volumeBindingMode: Immediate
   mountOptions:
