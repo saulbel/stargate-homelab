@@ -1,7 +1,5 @@
-kubectl:
-  image:
-    repository: bitnamilegacy/kubectl
-    tag: v1.33.3
+kubectlImage:
+  repository: kubectl.image.repository
 
 initContainers:
   - name: velero-plugin-for-aws
