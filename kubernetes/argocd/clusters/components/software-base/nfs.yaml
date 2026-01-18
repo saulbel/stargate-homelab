@@ -8,9 +8,15 @@ spec:
     namespace: kube-system
     server: https://kubernetes.default.svc
   sources:
+    - path: kubernetes/argocd/clusters/addons/software-base/nfs
+      repoURL: git@github.com:saulbel/stargate-homelab.git
+      targetRevision: main
+      ref: values
+      syncWave: -1   # ExternalSecret first
     - chart: csi-driver-nfs
       repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
       targetRevision: 4.12.0
+      syncWave: 0    # NFS CSI Driver second
       helm:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/software-base/nfs/values.yaml
@@ -23,10 +29,6 @@ spec:
             name: nfs-config
             valuesKey: NFS_PATH
             targetPath: storageClass.parameters.share
-    - path: kubernetes/argocd/clusters/addons/software-base/nfs
-      repoURL: git@github.com:saulbel/stargate-homelab.git
-      targetRevision: main
-      ref: values
   project: default
   syncPolicy:
     syncOptions:
