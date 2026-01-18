@@ -3,6 +3,12 @@ provider: webhook
 extraArgs:
   webhook-provider-url: http://localhost:8888
 
+image:
+  registry: registry.k8s.io
+  repository: external-dns/external-dns
+  tag: v0.14.0
+  pullPolicy: IfNotPresent
+
 sidecars:
   - name: adguard-webhook
     image: ghcr.io/muhlba91/external-dns-provider-adguard:v8.0.0
