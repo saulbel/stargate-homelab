@@ -1647,7 +1647,7 @@ resource "proxmox_virtual_environment_container" "infisical" {
     description = "infisical lxc"
     unprivileged = true
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -1728,7 +1728,7 @@ resource "proxmox_virtual_environment_container" "rancher" {
     node_name = "pve1"
     vm_id = 128
     description = "rancher lxc"
-    unprivileged = false
+    unprivileged = true
     start_on_boot = false
     started = true
 
@@ -1817,7 +1817,6 @@ resource "proxmox_virtual_environment_container" "rancher" {
     }
 }
 
-
 #######
 # VMS #
 #######
@@ -1830,7 +1829,7 @@ resource "proxmox_virtual_environment_vm" "k3s" {
     node_name = "pve1"
     vm_id     = 210
     on_boot = false
-    started = false
+    started = true
 
     agent {
         enabled = true
@@ -1856,6 +1855,11 @@ resource "proxmox_virtual_environment_vm" "k3s" {
 
     network_device {
         bridge = "vmbr0"
+    }
+
+    vga {
+        type = "serial0"
+        memory = 16
     }
 
     disk {
