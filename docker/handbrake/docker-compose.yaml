@@ -1,16 +1,22 @@
 version: '3.9'
 services:
   handbrake:
-   image: jlesage/handbrake
-   container_name: handbrake
-   restart: unless-stopped
-   ports:
-     - "5800:5800"
-   volumes:
-     - ./config:/config:rw
-     - /mnt/local-storage:/storage:ro
-     - /mnt/local-storage/handbrake/watch:/watch:rw
-     - /mnt/local-storage/handbrake/output:/output:rw
+    image: jlesage/handbrake
+    container_name: handbrake
+    restart: unless-stopped
+    # Fix AppArmor issue inside LXC
+    security_opt:
+      - apparmor=unconfined
+    # Pass GPU to container
+    devices:
+      - /dev/dri:/dev/dri
+    ports:
+      - "5800:5800"
+    volumes:
+      - ./config:/config:rw
+      - /mnt/local-storage:/storage:ro
+      - /mnt/local-storage/handbrake/watch:/watch:rw
+      - /mnt/local-storage/handbrake/output:/output:rw
 
   watchtower:
     image: containrrr/watchtower:latest
