@@ -1239,9 +1239,9 @@ resource "proxmox_virtual_environment_container" "handbrake" {
     node_name = "pve1"
     vm_id = 123
     description = "handbrake lxc"
-    unprivileged = true
+    unprivileged = false
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -1290,6 +1290,23 @@ resource "proxmox_virtual_environment_container" "handbrake" {
     operating_system {
         template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
         type             = "ubuntu"
+    }
+
+
+    # allow dri access
+    provisioner "remote-exec" {
+        inline = [
+        "echo 'lxc.cgroup2.devices.allow: c 226:* rwm' >> /etc/pve/lxc/123.conf",
+        "echo 'lxc.mount.entry: /dev/dri dev/dri none bind,optional,create=dir' >> /etc/pve/lxc/123.conf",
+        "echo 'lxc.apparmor.profile: unconfined' >> /etc/pve/lxc/123.conf",
+        "echo 'lxc.cap.drop:' >> /etc/pve/lxc/123.conf"
+        ]
+        connection {
+        type        = "ssh"
+        user        = "root"
+        host        = "192.168.1.127"
+        private_key = file ("/home/saul/.ssh/prox_ssh")
+        }  
     }
 
     # do not change dns
@@ -1730,7 +1747,7 @@ resource "proxmox_virtual_environment_container" "rancher" {
     description = "rancher lxc"
     unprivileged = false
     start_on_boot = false
-    #started = false
+    started = false
 
     features {
         nesting = true
