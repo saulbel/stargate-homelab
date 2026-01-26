@@ -1271,7 +1271,7 @@ resource "proxmox_virtual_environment_container" "handbrake" {
 
     disk {
         datastore_id = "local-lvm"
-        size = 5
+        size = 10
     }
 
     mount_point {
