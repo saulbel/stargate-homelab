@@ -1,0 +1,6 @@
+configuration:
+  annotateNodes: true
+  rebootSentinel: "/var/run/reboot-required"
+  timeZone: "Europe/Madrid"
+  startTime: "02:00"
+  endTime: "04:00"
