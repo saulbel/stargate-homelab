@@ -1,8 +1,7 @@
-kured:
-  configuration:
-    annotateNodes: true
-    rebootSentinel: "/var/run/reboot-required"
-    timeZone: "Europe/Madrid"
-    period: "1h0m0s"
-    #startTime: "02:00"
-    #endTime: "04:00"
+configuration:
+  annotateNodes: true
+  rebootSentinel: "/var/run/reboot-required"
+  timeZone: "Europe/Madrid"
+  period: "1h0m0s"
+  #startTime: "02:00"
+  #endTime: "04:00"
