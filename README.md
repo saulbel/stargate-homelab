@@ -1,36 +1,17 @@
 # 🌌 Stargate Homelab
+
 A modular, automated, and exploration‑ready homelab powered by **Proxmox**, **Terraform**, **Ansible**, **Docker**, **Kubernetes**, and more.
 
 Inspired by production‑grade infrastructure patterns — but built for learning, tinkering, and having fun.
 
 ---
+## ☑️ Prerequisites
 
-## 🚀 Overview
-**Stargate Homelab** is my personal infrastructure playground.  
-It’s designed to be:
-
-- **Modular** — every component lives in its own folder  
-- **Automated** — from provisioning to configuration  
-- **Cloud‑like** — but running on your own hardware  
-- **Extensible** — add services, clusters, or nodes as you grow  
-- **Documented** — so you can mirror or adapt the setup  
-
-Whether you're experimenting for work, hosting your own services, or just love building things, this homelab gives you a solid foundation.
+Before you start, make sure you have:
+- **Spare hardware** (old PC, server, or VM host)
+- **Time and curiosity** to experiment and learn!
 
 ---
-## 🧱 Tech Stack
-| Layer | Tools |
-|------|-------|
-| **Virtualization** | Proxmox |
-| **Provisioning** | Terraform |
-| **Configuration Management** | Ansible |
-| **Containers** | Docker |
-| **Orchestration** | Kubernetes + ArgoCD (GitOps) |
-| **Observability** | Prometheus, Grafana, Loki |
-| **Networking** | Tailscale |
-
----
-
 ## 📁 Repository Structure
 ```
 stargate-homelab
@@ -46,17 +27,30 @@ stargate-homelab
 └── tailscale
 ```
 
-Each directory is self‑contained and includes its own documentation, manifests, or playbooks.
+---
+## 🎯 Project Goals
+
+The goal of this project is to build a homelab using **Proxmox** as the backbone, enabling you to run daily-use tools, experiment for work, or just have fun tinkering with new tech.
 
 ---
+## 🧱 Tech Stack
+| Layer | Tools |
+|------|-------|
+| **Virtualization** | **[Proxmox](proxmox/README.md)** |
+| **Provisioning** | **[Terraform](automation/terraform/README.md)** |
+| **Configuration Management** | **[Ansible](automation/ansible/README.md)** |
+| **Containers** | **[Docker](docker/README.md)** |
+| **Orchestration** | **[Kubernetes](./kubernetes/README.md)** + **[ArgoCD](kubernetes/argocd/README.md)** (GitOps) |
+| **Observability** | **[Prometheus](observability/prometheus/README.md)**, Grafana, Loki |
+| **Networking** | **[Tailscale](tailscale/README.md)** |
 
+---
 ## 🖼️ Infrastructure Snapshots
 ![proxmox-oci](./pictures/proxmox_oci.png)
 ![homepage](./pictures/homepage.png)
 ![grafana](./pictures/grafana.png)
 
 ---
-
 ## 🤝 Contributing
 Contributions are welcome!
 
@@ -80,5 +74,6 @@ Open an issue — I’m happy to chat.
 - Improve Terraform + Ansible integration  
 - Add more observability components  
 - Add CI/CD for homelab automation  
+
 ---
-> _Made with ❤️ for homelab explorers and infrastructure nerds._
+> _Made with ❤️ for homelab enthusiasts!_
