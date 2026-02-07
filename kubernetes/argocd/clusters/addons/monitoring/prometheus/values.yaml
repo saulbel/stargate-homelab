@@ -11,9 +11,9 @@ prometheus:
       - name: prometheus
         env:
           - name: HTTP_PROXY
-            value: socks5h://tailscale-connector.tailscale.svc.cluster.local:1055
+            value: socks5h://tailnet-egress.tailscale.svc.cluster.local:1055
           - name: HTTPS_PROXY
-            value: socks5h://tailscale-connector.tailscale.svc.cluster.local:1055
+            value: socks5h://tailnet-egress.tailscale.svc.cluster.local:1055
 
   ingress:
     enabled: true

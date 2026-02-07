@@ -5,5 +5,6 @@ metadata:
   namespace: tailscale
 spec:
   hostname: "k8s-egress"
+  serviceName: "tailnet-egress"
   appConnector:
     enabled: true
