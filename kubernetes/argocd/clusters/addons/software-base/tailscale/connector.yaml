@@ -6,3 +6,6 @@ metadata:
 spec:
   type: egress
   hostname: "k8s-egress"
+  socks5Proxy:
+    enabled: true
+  replicas: 1
