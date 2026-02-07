@@ -5,4 +5,5 @@ metadata:
   namespace: tailscale
 spec:
   hostname: "k8s-egress"
-  appConnector: true
+  appConnector:
+    enabled: true
