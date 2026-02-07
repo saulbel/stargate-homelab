@@ -97,23 +97,6 @@ provisioner "local-exec" {
     command = "./install.sh"
 }
 ```
-
----
-
-## 📦 Managed Apps
-
-ArgoCD manages all core and addon apps in the cluster, including:
-- [GitOps](/kubernetes/argocd/clusters/addons/software-base/argocd) (ArgoCD itself)
-- [Certificate management](/kubernetes/argocd/clusters/addons/software-base/cert-manager) (Certmanager)
-- [DNS automation](/kubernetes/argocd/clusters/addons/software-base/external-dns) (External-dns)
-- [Secrets management](/kubernetes/argocd/clusters/addons/software-base/external-secrets) (External-secrets)
-- [Storage](/kubernetes/argocd/clusters/addons/software-base/longhorn) (Longhorn)
-- [Ingress](/kubernetes/argocd/clusters/addons/software-base/traefik) (Traefik)
-- [VPN](/kubernetes/argocd/clusters/addons/software-base/tailscale) (Tailscale)
-- [Metrics](/kubernetes/argocd/clusters/addons/monitoring/prometheus) (Prometheus)
-- [Logs](/kubernetes/argocd/clusters/addons/monitoring/promtail) (Loki)
-- [Backup](/kubernetes/argocd/clusters/addons/software-base/velero) (Velero)
-
 ---
 
 ## 🛠️ To Improve
