@@ -1,5 +1,6 @@
-podAnnotations:
-  tailscale.com/proxy: "true"
+daemonset:
+  podAnnotations:
+    tailscale.com/proxy: "true"
 
 config:
   enabled: true
