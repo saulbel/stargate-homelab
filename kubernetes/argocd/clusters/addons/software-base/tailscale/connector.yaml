@@ -1,0 +1,7 @@
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: tailnet-egress
+  namespace: tailscale
+spec:
+  hostname: "k8s-egress"
