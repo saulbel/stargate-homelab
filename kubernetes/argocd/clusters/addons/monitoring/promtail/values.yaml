@@ -6,7 +6,7 @@ config:
 
   clients:
     - url: http://ubuntu-arm.tail991cf.ts.net:3100/loki/api/v1/push
-      proxy_url: socks5h://tailnet-egress.tailscale.svc.cluster.local:1055
+      proxy_url: socks5h://ts-tailnet-egress-f2tqb.tailscale.svc.cluster.local:1055
 
   positions:
     filename: /run/promtail/positions.yaml
