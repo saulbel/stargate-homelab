@@ -1,11 +1,23 @@
 prometheus:
   enabled: true
-
+  
   agentMode: true
 
   prometheusSpec:
-    remoteWrite: 
+    podMetadata:
+      annotations:
+        tailscale.com/proxy: "true"
+
+    remoteWrite:
       - url: "http://ubuntu-arm.tail991cf.ts.net:9090/api/v1/write"
+
+    containers:
+      - name: prometheus
+        env:
+          - name: HTTP_PROXY
+            value: socks5://127.0.0.1:1055
+          - name: HTTPS_PROXY
+            value: socks5://127.0.0.1:1055
 
   ingress:
     enabled: true
