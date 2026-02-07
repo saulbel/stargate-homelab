@@ -9,7 +9,7 @@ It's my homelab choice because it's pure Linux under the hood and doesn't requir
 
 This is the hardware used for hosting Proxmox:
 
-![proxmox-hw](../pictures/proxmox.png)
+![proxmox-hw](../pictures/hardware.png)
 
 **Storage distribution:**
 - **NVME 2242 256GB:** `Proxmox OS`, `VM ISOs`, and `Container templates`
@@ -22,7 +22,7 @@ This is the hardware used for hosting Proxmox:
 
 Currently hosted on my NUC:
 
-![proxmox-only](https://github.com/user-attachments/assets/cb60ca76-07f9-4811-a177-aca02df8119f)
+![proxmox](../pictures/proxmox.png)
 
 ### VMs (K3s cluster)
 - [ArgoCD](/kubernetes/argocd/clusters/addons/software-base/argocd): GitOps for automated deployments
