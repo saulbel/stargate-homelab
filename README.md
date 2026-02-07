@@ -39,7 +39,7 @@ The goal of this project is to build a homelab using **Proxmox** as the backbone
 | Icon | Technology | Purpose |
 |------|-----------|---------|
 | <img src="./docker/homepage/icons/proxmox.png" width="20" height="20"> | **[Proxmox](proxmox/README.md)** | Bare metal hypervisor & virtualization |
-| <img src="./docker/homepage/icons/terraform.png" width="20" height="20"> | **[Terraform](automation/terraform/README.md)** | Infrastructure-as-code provisioning |
+| <img src="./docker/homepage/icons/terraform_icon.png" width="20" height="20"> | **[Terraform](automation/terraform/README.md)** | Infrastructure-as-code provisioning |
 | <img src="./docker/homepage/icons/ansible.png" width="20" height="20"> | **[Ansible](automation/ansible/README.md)** | Configuration management & automation |
 | <img src="./docker/homepage/icons/docker.png" width="20" height="20"> | **[Docker](docker/README.md)** | Containerization & lightweight services |
 | <img src="./docker/homepage/icons/kubernetes.png" width="20" height="20"> | **[Kubernetes](./kubernetes/README.md)** | Container orchestration & GitOps |
