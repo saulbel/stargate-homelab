@@ -1,10 +1,8 @@
 apiVersion: tailscale.com/v1alpha1
-kind: Connector
+kind: ProxyGroup
 metadata:
   name: tailnet-egress
   namespace: tailscale
 spec:
+  type: egress
   hostname: "k8s-egress"
-  serviceName: "tailnet-egress"
-  appConnector:
-    enabled: true
