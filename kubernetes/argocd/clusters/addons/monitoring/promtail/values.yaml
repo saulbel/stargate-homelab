@@ -16,12 +16,6 @@ config:
 extraContainers:
   - name: tailscale
     image: tailscale/tailscale:latest
-    securityContext:
-      privileged: true
-      capabilities:
-        add:
-          - NET_ADMIN
-          - NET_RAW
     env:
       - name: TS_AUTHKEY
         valueFrom:
@@ -30,9 +24,9 @@ extraContainers:
             key: authkey
     args:
       - tailscaled
-      - "--state=/var/lib/tailscale/tailscaled.state"
+      - "--state=kube:tailscale-state"
+      - "--tun=userspace-networking"
       - "--socks5-server=localhost:1055"
-      - "--authkey=$(TS_AUTHKEY)"
     volumeMounts:
       - name: tailscale-state
         mountPath: /var/lib/tailscale
