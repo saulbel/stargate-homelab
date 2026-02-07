@@ -29,7 +29,9 @@ Currently hosted on my NUC:
 - [Certmanager](/kubernetes/argocd/clusters/addons/software-base/cert-manager): Automated certificate management
 - [External-dns](/kubernetes/argocd/clusters/addons/software-base/external-dns): Dynamic DNS updater
 - [External-secrets](/kubernetes/argocd/clusters/addons/software-base/external-secrets): Secure secrets management
+- [Kured](/kubernetes/argocd/clusters/addons/software-base/kured): Automatic node reboots (patching)
 - [Longhorn](/kubernetes/argocd/clusters/addons/software-base/longhorn): Distributed storage solution
+- [NFS](/kubernetes/argocd/clusters/addons/software-base/nfs): CSI driver
 - [Prometheus](/kubernetes/argocd/clusters/addons/monitoring/prometheus): Metrics and monitoring (remote writer)
 - [Promtail](/kubernetes/argocd/clusters/addons/monitoring/promtail): Centralized logging
 - [Tailscale](/kubernetes/argocd/clusters/addons/software-base/tailscale): Zero-config VPN for secure networking
@@ -50,6 +52,8 @@ Currently hosted on my NUC:
 - [Minio](/docker/minio): S3 storage
 - [Plex](/docker/plex): Media player
 - [Radarr](/docker/radarr): Movie manager
+- [Rancher](/docker/rancher): Kubernetes management
+- [Rundeck](/docker/rundeck): Automation
 - [Sonarr](/docker/sonarr): TV show manager
 - [Tautulli](/docker/tautulli): Plex stats
 - [Vaultwarden](/docker/vaultwarden): Password vault
