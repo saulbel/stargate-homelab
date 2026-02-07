@@ -19,6 +19,7 @@ operatorConfig:
   affinity: {}
   podSecurityContext: {}
   securityContext: {}
+  enableWebhook: true
 
 proxyConfig:
   image:
