@@ -1,25 +1,17 @@
 prometheus:
   enabled: true
+
   agentMode: true
 
   prometheusSpec:
-    remoteWrite:
+    remoteWrite: 
       - url: "http://ubuntu-arm.tail991cf.ts.net:9090/api/v1/write"
-        proxy_url: socks5h://tailnet-egress.tailscale.svc.cluster.local:1055
-
-    containers:
-      - name: prometheus
-        env:
-          - name: HTTP_PROXY
-            value: socks5h://tailnet-egress.tailscale.svc.cluster.local:1055
-          - name: HTTPS_PROXY
-            value: socks5h://tailnet-egress.tailscale.svc.cluster.local:1055
 
   ingress:
     enabled: true
     annotations:
       external-dns.alpha.kubernetes.io/hostname: prometheus.k3s.home
-    hosts:
+    hosts: 
       - prometheus.k3s.home
     paths: []
 

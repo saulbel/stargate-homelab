@@ -3,34 +3,8 @@ config:
   logLevel: info
   logFormat: logfmt
   serverPort: 3101
-
   clients:
     - url: http://ubuntu-arm.tail991cf.ts.net:3100/loki/api/v1/push
-      proxy_url: socks5h://127.0.0.1:1055
-
   positions:
     filename: /run/promtail/positions.yaml
-
   enableTracing: false
-
-extraContainers:
-  - name: tailscale
-    image: tailscale/tailscale:latest
-    env:
-      - name: TS_AUTHKEY
-        valueFrom:
-          secretKeyRef:
-            name: tailscale-auth
-            key: authkey
-    args:
-      - tailscaled
-      - "--state=kube:tailscale-state"
-      - "--tun=userspace-networking"
-      - "--socks5-server=localhost:1055"
-    volumeMounts:
-      - name: tailscale-state
-        mountPath: /var/lib/tailscale
-
-extraVolumes:
-  - name: tailscale-state
-    emptyDir: {}
