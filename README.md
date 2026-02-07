@@ -23,6 +23,7 @@ stargate-homelab
     └── argocd
 └── observability
     └── prometheus  
+└── pictures
 └── proxmox
 └── tailscale
 ```
