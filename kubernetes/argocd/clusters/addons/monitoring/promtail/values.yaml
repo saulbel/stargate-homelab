@@ -1,10 +1,17 @@
+podAnnotations:
+  tailscale.com/proxy: "true"
+
 config:
   enabled: true
   logLevel: info
   logFormat: logfmt
   serverPort: 3101
+
   clients:
     - url: http://ubuntu-arm.tail991cf.ts.net:3100/loki/api/v1/push
+      proxy_url: socks5://127.0.0.1:1055
+
   positions:
     filename: /run/promtail/positions.yaml
+
   enableTracing: false
