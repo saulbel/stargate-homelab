@@ -29,6 +29,6 @@ proxyConfig:
   firewallMode: auto
 
 apiServerProxyConfig:
-  mode: "false" 
+  mode: "true" 
 
 imagePullSecrets: []
