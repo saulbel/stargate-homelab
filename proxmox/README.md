@@ -9,7 +9,7 @@ It's my homelab choice because it's pure Linux under the hood and doesn't requir
 
 This is the hardware used for hosting Proxmox:
 
-![proxmox-hw](https://github.com/user-attachments/assets/52d64f7f-adcc-47c4-8ab5-a477c270549c)
+![proxmox-hw](../pictures/proxmox.png)
 
 **Storage distribution:**
 - **NVME 2242 256GB:** `Proxmox OS`, `VM ISOs`, and `Container templates`
