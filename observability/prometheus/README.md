@@ -21,7 +21,7 @@ I use the **PVE exporter** to expose metrics from Proxmox VMs and LXCs.
 
 **Tailscale** is used to allow Prometheus to scrape metrics securely from Proxmox without exposing endpoints to the internet.
 
-![prometheus](https://github.com/user-attachments/assets/16d2d0ee-8641-4217-b74a-1a740161496b)
+![prometheus](../../pictures/observability.png)
 
 ---
 
