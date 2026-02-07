@@ -32,13 +32,10 @@ extraContainers:
       - tailscaled
       - "--state=/var/lib/tailscale/tailscaled.state"
       - "--socks5-server=localhost:1055"
+      - "--authkey=$(TS_AUTHKEY)"
     volumeMounts:
       - name: tailscale-state
         mountPath: /var/lib/tailscale
-
-extraVolumes:
-  - name: tailscale-state
-    emptyDir: {}
 
 extraVolumes:
   - name: tailscale-state
