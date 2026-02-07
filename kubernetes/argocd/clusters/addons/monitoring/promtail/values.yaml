@@ -17,6 +17,7 @@ extraContainers:
   - name: tailscale
     image: tailscale/tailscale:latest
     securityContext:
+      privileged: true
       capabilities:
         add:
           - NET_ADMIN
@@ -34,6 +35,10 @@ extraContainers:
     volumeMounts:
       - name: tailscale-state
         mountPath: /var/lib/tailscale
+
+extraVolumes:
+  - name: tailscale-state
+    emptyDir: {}
 
 extraVolumes:
   - name: tailscale-state
