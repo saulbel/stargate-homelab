@@ -19,7 +19,6 @@ operatorConfig:
   affinity: {}
   podSecurityContext: {}
   securityContext: {}
-  enableWebhook: true
 
 proxyConfig:
   image:
@@ -31,5 +30,8 @@ proxyConfig:
 
 apiServerProxyConfig:
   mode: "true" 
+
+webhookConfig: 
+  enabled: true
 
 imagePullSecrets: []
