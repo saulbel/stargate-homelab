@@ -93,6 +93,12 @@
         description: Secrets
         siteMonitor: https://infisical.home/
 
+    - Rundeck:
+        icon: /icons/rundeck.png
+        href: http://rundeck.home/
+        description: Automation
+        siteMonitor: http://rundeck.home/
+
     - Playground:
         icon: /icons/playground-1.png
         description: Testing
