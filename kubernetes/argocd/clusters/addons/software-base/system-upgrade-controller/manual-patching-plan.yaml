@@ -10,17 +10,7 @@ spec:
   serviceAccountName: system-upgrade
   nodeSelector:
     kubernetes.io/os: linux
-  
-  # Only run on worker nodes (exclude master/control-plane)
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-          - matchExpressions:
-              - key: node-role.kubernetes.io/control-plane
-                operator: DoesNotExist
-              - key: node-role.kubernetes.io/master
-                operator: DoesNotExist
+    node-role.kubernetes.io/control-plane: null
   
   prepare:
     image: ubuntu:22.04
