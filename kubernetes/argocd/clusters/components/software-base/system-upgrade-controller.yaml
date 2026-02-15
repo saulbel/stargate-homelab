@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: https://github.com/rancher/system-upgrade-controller.git
-      targetRevision: master
+      targetRevision: v0.18.0
       path: manifests
       ref: rancher
     - repoURL: git@github.com:saulbel/stargate-homelab.git
