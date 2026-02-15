@@ -3,7 +3,5 @@ kind: Kustomization
 
 resources:
   - rbac-fix.yaml
-  - plan-patching-manual.yaml
-  - plan-upgrades-quarterly.yaml
-
-namespace: system-upgrade
+  - manual-patching-plan.yaml
+  - manual-upgrading-plan.yaml
