@@ -1,0 +1,48 @@
+# # Example Plan CRD for upgrades (quarterly)
+# # Review `apiVersion` and fields according to the installed chart/CRD version.
+# apiVersion: upgrade.cattle.io/v1
+# kind: Plan
+# metadata:
+#   name: k8s-and-os-upgrade-quarterly
+#   namespace: cattle-system
+# spec:
+#   concurrency: 1
+#   # Cron schedule: 03:00 on the first day, every 3 months
+#   schedule: "0 3 1 */3 *"
+#   nodeSelector:
+#     kubernetes.io/os: linux
+#   description: "Planned upgrade process: backups, control plane, and nodes (staging first)"
+#   steps:
+#     - name: backup-etcd-and-configs
+#       hook: pre
+#       exec:
+#         command: |
+#           # Example: take an etcd snapshot and copy configs to storage
+#           kubectl -n kube-system exec -it etcd-0 -- etcdctl snapshot save /tmp/etcd-snapshot.db || true
+#     - name: upgrade-control-plane
+#       hook: pre
+#       exec:
+#         command: |
+#           # Placeholder: kubeadm commands to upgrade the control plane
+#           echo "Run kubeadm upgrade plan/apply on control plane nodes (manual or via Ansible)"
+#     - name: upgrade-workers
+#       hook: main
+#       exec:
+#         command: |
+#           # Example per-node steps: cordon/drain, install packages, reboot, uncordon
+#           kubectl cordon {{.Node}}
+#           kubectl drain {{.Node}} --ignore-daemonsets --delete-emptydir-data --force
+#           apt-get update && apt-get -y install --only-upgrade kubelet kubeadm kubectl
+#           systemctl daemon-reload || true
+#           systemctl restart kubelet || true
+#           if [ -f /var/run/reboot-required ]; then
+#             reboot
+#           fi
+#           kubectl uncordon {{.Node}}
+#     - name: post-validation
+#       hook: post
+#       exec:
+#         command: |
+#           # Basic validations: nodes Ready and pods with issues
+#           kubectl get nodes
+#           kubectl get pods --all-namespaces | grep -E "Evicted|CrashLoopBackOff" || true

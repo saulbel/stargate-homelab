@@ -1,0 +1,57 @@
+# Example Plan CRD for system-upgrade-controller (TESTING - patching every 10 minutes)
+# Review `apiVersion` and fields according to the installed chart/CRD version.
+apiVersion: upgrade.cattle.io/v1
+kind: Plan
+metadata:
+  name: os-patching-test-10min
+  namespace: cattle-system
+spec:
+  concurrency: 1
+  # Schedule: every 10 minutes (testing only)
+  schedule: "*/10 * * * *"
+  nodeSelector:
+    kubernetes.io/os: linux
+  description: "TEST: OS package patching (apt) — every 10 minutes for validation"
+  steps:
+    - name: cordon-and-drain
+      hook: pre
+      exec:
+        command: |
+          echo "Cordoning node {{.Node}}"
+          kubectl cordon {{.Node}}
+          echo "Draining workloads..."
+          kubectl drain {{.Node}} --ignore-daemonsets --delete-emptydir-data --force
+    - name: apt-update-upgrade
+      hook: pre
+      exec:
+        command: |
+          echo "=== Starting patching on {{.Node}} ==="
+          apt-get update
+          echo "Available upgradeable packages:"
+          apt-get upgrade -s | grep "^Inst" || echo "No upgrades available"
+          
+          # Only upgrade if there are pending updates
+          if apt-get upgrade -s | grep -q "^Inst"; then
+            echo "Applying upgrades..."
+            apt-get -y upgrade
+          else
+            echo "System is up-to-date, no upgrades needed"
+          fi
+          
+          # Check if reboot is required after upgrade
+          if [ -f /var/run/reboot-required ]; then
+            echo "Reboot required. Contents:"
+            cat /var/run/reboot-required
+            echo "System will reboot in 30 seconds..."
+            sleep 30
+            reboot
+          else
+            echo "No reboot required"
+          fi
+    - name: uncordon
+      hook: post
+      exec:
+        command: |
+          echo "Uncordoning node {{.Node}}"
+          kubectl uncordon {{.Node}}
+          echo "=== Patching complete on {{.Node}} ==="
