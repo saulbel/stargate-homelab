@@ -9,8 +9,7 @@ spec:
   version: "ubuntu-22.04"
   serviceAccountName: system-upgrade
   nodeSelector:
-    kubernetes.io/os: linux
-    node-role.kubernetes.io/control-plane: null
+    role: worker
   
   prepare:
     image: ubuntu:22.04
