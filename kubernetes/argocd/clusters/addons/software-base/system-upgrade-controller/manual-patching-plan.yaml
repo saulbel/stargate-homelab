@@ -7,10 +7,8 @@ spec:
   concurrency: 1
   schedule: "0 0 1 1 0"
   version: "ubuntu-22.04"
-  description: "Production: OS package patching (apt) — manual on-demand execution"
   
   # Only run on worker nodes (exclude master/control-plane)
-  description: "Production: OS package patching (apt) — manual on-demand execution - forced run $(date +%s)"
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
