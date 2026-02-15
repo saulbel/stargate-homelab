@@ -1,6 +1,3 @@
-# Production Plan CRD - OS Patching (manual trigger, no schedule)
-# Deploy to: kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller/
-# Trigger: kubectl annotate plan os-patching-manual -n system-upgrade system-upgrade.cattle.io/force=true --overwrite
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
@@ -8,13 +5,20 @@ metadata:
   namespace: system-upgrade
 spec:
   concurrency: 1
-  # Schedule: every 10 minutes (testing only)
-  # schedule: "*/10 * * * *"
   schedule: "0 0 1 1 0"
   version: "ubuntu-22.04"
-  nodeSelector:
-    kubernetes.io/os: linux
   description: "Production: OS package patching (apt) — manual on-demand execution"
+  
+  # Only run on worker nodes (exclude master/control-plane)
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node-role.kubernetes.io/control-plane
+                operator: DoesNotExist
+              - key: node-role.kubernetes.io/master
+                operator: DoesNotExist
   
   prepare:
     image: ubuntu:22.04
