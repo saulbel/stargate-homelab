@@ -10,6 +10,7 @@ spec:
   description: "Production: OS package patching (apt) — manual on-demand execution"
   
   # Only run on worker nodes (exclude master/control-plane)
+  description: "Production: OS package patching (apt) — manual on-demand execution - forced run $(date +%s)"
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
