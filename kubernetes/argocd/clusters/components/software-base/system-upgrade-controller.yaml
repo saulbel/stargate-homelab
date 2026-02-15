@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: system-upgrade
+    namespace: cattle-system
     server: 'https://kubernetes.default.svc'
   sources:
     - chart: system-upgrade-controller

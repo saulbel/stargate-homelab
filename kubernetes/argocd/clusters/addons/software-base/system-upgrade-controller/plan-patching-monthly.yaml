@@ -8,6 +8,7 @@ metadata:
 spec:
   concurrency: 1
   # Schedule: every 10 minutes (testing only)
+  version: "ubuntu-22.04"
   schedule: "*/10 * * * *"
   nodeSelector:
     kubernetes.io/os: linux
