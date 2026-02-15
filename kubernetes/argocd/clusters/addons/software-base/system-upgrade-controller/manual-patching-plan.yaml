@@ -10,7 +10,7 @@ spec:
   concurrency: 1
   # Schedule: every 10 minutes (testing only)
   # schedule: "*/10 * * * *"
-  schedule: "0 0 1 1 0"
+  #schedule: "0 0 1 1 0"
   version: "ubuntu-22.04"
   nodeSelector:
     kubernetes.io/os: linux
