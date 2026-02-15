@@ -5,8 +5,10 @@ metadata:
   namespace: system-upgrade
 spec:
   concurrency: 1
-  schedule: "0 0 1 1 0"
-  version: "ubuntu-22.04-20260215"
+  #schedule: "0 0 1 1 0"
+  version: "ubuntu-22.04"
+  nodeSelector:
+    kubernetes.io/os: linux
   
   # Only run on worker nodes (exclude master/control-plane)
   affinity:
