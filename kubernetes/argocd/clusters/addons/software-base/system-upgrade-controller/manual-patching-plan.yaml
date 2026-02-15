@@ -13,7 +13,7 @@ spec:
   version: "ubuntu-22.04"
   # nodeSelector:
   #   kubernetes.io/os: linux
-  description: "Production: OS package patching (apt) — manual on-demand execution"
+  #description: "Production: OS package patching (apt) — manual on-demand execution"
   
   prepare:
     image: ubuntu:22.04
