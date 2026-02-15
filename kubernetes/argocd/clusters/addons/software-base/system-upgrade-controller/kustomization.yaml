@@ -5,5 +5,4 @@ namespace: system-upgrade
 
 resources:
   - rbac-override.yaml
-  - plan-patching-manual.yaml
-  - plan-upgrades-quarterly.yaml
+  - manual-patching-plan.yaml
