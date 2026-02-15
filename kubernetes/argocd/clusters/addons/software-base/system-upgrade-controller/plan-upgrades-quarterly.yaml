@@ -4,7 +4,7 @@
 # kind: Plan
 # metadata:
 #   name: k8s-and-os-upgrade-quarterly
-#   namespace: cattle-system
+#   namespace: system-upgrade
 # spec:
 #   concurrency: 1
 #   # Cron schedule: 03:00 on the first day, every 3 months
