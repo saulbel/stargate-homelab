@@ -13,14 +13,11 @@ spec:
       targetRevision: 0.2.3
       helm:
         valueFiles:
-          - $helm-values/kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller/values.yaml
+          - $values/kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller/values.yaml
     - path: kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller
       repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
-      ref: helm-values
-    - path: kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller
-      repoURL: git@github.com:saulbel/stargate-homelab.git
-      targetRevision: main
+      ref: values
   project: default
   syncPolicy:
     syncOptions:
