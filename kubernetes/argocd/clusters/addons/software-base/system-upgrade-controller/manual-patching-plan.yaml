@@ -6,7 +6,7 @@ metadata:
 spec:
   concurrency: 1
   schedule: "0 0 1 1 0"
-  version: "ubuntu-22.04"
+  version: "ubuntu-22.04-20260215"
   
   # Only run on worker nodes (exclude master/control-plane)
   affinity:
