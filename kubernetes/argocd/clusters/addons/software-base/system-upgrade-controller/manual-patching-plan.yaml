@@ -48,6 +48,6 @@ spec:
     deleteEmptydirData: true
     ignoreDaemonSets: true
     force: true
-    timeout: 15m
+    timeout: 900
   
   cordon: true
