@@ -7,10 +7,15 @@ spec:
   destination:
     namespace: system-upgrade
     server: 'https://kubernetes.default.svc'
-  source:
-    repoURL: git@github.com:saulbel/stargate-homelab.git
-    targetRevision: main
-    path: kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller
+  sources:
+    - repoURL: https://github.com/rancher/system-upgrade-controller.git
+      targetRevision: v0.18.0
+      path: manifests
+      ref: rancher
+    - repoURL: git@github.com:saulbel/stargate-homelab.git
+      targetRevision: main
+      path: kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller
+      ref: custom
   project: default
   syncPolicy:
     syncOptions:
