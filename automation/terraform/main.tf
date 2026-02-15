@@ -1834,205 +1834,87 @@ resource "proxmox_virtual_environment_container" "rancher" {
     }
 }
 
+#########################################################
+# Ubuntu 22 lxc ct for rundeck --> rundeck 129          #
+#########################################################
+resource "proxmox_virtual_environment_container" "rundeck" {
+    node_name = "pve1"
+    vm_id = 129
+    description = "rundeck lxc"
+    unprivileged = true
+    start_on_boot = false
+    started = true
+
+    features {
+        nesting = true
+        keyctl  = true
+    }
+
+    initialization {
+        hostname = "rundeck"
+        ip_config {
+            ipv4 {
+                address = "192.168.1.29/24"
+                gateway = "192.168.1.127"
+            }
+        }
+        dns {
+                domain = "home-network.io"
+                servers = ["192.168.1.225", "192.168.1.1"]
+        }
+        user_account {
+                keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
+        }
+    }
+
+    network_interface {
+        name = "eth0"
+        bridge = "vmbr0"
+    }
+
+    disk {
+        datastore_id = "local-lvm"
+        size = 5
+    }
+
+    cpu {
+        cores = 1
+    }
+
+    memory {
+        dedicated = 1024
+    }
+
+    operating_system {
+        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
+        type             = "ubuntu"
+    }
+
+    # do not change dns
+    provisioner "remote-exec" {
+        inline = [
+        "apt upgrade -y",
+        "touch /etc/.pve-ignore.resolv.conf",
+        "reboot -f"
+        ]
+        connection {
+        type        = "ssh"
+        user        = "root"
+        host        = "192.168.1.29"
+        private_key = file ("/home/saul/.ssh/prox_ssh")
+        }  
+    }
+
+    # install docker
+    provisioner "local-exec" {
+        working_dir = "/home/saul/ansible/"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.29,"
+    }
+}
+
 #######
 # VMS #
 #######
-#############################################################
-# ubuntu 22 master and worker node --> k3s (using template) #
-#############################################################
-# resource "proxmox_virtual_environment_vm" "k3s" {
-#     name        = "k3s"
-#     description = "k3s master and worker"
-#     node_name = "pve1"
-#     vm_id     = 210
-#     on_boot = false
-#     started = false
-
-#     agent {
-#         enabled = true
-#     }
-
-#     initialization {
-#         ip_config {
-#             ipv4 {
-#                 address = "192.168.1.50/24"
-#                 gateway = "192.168.1.127"
-#         }
-#         }
-#         dns {
-#                 domain = "home-network.io"
-#                 servers = ["192.168.1.225", "192.168.1.1"]
-#         }
-#         user_account {
-#           username = "ubuntu"
-#           keys = [(var.proxmox_ssh_key),(var.ansible_ssh_key)]        
-#         }
-
-#     }
-
-#     network_device {
-#         bridge = "vmbr0"
-#     }
-
-#     vga {
-#         type = "serial0"
-#         memory = 16
-#     }
-
-#     disk {
-#         datastore_id = "local-lvm"
-#         interface    = "scsi0"
-#         file_format = "raw"
-#         size = 50
-#         path_in_datastore = "vm-210-disk-0" 
-#     }
-
-#     cpu {
-#         architecture = "x86_64"
-#         cores = 2
-#         type = "host"
-#     }
-
-#     memory {
-#         dedicated = 8192
-#     }
-
-#     clone {
-#         vm_id = 201
-#         full = true
-#     }
-
-#     # skip pending kernel upgrade 
-#     provisioner "remote-exec" {
-#         inline = [
-#         "echo '$nrconf{restart} = 'a';' | sudo tee -a /etc/needrestart/conf.d/no-prompt.conf"
-#         ]
-#         connection {
-#         type        = "ssh"
-#         user        = "ubuntu"
-#         host        = "192.168.1.50"
-#         private_key = file ("/home/saul/.ssh/prox_ssh")
-#         }  
-#     }
-
-#     # pass disk partition to VM
-#     provisioner "remote-exec" {
-#         inline = [
-#         "qm set 210 -scsi2 /dev/disk/by-id/ata-ST2000LM015-2E8174_WY21FGDF-part1"        
-#         ]
-#         connection {
-#         type        = "ssh"
-#         user        = "root"
-#         host        = "192.168.1.127"
-#         private_key = file ("/home/saul/.ssh/prox_ssh")
-#         }  
-#     }
-
-#     # mount disk partition
-#     provisioner "remote-exec" {
-#         inline = [
-#         "sudo mkdir /mnt/local-storage",
-#         "echo '/dev/sdb    /mnt/local-storage    ext4    defaults    0    0' | sudo tee -a /etc/fstab",
-#         "sudo mount -a",
-#         "sudo systemctl daemon-reload",
-#         "sleep 10"
-#         ]
-#         connection {
-#         type        = "ssh"
-#         user        = "ubuntu"
-#         host        = "192.168.1.50"
-#         private_key = file ("/home/saul/.ssh/prox_ssh")
-#         }  
-#     }
-
-#     # update number of files a process can open
-#     provisioner "remote-exec" {
-#         inline = [
-#         "echo 'root soft nofile 4096' | sudo tee -a /etc/security/limits.conf",
-#         "echo 'fs.inotify.max_user_instances=256' | sudo tee -a /etc/sysctl.conf"
-#         ]
-#         connection {
-#         type        = "ssh"
-#         user        = "ubuntu"
-#         host        = "192.168.1.50"
-#         private_key = file ("/home/saul/.ssh/prox_ssh")
-#         }  
-#     }
-
-#     # # install docker 
-#     # provisioner "local-exec" {
-#     #     working_dir = "/home/saul/ansible/"
-#     #     command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i ubuntu@192.168.1.50,"
-#     # } 
-
-#     # # remove keyring warning
-#     # provisioner "remote-exec" {
-#     #     inline = [
-#     #     "sudo cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d"
-#     #     ]
-#     #     connection {
-#     #     type        = "ssh"
-#     #     user        = "ubuntu"
-#     #     host        = "192.168.1.50"
-#     #     private_key = file ("/home/saul/.ssh/prox_ssh")
-#     #     }  
-#     # }
-
-    # # install tailscale
-    # provisioner "remote-exec" {
-    #     inline = [
-    #     "sudo apt update",
-    #     "sudo apt upgrade -y",
-    #     "sudo curl -fsSL https://tailscale.com/install.sh | sh",
-    #     "sleep 20",
-    #     "sudo tailscale up --authkey ${var.tailscale_auth_key}"
-    #     ]
-    #     connection {
-    #     type        = "ssh"
-    #     user        = "ubuntu"
-    #     host        = "192.168.1.50"
-    #     private_key = file ("/home/saul/.ssh/prox_ssh")
-    #     }  
-    # }
-
-#     # install K3S
-#     provisioner "local-exec" {
-#         working_dir = "/home/saul/ansible/k3s-ansible/"
-#         command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook site.yml -i ./inventory/my-cluster/hosts.ini"
-#     }
-
-#     # remove ssh key from known hosts
-#     provisioner "local-exec" {
-#         working_dir = "/home/saul"
-#         command = "ssh-keygen -f '/home/saul/.ssh/known_hosts' -R '192.168.1.50'"
-#     } 
-
-#     # retrieve kubeconfig
-#     provisioner "local-exec" {
-#         working_dir = "/home/saul"
-#         command = "scp k3s:~/.kube/config /home/saul/.kube/config"
-#     } 
-
-#     # install argocd and apps
-#     provisioner "local-exec" {
-#         working_dir = "/home/saul/k3s"
-#         command = "./install.sh"
-#     }     
-
-#     # # reboot host
-#     # provisioner "remote-exec" {
-#     #     inline = [
-#     #     "sudo reboot"
-#     #     ]
-#     #     connection {
-#     #     type        = "ssh"
-#     #     user        = "ubuntu"
-#     #     host        = "192.168.1.50"
-#     #     private_key = file ("/home/saul/.ssh/prox_ssh")
-#     #     }  
-#     # }
-# }
-
 #############################################################
 # ubuntu 22 master --> k3s (using template)                 #
 #############################################################
