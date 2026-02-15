@@ -1,26 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-resources:
-  - manual-patching-plan.yaml
-  - manual-upgrading-plan.yaml
+namespace: system-upgrade
 
-patchesJson6902:
-  - target:
-      group: rbac.authorization.k8s.io
-      version: v1
-      kind: ClusterRoleBinding
-      name: system-upgrade
-    patch: |-
-      - op: add
-        path: /subjects/0/namespace
-        value: system-upgrade
-  - target:
-      group: rbac.authorization.k8s.io
-      version: v1
-      kind: ClusterRoleBinding
-      name: system-upgrade-drainer
-    patch: |-
-      - op: add
-        path: /subjects/0/namespace
-        value: system-upgrade
+resources:
+  - rbac-override.yaml
+  - plan-patching-manual.yaml
+  - plan-upgrades-quarterly.yaml
