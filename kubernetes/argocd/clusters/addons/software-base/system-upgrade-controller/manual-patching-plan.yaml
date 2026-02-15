@@ -1,20 +1,18 @@
-# Example Plan CRD for system-upgrade-controller (TESTING - every 10 minutes)
-# This Plan uses spec.upgrade container to run patching commands
+# Production Plan CRD - OS Patching (manual trigger, no schedule)
+# Deploy to: kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller/
+# Trigger: kubectl annotate plan os-patching-manual -n system-upgrade system-upgrade.cattle.io/force=true --overwrite
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
-  name: os-patching-test-10min
+  name: os-patching-manual
   namespace: system-upgrade
 spec:
   concurrency: 1
-  # Schedule: every 10 minutes (testing only)
   version: "ubuntu-22.04"
-  schedule: "*/10 * * * *"
   nodeSelector:
     kubernetes.io/os: linux
-  description: "TEST: OS package patching (apt) — every 10 minutes for validation"
+  description: "Production: OS package patching (apt) — manual on-demand execution"
   
-  # Node preparation (optional)
   prepare:
     image: ubuntu:22.04
     command:
@@ -25,7 +23,6 @@ spec:
         echo "Preparing node for patching..."
         apt-get update || true
   
-  # Main upgrade/patching container
   upgrade:
     image: ubuntu:22.04
     command:
@@ -33,26 +30,28 @@ spec:
     args:
       - -c
       - |
-        echo "=== Starting OS patching ==="
+        echo "=== OS Patching Started ==="
+        date
         apt-get update
-        echo "Checking available upgrades..."
+        echo "Available updates:"
         apt-get upgrade -s | grep "^Inst" || echo "No upgrades available"
         
         if apt-get upgrade -s | grep -q "^Inst"; then
-          echo "Applying upgrades..."
+          echo "Installing updates..."
           apt-get -y upgrade
+          echo "Updates installed successfully"
         else
-          echo "System is up-to-date, no upgrades needed"
+          echo "System is already up-to-date"
         fi
         
-        echo "=== Patching complete ==="
+        echo "=== Patching Completed ==="
+        date
   
-  # Drain configuration
   drain:
     deleteEmptydirData: true
     ignoreDaemonSets: true
     force: true
-    timeout: 10m
+    timeout: 15m
   
-  # Cordon the node during patching
   cordon: true
+  postCompleteDelay: "30s"
