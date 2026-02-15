@@ -5,12 +5,11 @@ metadata:
   namespace: system-upgrade
 spec:
   concurrency: 1
-  schedule: "0 0 1 1 0"
   version: "ubuntu-22.04"
-  serviceAccountName: system-upgrade
   nodeSelector:
-    role: worker
-  
+    matchLabels:
+      role: worker
+    
   prepare:
     image: ubuntu:22.04
     command:
@@ -52,4 +51,3 @@ spec:
     timeout: 15m
   
   cordon: true
-  postCompleteDelay: "30s"

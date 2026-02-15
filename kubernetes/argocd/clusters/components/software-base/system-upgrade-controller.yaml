@@ -8,9 +8,6 @@ spec:
     namespace: system-upgrade
     server: 'https://kubernetes.default.svc'
   sources:
-    - path: manifests
-      repoURL: https://github.com/rancher/system-upgrade-controller.git
-      targetRevision: master
     - path: kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller
       repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
