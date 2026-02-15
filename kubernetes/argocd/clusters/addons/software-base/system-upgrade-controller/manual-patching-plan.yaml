@@ -8,6 +8,7 @@ metadata:
   namespace: system-upgrade
 spec:
   concurrency: 1
+  schedule: "0 0 1 1 0"  # Never (Jan 1st, Sunday) — won't run automatically
   version: "ubuntu-22.04"
   nodeSelector:
     kubernetes.io/os: linux
