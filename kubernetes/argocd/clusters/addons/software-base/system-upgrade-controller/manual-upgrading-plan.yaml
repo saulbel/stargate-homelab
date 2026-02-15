@@ -9,6 +9,7 @@
 #   concurrency: 1
 #   # Cron schedule: 03:00 on the first day, every 3 months
 #   schedule: "0 3 1 */3 *"
+#   serviceAccountName: system-upgrade
 #   nodeSelector:
 #     kubernetes.io/os: linux
 #   description: "Planned upgrade process: backups, control plane, and nodes (staging first)"

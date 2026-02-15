@@ -17,7 +17,6 @@ spec:
     - path: kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller
       repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
-      ref: values
   project: default
   syncPolicy:
     syncOptions:
