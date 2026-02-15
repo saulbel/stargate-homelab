@@ -8,14 +8,16 @@ spec:
     namespace: system-upgrade
     server: 'https://kubernetes.default.svc'
   sources:
-    - repoURL: https://github.com/rancher/system-upgrade-controller.git
-      targetRevision: v0.18.0
-      path: manifests
-      ref: rancher
-    - repoURL: git@github.com:saulbel/stargate-homelab.git
+    - chart: system-upgrade-controller
+      repoURL: oci://ghcr.io/lexfrei/charts/system-upgrade-controller
+      targetRevision: 0.2.3
+      helm:
+        valueFiles:
+          - $values/kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller/values.yaml
+    - path: kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller
+      repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
-      path: kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller
-      ref: custom
+      ref: values
   project: default
   syncPolicy:
     syncOptions:
