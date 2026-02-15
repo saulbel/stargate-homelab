@@ -1,5 +1,5 @@
-# Example Plan CRD for system-upgrade-controller (TESTING - patching every 10 minutes)
-# Review `apiVersion` and fields according to the installed chart/CRD version.
+# Example Plan CRD for system-upgrade-controller (TESTING - every 10 minutes)
+# This Plan uses spec.upgrade container to run patching commands
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
@@ -12,46 +12,46 @@ spec:
   nodeSelector:
     kubernetes.io/os: linux
   description: "TEST: OS package patching (apt) — every 10 minutes for validation"
-  steps:
-    - name: cordon-and-drain
-      hook: pre
-      exec:
-        command: |
-          echo "Cordoning node {{.Node}}"
-          kubectl cordon {{.Node}}
-          echo "Draining workloads..."
-          kubectl drain {{.Node}} --ignore-daemonsets --delete-emptydir-data --force
-    - name: apt-update-upgrade
-      hook: pre
-      exec:
-        command: |
-          echo "=== Starting patching on {{.Node}} ==="
-          apt-get update
-          echo "Available upgradeable packages:"
-          apt-get upgrade -s | grep "^Inst" || echo "No upgrades available"
-          
-          # Only upgrade if there are pending updates
-          if apt-get upgrade -s | grep -q "^Inst"; then
-            echo "Applying upgrades..."
-            apt-get -y upgrade
-          else
-            echo "System is up-to-date, no upgrades needed"
-          fi
-          
-          # Check if reboot is required after upgrade
-          if [ -f /var/run/reboot-required ]; then
-            echo "Reboot required. Contents:"
-            cat /var/run/reboot-required
-            echo "System will reboot in 30 seconds..."
-            sleep 30
-            reboot
-          else
-            echo "No reboot required"
-          fi
-    - name: uncordon
-      hook: post
-      exec:
-        command: |
-          echo "Uncordoning node {{.Node}}"
-          kubectl uncordon {{.Node}}
-          echo "=== Patching complete on {{.Node}} ==="
+  
+  # Node preparation (optional)
+  prepare:
+    image: ubuntu:22.04
+    command:
+      - /bin/sh
+    args:
+      - -c
+      - |
+        echo "Preparing node for patching..."
+        apt-get update || true
+  
+  # Main upgrade/patching container
+  upgrade:
+    image: ubuntu:22.04
+    command:
+      - /bin/sh
+    args:
+      - -c
+      - |
+        echo "=== Starting OS patching ==="
+        apt-get update
+        echo "Checking available upgrades..."
+        apt-get upgrade -s | grep "^Inst" || echo "No upgrades available"
+        
+        if apt-get upgrade -s | grep -q "^Inst"; then
+          echo "Applying upgrades..."
+          apt-get -y upgrade
+        else
+          echo "System is up-to-date, no upgrades needed"
+        fi
+        
+        echo "=== Patching complete ==="
+  
+  # Drain configuration
+  drain:
+    deleteEmptydirData: true
+    ignoreDaemonSets: true
+    force: true
+    timeout: 10m
+  
+  # Cordon the node during patching
+  cordon: true
