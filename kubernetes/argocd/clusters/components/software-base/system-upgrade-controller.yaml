@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: system-upgrade-controller
+  namespace: argocd
+spec:
+  destination:
+    namespace: cattle-system
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - chart: system-upgrade-controller
+      repoURL: oci://ghcr.io/lexfrei/charts/system-upgrade-controller
+      targetRevision: 0.2.3
+    - path: kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller
+      repoURL: git@github.com:saulbel/stargate-homelab.git
+      targetRevision: main
+      ref: values
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
