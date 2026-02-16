@@ -1,3 +1,22 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: patching-script
+  namespace: system-upgrade
+type: Opaque
+stringData:
+  patch.sh: |
+    #!/bin/sh
+    set -e
+    echo "=== Starting OS patching ==="
+    apt-get update
+    apt-get -y upgrade
+    echo "=== Patching complete ==="
+    if [ -f /var/run/reboot-required ]; then
+      echo "Reboot required, rebooting..."
+      reboot
+    fi
+---
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
@@ -10,22 +29,15 @@ spec:
   nodeSelector:
     matchLabels:
       role: worker
-    
-  prepare:
-    image: ubuntu:22.04
-    command: [sh, -c]
-    args:
-      - apt-get update || true
+  
+  secrets:
+    - name: patching-script
+      path: /host/run/system-upgrade/secrets
   
   upgrade:
     image: ubuntu:22.04
-    command: [sh, -c]
-    args:
-      - |
-        apt-get -y upgrade
-        if [ -f /var/run/reboot-required ]; then
-          reboot
-        fi
+    command: [sh]
+    args: ["/run/system-upgrade/secrets/patching-script/patch.sh"]
   
   drain:
     force: true
