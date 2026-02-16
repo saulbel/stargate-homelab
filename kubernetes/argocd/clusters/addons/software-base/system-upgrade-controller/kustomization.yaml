@@ -6,4 +6,3 @@ resources:
   - clusterrolebinding.yaml
   - system-upgrade-controller.yaml
   - manual-patching-plan.yaml
-  - manual-upgrading-plan.yaml

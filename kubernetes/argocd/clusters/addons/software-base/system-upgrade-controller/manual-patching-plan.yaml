@@ -5,51 +5,31 @@ metadata:
   namespace: system-upgrade
 spec:
   concurrency: 1
-  version: "ubuntu-22.04"
   serviceAccountName: system-upgrade
-  schedule: "@manual"
   nodeSelector:
     matchLabels:
       role: worker
     
   prepare:
     image: ubuntu:22.04
-    command:
-      - /bin/sh
+    command: [sh, -c]
     args:
-      - -c
-      - |
-        echo "Preparing node for patching..."
-        apt-get update || true
+      - apt-get update || true
   
   upgrade:
     image: ubuntu:22.04
-    command:
-      - /bin/sh
+    command: [sh, -c]
     args:
-      - -c
       - |
-        echo "=== OS Patching Started ==="
-        date
-        apt-get update
-        echo "Available updates:"
-        apt-get upgrade -s | grep "^Inst" || echo "No upgrades available"
-        
-        if apt-get upgrade -s | grep -q "^Inst"; then
-          echo "Installing updates..."
-          apt-get -y upgrade
-          echo "Updates installed successfully"
-        else
-          echo "System is already up-to-date"
+        apt-get -y upgrade
+        if [ -f /var/run/reboot-required ]; then
+          reboot
         fi
-        
-        echo "=== Patching Completed ==="
-        date
   
   drain:
+    force: true
     deleteEmptydirData: true
     ignoreDaemonSets: true
-    force: true
     timeout: 900
   
   cordon: true
