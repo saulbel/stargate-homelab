@@ -1,44 +1,44 @@
-# apiVersion: v1
-# kind: Secret
-# metadata:
-#   name: patching-script
-#   namespace: system-upgrade
-# type: Opaque
-# stringData:
-#   patch.sh: |
-#     #!/bin/sh
-#     set -e
-#     echo "=== Starting OS patching ==="
-#     apt-get update
-#     apt-get -y upgrade
-#     echo "=== Patching completed ==="
-#     if [ -f /var/run/reboot-required ]; then
-#       echo "Reboot required, rebooting..."
-#       reboot
-#     fi
-# ---
-# apiVersion: upgrade.cattle.io/v1
-# kind: Plan
-# metadata:
-#   name: os-patching
-#   namespace: system-upgrade
-# spec:
-#   concurrency: 1
-#   serviceAccountName: system-upgrade
-#   version: "ubuntu-22.04"
-#   nodeSelector:
-#     matchLabels:
-#       role: worker
-#   secrets:
-#     - name: patching-script
-#   upgrade:
-#     image: ubuntu:22.04
-#     command: [chroot, /host]
-#     args: [sh, /run/system-upgrade/secrets/patching-script/patch.sh]
-#   drain:
-#     force: true
-#     deleteEmptydirData: true
-#     ignoreDaemonSets: true
+apiVersion: v1
+kind: Secret
+metadata:
+  name: patching-script
+  namespace: system-upgrade
+type: Opaque
+stringData:
+  patch.sh: |
+    #!/bin/sh
+    set -e
+    echo "=== Starting OS patching ==="
+    apt-get update
+    apt-get -y upgrade
+    echo "=== Patching completed ==="
+    if [ -f /var/run/reboot-required ]; then
+      echo "Reboot required, rebooting..."
+      reboot
+    fi
+---
+apiVersion: upgrade.cattle.io/v1
+kind: Plan
+metadata:
+  name: os-patching
+  namespace: system-upgrade
+spec:
+  concurrency: 1
+  serviceAccountName: system-upgrade
+  version: "ubuntu-22.04"
+  nodeSelector:
+    matchLabels:
+      role: worker
+  secrets:
+    - name: patching-script
+  upgrade:
+    image: ubuntu:22.04
+    command: [chroot, /host]
+    args: [sh, /run/system-upgrade/secrets/patching-script/patch.sh]
+  drain:
+    force: true
+    deleteEmptydirData: true
+    ignoreDaemonSets: true
 
 
 
