@@ -8,6 +8,8 @@ stringData:
   patch.sh: |
     #!/bin/sh
     set -e
+    export DEBIAN_FRONTEND=noninteractive
+    export NEEDRESTART_MODE=a
     echo "=== Starting OS patching ==="
     apt-get update
     apt-get -y upgrade
