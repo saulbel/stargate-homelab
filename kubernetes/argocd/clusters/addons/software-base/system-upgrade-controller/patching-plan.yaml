@@ -20,7 +20,7 @@ stringData:
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
-  name: os-patching-manual
+  name: os-patching
   namespace: system-upgrade
 spec:
   concurrency: 1

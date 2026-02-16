@@ -5,4 +5,4 @@ resources:
   - clusterrole.yaml
   - clusterrolebinding.yaml
   - system-upgrade-controller.yaml
-  - manual-patching-plan.yaml
+  - patching-plan.yaml
