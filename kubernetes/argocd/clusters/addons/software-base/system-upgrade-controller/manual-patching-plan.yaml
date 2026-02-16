@@ -7,6 +7,7 @@ spec:
   concurrency: 1
   version: "ubuntu-22.04"
   serviceAccountName: system-upgrade
+  schedule: "@manual"
   nodeSelector:
     matchLabels:
       role: worker
