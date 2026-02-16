@@ -31,10 +31,11 @@ spec:
       role: worker
   secrets:
     - name: patching-script
+      path: /host/run/system-upgrade/secrets/patching-script
   upgrade:
     image: ubuntu:22.04
-    command: [sh]
-    args: [/run/system-upgrade/secrets/patching-script/patch.sh]
+    command: [chroot, /host]
+    args: [sh, /run/system-upgrade/secrets/patching-script/patch.sh]
   drain:
     force: true
     deleteEmptydirData: true
