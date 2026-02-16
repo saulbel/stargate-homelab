@@ -41,7 +41,6 @@ spec:
   
   drain:
     force: true
-    deleteEmptydirData: true
     ignoreDaemonSets: true
   
   cordon: true
