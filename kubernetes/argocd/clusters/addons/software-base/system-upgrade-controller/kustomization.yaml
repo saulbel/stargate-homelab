@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - clusterrole.yaml
   - clusterrolebinding.yaml
+  - rbac-default-sa.yaml
   - system-upgrade-controller.yaml
   - manual-patching-plan.yaml
   - manual-upgrading-plan.yaml
