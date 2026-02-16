@@ -31,7 +31,6 @@ spec:
       role: worker
   secrets:
     - name: patching-script
-      path: /host/run/system-upgrade/secrets/patching-script
   upgrade:
     image: ubuntu:22.04
     command: ["chroot", "/host"]
