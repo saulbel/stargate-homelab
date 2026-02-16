@@ -6,6 +6,7 @@ metadata:
 spec:
   concurrency: 1
   serviceAccountName: system-upgrade
+  version: "ubuntu-22.04"
   nodeSelector:
     matchLabels:
       role: worker
