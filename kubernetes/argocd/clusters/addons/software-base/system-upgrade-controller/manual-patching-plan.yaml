@@ -42,4 +42,3 @@ spec:
     force: true
     deleteEmptydirData: true
     ignoreDaemonSets: true
-    timeout: 3600
