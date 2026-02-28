@@ -1,0 +1,18 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-all
+  namespace: vaultwarden
+spec: {}
+---
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-ingress-gateway
+  namespace: vaultwarden
+spec:
+  action: ALLOW
+  rules:
+    - from:
+        - source:
+            namespaces: ["istio-ingress"]
