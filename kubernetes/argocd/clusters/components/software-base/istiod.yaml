@@ -14,7 +14,8 @@ spec:
       helm:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/software-base/istiod/values.yaml
-    - repoURL: git@github.com:saulbel/stargate-homelab.git
+    - path: kubernetes/argocd/clusters/addons/software-base/istiod
+      repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
       ref: values
   project: default

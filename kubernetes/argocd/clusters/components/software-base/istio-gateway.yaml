@@ -18,8 +18,6 @@ spec:
       repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
       ref: values
-      directory:
-        include: "gateway.yaml"
   project: default
   syncPolicy:
     syncOptions:

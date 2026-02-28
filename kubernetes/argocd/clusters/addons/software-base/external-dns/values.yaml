@@ -1,5 +1,10 @@
 provider: webhook
 
+sources:
+  - service
+  - ingress
+  - istio-virtualservice
+
 extraArgs:
   webhook-provider-url: http://localhost:8888
 
