@@ -13,8 +13,8 @@ spec:
       targetRevision: 1.24.2
       helm:
         valueFiles:
-          - $values/kubernetes/argocd/clusters/addons/software-base/istio-gateway/values.yaml
-    - path: kubernetes/argocd/clusters/addons/software-base/istio-gateway
+          - $values/kubernetes/argocd/clusters/addons/software-base/istio-ingressgateway/values.yaml
+    - path: kubernetes/argocd/clusters/addons/software-base/istio-ingressgateway
       repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
       ref: values
