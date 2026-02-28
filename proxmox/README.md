@@ -29,13 +29,16 @@ Currently hosted on my NUC:
 - [Certmanager](/kubernetes/argocd/clusters/addons/software-base/cert-manager): Automated certificate management
 - [External-dns](/kubernetes/argocd/clusters/addons/software-base/external-dns): Dynamic DNS updater
 - [External-secrets](/kubernetes/argocd/clusters/addons/software-base/external-secrets): Secure secrets management
-- [Kured](/kubernetes/argocd/clusters/addons/software-base/kured): Automatic node reboots (patching)
+- [Istio Base](/kubernetes/argocd/clusters/addons/software-base/istio-base): Istio CRDs
+- [Istiod](/kubernetes/argocd/clusters/addons/software-base/istiod): Istio control plane
+- [Istio Ingress Gateway](/kubernetes/argocd/clusters/addons/software-base/istio-ingressgateway): Istio ingress proxy (LoadBalancer)
+- [Kiali](/kubernetes/argocd/clusters/addons/monitoring/kiali): Service mesh observability dashboard
+- [System Upgrade Controller](/kubernetes/argocd/clusters/addons/software-base/system-upgrade-controller): Automatic patches and upgrades
 - [Longhorn](/kubernetes/argocd/clusters/addons/software-base/longhorn): Distributed storage solution
 - [NFS](/kubernetes/argocd/clusters/addons/software-base/nfs): CSI driver
 - [Prometheus](/kubernetes/argocd/clusters/addons/monitoring/prometheus): Metrics and monitoring (remote writer)
 - [Promtail](/kubernetes/argocd/clusters/addons/monitoring/promtail): Centralized logging
 - [Tailscale](/kubernetes/argocd/clusters/addons/software-base/tailscale): Zero-config VPN for secure networking
-- [Traefik](/kubernetes/argocd/clusters/addons/software-base/traefik): Ingress controller for routing traffic
 - [Velero](/kubernetes/argocd/clusters/addons/software-base/velero): Backup and restore solution
 
 ### LXCs
