@@ -39,9 +39,3 @@ kiali_feature_flags:
       - "KIA0501" # ignote missing sidecar working
       - "KIA0301" # ignore missing authorization policy
       - "KIA0201" # ignore missing app/version label
-      
-# Only show namespaces that are part of the mesh
-# istio-system is always included automatically
-api:
-  namespaces:
-    label_selector_include: "istio-injection=enabled"
