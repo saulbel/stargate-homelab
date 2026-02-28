@@ -218,18 +218,4 @@ service:
   ipFamilyPolicy: "SingleStack"
 
 ingress:
-  enabled: true
-  class: "traefik"
-  nginxIngressAnnotations: false
-  additionalAnnotations: 
-    external-dns.alpha.kubernetes.io/hostname: vaultwarden.k3s.home
-  labels: {}
-  tls: false
-  hostname: "vaultwarden.k3s.home"
-  additionalHostnames: []
-  path: "/"
-  pathWs: "/notifications/hub"
-  pathType: "Prefix"
-  pathTypeWs: "Exact"
-  tlsSecret: ""
-  nginxAllowList: ""
+  enabled: false

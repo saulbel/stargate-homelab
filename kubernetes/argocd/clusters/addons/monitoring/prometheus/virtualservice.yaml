@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: prometheus
+  namespace: prometheus
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: prometheus.k3s.home
+spec:
+  hosts:
+    - prometheus.k3s.home
+  gateways:
+    - istio-ingress/homelab-gateway
+  http:
+    - route:
+        - destination:
+            host: prometheus-kube-prometheus-prometheus
+            port:
+              number: 9090

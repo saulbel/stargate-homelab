@@ -1,0 +1,3 @@
+# Istio base chart - installs CRDs
+# No custom values needed for base installation
+defaultRevision: default

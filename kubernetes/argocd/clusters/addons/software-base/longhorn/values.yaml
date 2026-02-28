@@ -5,12 +5,7 @@ longhornUI:
   replicas: 1
 
 ingress:
-  enabled: true
-  ingressClassName: traefik
-  host: longhorn.home
-  path: /
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: longhorn.home
+  enabled: false
 
 preUpgradeChecker:
   jobEnabled: false

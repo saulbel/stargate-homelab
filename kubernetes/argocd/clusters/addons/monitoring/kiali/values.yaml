@@ -1,0 +1,30 @@
+# Kiali server configuration
+istio_namespace: istio-system
+
+auth:
+  strategy: anonymous
+
+deployment:
+  replicas: 1
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      memory: 256Mi
+  ingress:
+    enabled: false
+
+server:
+  web_fqdn: kiali.home
+  web_root: /
+
+external_services:
+  istio:
+    root_namespace: istio-system
+  prometheus:
+    url: http://ubuntu-arm.tail991cf.ts.net:9090
+  tracing:
+    enabled: true
+    in_cluster_url: http://zipkin.istio-system:9411
+    use_grpc: false

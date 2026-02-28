@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: vaultwarden
+  namespace: vaultwarden
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: vaultwarden.k3s.home
+spec:
+  hosts:
+    - vaultwarden.k3s.home
+  gateways:
+    - istio-ingress/homelab-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /notifications/hub
+      route:
+        - destination:
+            host: vaultwarden
+            port:
+              number: 3012
+    - route:
+        - destination:
+            host: vaultwarden
+            port:
+              number: 80

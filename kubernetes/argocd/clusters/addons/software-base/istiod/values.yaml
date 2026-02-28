@@ -1,0 +1,24 @@
+# Istiod control plane configuration
+pilot:
+  autoscaleEnabled: false
+  replicaCount: 1
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+meshConfig:
+  # Enable access logging
+  accessLogFile: /dev/stdout
+  accessLogEncoding: JSON
+  # Default settings
+  enablePrometheusMerge: true
+  # Enable tracing for Kiali
+  enableTracing: true
+  defaultConfig:
+    tracing:
+      zipkin:
+        address: "zipkin.istio-system:9411"
+      sampling: 100.0
+    # Hold application until proxy is ready
+    holdApplicationUntilProxyStarts: true

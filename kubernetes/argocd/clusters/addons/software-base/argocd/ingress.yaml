@@ -1,19 +1,18 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
 metadata:
-  name: argocd-ingress
+  name: argocd
   namespace: argocd
   annotations:
-    kubernetes.io/ingress.class: traefik
+    external-dns.alpha.kubernetes.io/hostname: argocd.home
 spec:
-  rules:
-    - host: argocd.home
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: argocd-server
-                port:
-                  number: 80
+  hosts:
+    - argocd.home
+  gateways:
+    - istio-ingress/homelab-gateway
+  http:
+    - route:
+        - destination:
+            host: argocd-server
+            port:
+              number: 80

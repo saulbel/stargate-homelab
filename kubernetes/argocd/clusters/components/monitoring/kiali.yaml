@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kiali
+  namespace: argocd
+spec:
+  destination:
+    namespace: istio-system
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - chart: kiali-server
+      repoURL: https://kiali.org/helm-charts
+      targetRevision: 2.1.0
+      helm:
+        valueFiles:
+          - $values/kubernetes/argocd/clusters/addons/monitoring/kiali/values.yaml
+    - path: kubernetes/argocd/clusters/addons/monitoring/kiali
+      repoURL: git@github.com:saulbel/stargate-homelab.git
+      targetRevision: main
+      ref: values
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true

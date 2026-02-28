@@ -8,12 +8,7 @@ prometheus:
       - url: "http://ubuntu-arm.tail991cf.ts.net:9090/api/v1/write"
 
   ingress:
-    enabled: true
-    annotations:
-      external-dns.alpha.kubernetes.io/hostname: prometheus.k3s.home
-    hosts: 
-      - prometheus.k3s.home
-    paths: []
+    enabled: false
 
 kubeApiServer:
   enabled: true
