@@ -62,18 +62,18 @@ After K3s is set up, the following script is executed by Terraform to install Ar
 
 set -e
 
-echo "🚀 Ensuring external-secrets namespace exists..."
+echo "Ensuring external-secrets namespace exists..."
 if ! kubectl get namespace external-secrets >/dev/null 2>&1; then
   kubectl create namespace external-secrets
-  echo "✅ Created external-secrets namespace."
+  echo "Created external-secrets namespace."
 else
-  echo "ℹ️ external-secrets namespace already exists. Skipping creation."
+  echo "external-secrets namespace already exists. Skipping creation."
 fi
 
-echo "🔐 Applying Infisical credentials secret..."
+echo "Applying Infisical credentials secret..."
 kubectl apply -f /home/saul/k3s/infisical/secret.yaml
 
-echo "🚀 Installing ArgoCD..."
+echo "Installing ArgoCD..."
 helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update
 helm upgrade --install argocd argo/argo-cd \
@@ -81,10 +81,10 @@ helm upgrade --install argocd argo/argo-cd \
   --create-namespace \
   --values /home/saul/k3s/argocd/config.yaml
 
-echo "🔐 Adding Git SSH secret..."
+echo "Adding Git SSH secret..."
 kubectl apply -f /home/saul/k3s/argocd/argocd-repo-secret.yaml
 
-echo "📦 Bootstrapping ArgoCD apps..."
+echo "Bootstrapping ArgoCD apps..."
 kubectl apply -f /home/saul/k3s/argocd/bootstrap.yaml
 ```
 
