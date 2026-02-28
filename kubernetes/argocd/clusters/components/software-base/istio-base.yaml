@@ -15,7 +15,7 @@ spec:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/software-base/istio-base/values.yaml
     - path: kubernetes/argocd/clusters/addons/software-base/istio-base
-    - repoURL: git@github.com:saulbel/stargate-homelab.git
+      repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
       ref: values
   project: default
