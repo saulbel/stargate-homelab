@@ -14,4 +14,3 @@ spec:
         protocol: HTTP
       hosts:
         - "*.home"
-        - "*.k3s.home"
