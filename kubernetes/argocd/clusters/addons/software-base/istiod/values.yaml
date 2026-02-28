@@ -13,12 +13,6 @@ meshConfig:
   accessLogEncoding: JSON
   # Default settings
   enablePrometheusMerge: true
-  # Enable tracing for Kiali
-  enableTracing: true
   defaultConfig:
-    tracing:
-      zipkin:
-        address: "zipkin.istio-system:9411"
-      sampling: 100.0
     # Hold application until proxy is ready
     holdApplicationUntilProxyStarts: true

@@ -22,9 +22,18 @@ server:
 external_services:
   istio:
     root_namespace: istio-system
+    ingress_gateway_namespace: istio-ingress
+    egress_gateway_namespace: ""
+    component_status:
+      enabled: true
+      components:
+        - app_label: ingressgateway
+          is_core: true
+          namespace: istio-ingress
+      # No egress gateway deployed
   prometheus:
     url: http://ubuntu-arm.tail991cf.ts.net:9090
   tracing:
-    enabled: true
-    in_cluster_url: http://zipkin.istio-system:9411
-    use_grpc: false
+    enabled: false
+  grafana:
+    enabled: false
