@@ -7,6 +7,7 @@
         icon: /icons/proxmox.png
         href: https://proxmox.home/
         description: Server
+        #siteMonitor: https://proxmox.home/
         widget:
             type: proxmox
             url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
@@ -83,15 +84,15 @@
 
     - Minio:
         icon: /icons/minio.png
-        href: https://minio.home/
+        href: http://minio.home/
         description: S3
-        siteMonitor: https://minio.home/
+        siteMonitor: http://minio.home/
 
     - Infisical:
         icon: /icons/infisical.png
-        href: https://infisical.home/
+        href: http://infisical.home/
         description: Secrets
-        siteMonitor: https://infisical.home/
+        siteMonitor: http://infisical.home/
 
     - Rundeck:
         icon: /icons/rundeck.png
@@ -108,21 +109,20 @@
     - Rancher:
         icon: /icons/rancher.png
         href: https://rancher.home/
-        description: K8s
+        description: Kubernetes
         siteMonitor: https://rancher.home/
 
     - ArgoCD:
         icon: /icons/argocd.png
-        href: https://argocd.home/
+        href: http://argocd.home/
         description: GitOps
-        siteMonitor: https://argocd.home/
+        siteMonitor: http://argocd.home/
 
-    - Traefik:
-        icon: /icons/traefik.png
-        href: http://traefik.home/dashboard/#/
-        description: Ingress
-        siteMonitor: http://traefik.home/dashboard/#/
-
+    - Kiali:
+        icon: /icons/istio.png
+        href: http://kiali.home/
+        description: Istio
+        siteMonitor: http://kiali.home/
 
 - Media:
     - Plex:
@@ -140,7 +140,8 @@
         icon: /icons/tautulli.png
         href: https://tautulli.home/
         description: Plex stats
-        siteMonitor: https://tautulli.home/
+        ping: 192.168.1.19
+          #siteMonitor: https://tautulli.home/
         widget:
            type: tautulli
            url: "{{HOMEPAGE_VAR_TAUTULLI_URL}}"
@@ -161,7 +162,8 @@
         icon: /icons/jackett.png
         href: https://jackett.home/
         description: Indexers
-        siteMonitor: http://jackett.home/
+        ping: 192.168.1.16
+          #siteMonitor: https://jackett.home/
         #widget:
         #    type: jackett
         #    url: "{{HOMEPAGE_VAR_JACKETT_URL}}"
