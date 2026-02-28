@@ -17,7 +17,9 @@ podAnnotations: {}
 
 commonLabels: {}
 
-podLabels: {}
+podLabels:
+  app: vaultwarden
+  version: "1.30.3"
 
 initContainers: []
 

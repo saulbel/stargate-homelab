@@ -32,3 +32,8 @@ external_services:
     enabled: false
   grafana:
     enabled: false
+
+kiali_feature_flags:
+  validations:
+    ignore:
+      - "KIA0501"
