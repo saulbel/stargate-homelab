@@ -5,6 +5,7 @@ metadata:
   namespace: istio-system
   annotations:
     external-dns.alpha.kubernetes.io/hostname: kiali.home
+    external-dns.alpha.kubernetes.io/target: "192.168.1.200"
 spec:
   hosts:
     - kiali.home

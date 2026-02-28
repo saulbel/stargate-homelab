@@ -1,5 +1,10 @@
 # Istio Ingress Gateway configuration
 # Replaces Traefik as the ingress controller
+
+# Set the name so the pod gets label istio: ingressgateway
+# This must match the Gateway selector
+name: ingressgateway
+
 replicaCount: 1
 
 autoscaling:

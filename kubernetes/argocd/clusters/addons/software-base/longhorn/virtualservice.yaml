@@ -5,6 +5,7 @@ metadata:
   namespace: longhorn
   annotations:
     external-dns.alpha.kubernetes.io/hostname: longhorn.home
+    external-dns.alpha.kubernetes.io/target: "192.168.1.200"
 spec:
   hosts:
     - longhorn.home

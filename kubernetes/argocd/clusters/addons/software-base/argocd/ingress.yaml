@@ -5,6 +5,7 @@ metadata:
   namespace: argocd
   annotations:
     external-dns.alpha.kubernetes.io/hostname: argocd.home
+    external-dns.alpha.kubernetes.io/target: "192.168.1.200"
 spec:
   hosts:
     - argocd.home

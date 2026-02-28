@@ -5,6 +5,7 @@ metadata:
   namespace: prometheus
   annotations:
     external-dns.alpha.kubernetes.io/hostname: prometheus.k3s.home
+    external-dns.alpha.kubernetes.io/target: "192.168.1.200"
 spec:
   hosts:
     - prometheus.k3s.home
