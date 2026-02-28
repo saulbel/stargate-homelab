@@ -13,11 +13,16 @@ meshConfig:
   accessLogEncoding: JSON
   # Default settings
   enablePrometheusMerge: true
-  # Only include namespaces with istio-injection=enabled in the mesh
-  # istio-system is always included automatically
+  # Only include mesh namespaces and istio infrastructure
   discoverySelectors:
     - matchLabels:
         istio-injection: enabled
+    - matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: In
+          values:
+            - istio-system
+            - istio-ingress
   defaultConfig:
     # Hold application until proxy is ready
     holdApplicationUntilProxyStarts: true
