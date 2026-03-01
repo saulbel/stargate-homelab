@@ -1,27 +1,36 @@
 variable "proxmox_node_url" {
-  type = string
+  description = "Proxmox API endpoint URL"
+  type        = string
 }
 
 variable "proxmox_node_name" {
-  type = string
+  description = "Proxmox node name"
+  type        = string
 }
 
 variable "proxmox_user" {
-  type = string
+  description = "Proxmox API user"
+  type        = string
 }
 
 variable "proxmox_password" {
-  type = string
+  description = "Proxmox API password"
+  type        = string
+  sensitive   = true
 }
 
 variable "proxmox_ssh_key" {
-  type = string
+  description = "SSH public key for Proxmox access"
+  type        = string
 }
 
 variable "ansible_ssh_key" {
-  type = string
+  description = "SSH public key for Ansible access"
+  type        = string
 }
 
 variable "tailscale_auth_key" {
-  type = string
+  description = "Tailscale authentication key"
+  type        = string
+  sensitive   = true
 }
