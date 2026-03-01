@@ -21,9 +21,11 @@ All my Terraform files for self-hosting are here and ready to use:
 
 ```
 terraform
-└── main.tf
+└── k3s-setup.tf
+└── lxc.tf
 └── provider.tf
 └── variables.tf
+└── vms.tf
 ```
 
 ---
