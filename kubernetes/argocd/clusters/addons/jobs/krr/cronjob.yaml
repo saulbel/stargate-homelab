@@ -15,9 +15,9 @@ spec:
       template:
         spec:
           # in-cluster Prometheus is agent-mode only (no query API) - point at the
-          # remote-write target instead, reachable because the k3s nodes already
-          # have Tailscale installed (see automation/terraform/vms.tf)
-          dnsPolicy: Default # inherit node resolv.conf so Tailscale MagicDNS resolves
+          # remote-write target instead. The hostname resolves via CoreDNS's
+          # ts.net forward zone (addons/software-base/coredns) - don't set
+          # dnsPolicy: Default here, it bypasses CoreDNS and breaks resolution.
           serviceAccountName: krr
           restartPolicy: Never
           containers:
