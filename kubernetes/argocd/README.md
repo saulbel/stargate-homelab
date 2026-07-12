@@ -1,21 +1,17 @@
-# 🚦 ArgoCD
+# ArgoCD
 
 ArgoCD is a declarative GitOps continuous delivery tool for Kubernetes.  
 It keeps your cluster state in sync with your Git repositories, automating deployments and lifecycle management.
 
 ---
 
-## 🚀 Why ArgoCD?
+## Why ArgoCD?
 
-- **GitOps:** Manage your Kubernetes apps using Git as the source of truth.
-- **Declarative:** Define desired state with YAML manifests or Helm charts.
-- **Automated sync:** Automatically applies changes from your repo to your cluster.
-- **Visual dashboard:** Web UI for monitoring and managing deployments.
-- **Rollback:** Easily revert to previous versions.
+This repo is the source of truth for my cluster — I commit a manifest and ArgoCD applies it, no `kubectl apply` from my laptop. If something breaks, reverting the commit reverts the cluster, which has saved me more than once.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 argocd
@@ -39,7 +35,7 @@ argocd
 ```
 ---
 
-## 🚦 App of Apps Pattern
+## App of Apps Pattern
 
 ArgoCD supports the **App of Apps** pattern, which allows you to manage multiple applications through a single parent application.  
 This parent app (often called "bootstrap") references other ArgoCD Application manifests, enabling you to declaratively bootstrap your entire cluster from one place.
@@ -53,7 +49,7 @@ In this repo, [bootstrap](/kubernetes/argocd/clusters/bootstrap) is the parent d
 
 ---
 
-## 🛠️ Getting Started
+## Getting Started
 
 After K3s is set up, the following script is executed by Terraform to install ArgoCD and bootstrap your apps:
 
@@ -99,12 +95,8 @@ provisioner "local-exec" {
 ```
 ---
 
-## 🛠️ To Improve
+## To Improve
 
 - Add more example applications and Helm charts
 - Document best practices for GitOps workflows
 - Integrate notifications and automated rollbacks
-
----
-
-> _Automate your Kubernetes deployments, one commit at a time!_

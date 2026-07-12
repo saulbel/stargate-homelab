@@ -1,21 +1,17 @@
-# 🔒 Tailscale
+# Tailscale
 
 Tailscale is a **zero-config VPN** for building secure networks.  
 Just install Tailscale on each device/server and they’ll automatically connect in a secure mesh network.
 
 ---
 
-## 🚀 Why Tailscale?
+## Why Tailscale?
 
-- **Simple setup:** No complex configuration required.
-- **Mesh networking:** All your devices can securely communicate.
-- **Access control:** Easily share access to specific servers (e.g., Plex, game servers) with friends.
-- **Secure remote access:** No need to expose services to the public internet.
-- **Metrics/logs routing:** Send Prometheus and Loki data securely to remote servers.
+It's the only way anything in this homelab talks to the outside world — I never expose a service directly to the internet. I use it for remote access to the LAN, sharing specific things like Plex with friends, and routing Prometheus/Loki metrics and logs between the cluster and hosts that aren't on the same network.
 
 ---
 
-## 🛠️ Install Tailscale
+## Install Tailscale
 
 ### On Linux VM
 ```sh
@@ -71,7 +67,3 @@ spec:
       port: 81
       targetPort: 8080
 ```
-
----
-
-> _Connect your homelab securely, one device at a time!_

@@ -1,21 +1,18 @@
-# 🌱 Terraform
+# Terraform
 
 Terraform is an Infrastructure as Code (**IaC**) tool that lets you declaratively provision and manage your homelab infrastructure.
 
 ---
 
-## 🚀 Why Terraform?
+## Why Terraform?
 
-- **Declarative:** Define your infrastructure in simple configuration files.
-- **Multi-provider support:** Works with cloud, on-prem, and virtualization platforms.
-- **Repeatable & versioned:** Track changes and roll back easily.
-- **Community-powered:** Tons of modules and providers available.
+I don't want to click through the Proxmox UI every time I need a new VM or LXC. With Terraform I describe the node once (IP, resources, provisioners) and can tear it down and rebuild it identically in minutes if I break something testing.
 
-For this project, we use the [`Proxmox`](https://registry.terraform.io/providers/bpg/proxmox/latest/docs) provider to automate VM and resource creation.
+For this project, I use the [`Proxmox`](https://registry.terraform.io/providers/bpg/proxmox/latest/docs) provider to automate VM and resource creation.
 
 ---
 
-## 📦 Files Included
+## Files Included
 
 All my Terraform files for self-hosting are here and ready to use:
 
@@ -30,7 +27,7 @@ terraform
 
 ---
 
-## 🗄️ State Management
+## State Management
 
 **Important:**  
 Always secure your `.tfstate` file!  
@@ -38,12 +35,8 @@ You can use an S3 bucket (for example, with [MinIO](/docker/minio) to store your
 
 ---
 
-## 🛠️ To Improve
+## To Improve
 
 - Add automation to retrieve and start `docker-compose.yaml` files after provisioning.
 - Find a way to avoid using `local-exec` and `remote-exec` for post-provisioning tasks.
 - Add more examples and modularize resources for easier reuse.
-
----
-
-> _Automate your infrastructure, one resource at a time!_

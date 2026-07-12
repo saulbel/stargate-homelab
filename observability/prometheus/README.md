@@ -1,20 +1,17 @@
-# 📊 Prometheus
+# Prometheus
 
 Prometheus is a powerful time-series database (**TSDB**) used to store and query metrics.  
 Unlike InfluxDB, Prometheus actively **scrapes** metrics from endpoints rather than passively receiving data.
 
 ---
 
-## 🚀 Why Prometheus?
+## Why Prometheus?
 
-- **Pull-based model:** Prometheus scrapes metrics endpoints on a schedule.
-- **Flexible:** Works with many exporters and integrations.
-- **Rich query language:** Powerful PromQL for analysis and alerting.
-- **Ecosystem:** Integrates with Grafana, Alertmanager, and more.
+It scrapes targets on a schedule instead of needing every service to push metrics somewhere, which means I can bolt monitoring onto a VM or LXC after the fact just by pointing Prometheus at an exporter — no changes to the thing being monitored.
 
 ---
 
-## 🛠️ Prometheus Setup
+## Prometheus Setup
 
 I use the **PVE exporter** to expose metrics from Proxmox VMs and LXCs.  
 > **Note:** Node-exporter inside LXCs exposes host metrics, not container metrics—so PVE exporter is preferred.
@@ -25,7 +22,7 @@ I use the **PVE exporter** to expose metrics from Proxmox VMs and LXCs.
 
 ---
 
-## 📈 PVE Exporter Setup
+## PVE Exporter Setup
 
 Gather metrics about CPU, RAM, disk, and network resources of Proxmox guests (VMs or LXCs) via Prometheus.
 
@@ -100,7 +97,7 @@ Add to your `prometheus.yml`:
 
 ---
 
-## 📊 Grafana Dashboards
+## Grafana Dashboards
 
 Import my Grafana dashboards from [here](/docker/prometheus-loki/grafana-dashboards/):
 
@@ -111,17 +108,13 @@ Import my Grafana dashboards from [here](/docker/prometheus-loki/grafana-dashboa
 
 ---
 
-## ⚙️ Prometheus Configuration
+## Prometheus Configuration
 
 Find all Prometheus configuration files [here](/docker/prometheus-loki/).
 
 ---
 
-## 🛠️ To Improve
+## To Improve
 
 - Configure **Alertmanager** and send alerts to a Telegram channel
 - Evaluate adding **Promtail** to the Proxmox node or each LXC individually
-
----
-
-> _Monitor your homelab, one metric at a time!_

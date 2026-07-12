@@ -1,18 +1,18 @@
-# 🌌 Stargate Homelab
+# Stargate Homelab
 
 A modular, automated, and exploration‑ready homelab powered by **Proxmox**, **Terraform**, **Ansible**, **Docker**, **Kubernetes**, and more.
 
 Inspired by production‑grade infrastructure patterns — but built for learning, tinkering, and having fun.
 
 ---
-## ☑️ Prerequisites
+## Prerequisites
 
 Before you start, make sure you have:
 - **Spare hardware** (old PC, server, or VM host)
 - **Time and curiosity** to experiment and learn!
 
 ---
-## 📁 Repository Structure
+## Repository Structure
 ```
 stargate-homelab
 └── automation
@@ -29,12 +29,12 @@ stargate-homelab
 ```
 
 ---
-## 🎯 Project Goals
+## Project Goals
 
 The goal of this project is to build a homelab using **Proxmox** as the backbone, enabling you to run daily-use tools, experiment for work, or just have fun tinkering with new tech.
 
 ---
-## 🧱 Tech Stack
+## Tech Stack
 
 | Icon | Technology | Purpose |
 |------|-----------|---------|
@@ -50,22 +50,15 @@ The goal of this project is to build a homelab using **Proxmox** as the backbone
 | <img src="./docker/homepage/icons/terraform_icon.png" width="20" height="20"> | **[Terraform](automation/terraform/README.md)** | Infrastructure-as-code provisioning |
 
 ---
-## 🖼️ Infrastructure Snapshots
+## Infrastructure Snapshots
 ![proxmox-oci](./pictures/proxmox_oci.png)
 ![homepage](./pictures/homepage.png)
 ![grafana](./pictures/grafana.png)
 
 ---
-## 💬 Support & Feedback
-Have questions, suggestions, or want to show your own setup?  
-Open an issue — I’m happy to chat.
-
----
-## 🧭 Roadmap
+## Roadmap
 - Expand documentation for each module  
 - Add diagrams for network, Kubernetes, and automation flows  
 - Improve Terraform + Ansible integration  
-- Add more observability components
-
----
-> _Made with ❤️ for homelab enthusiasts!_
+- Add more observability components  
+- Add CI/CD for homelab automation  

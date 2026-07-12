@@ -1,11 +1,11 @@
-# 🖥️ Proxmox
+# Proxmox
 
 Proxmox is a **Type 1 hypervisor** based on KVM—essentially _Debian + KVM + GUI_.  
 It's my homelab choice because it's pure Linux under the hood and doesn't require special hardware like ESXi.
 
 ---
 
-## 🛠️ Hardware Overview
+## Hardware Overview
 
 This is the hardware used for hosting Proxmox:
 
@@ -18,7 +18,7 @@ This is the hardware used for hosting Proxmox:
 
 ---
 
-## 🏠 Self-Hosted Services
+## Self-Hosted Services
 
 Currently hosted on my NUC:
 
@@ -63,7 +63,7 @@ Currently hosted on my NUC:
 
 ---
 
-## ➕ Proxmox Addons
+## Proxmox Addons
 
 While I don't recommend heavy customization of the Proxmox host, I do use a couple of helpful addons:
 - **Tailscale:** Remote access from anywhere
@@ -71,13 +71,13 @@ While I don't recommend heavy customization of the Proxmox host, I do use a coup
 
 ---
 
-## 📊 Proxmox Metrics
+## Proxmox Metrics
 
 I use [PVE exporter](/observability/prometheus/README.md) to expose all metrics from Proxmox VMs and LXCs.
 
 ---
 
-## 🧩 Proxmox Template Creation
+## Proxmox Template Creation
 
 `Cloud-init` customizes Linux VMs at boot, perfect for spinning up minimal images with Terraform.
 
@@ -95,7 +95,3 @@ qm set 200 --serial0 socket --vga serial0
 qm set 200 --agent enabled=1
 qm template 200
 ```
-
----
-
-> _Virtualize your homelab, one VM or container at a time!_

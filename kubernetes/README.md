@@ -1,27 +1,24 @@
-# ☸️ Kubernetes 
+# Kubernetes
 
 Kubernetes is a powerful container orchestration system.  
 I run a k8s cluster in my homelab for learning, experimentation, and self-hosting modern cloud-native apps.
 
 ---
 
-## 🚀 Why Kubernetes?
+## Why Kubernetes?
 
-- **Scalability:** Easily scale apps up or down.
-- **Self-healing:** Automatically restarts failed containers.
-- **Declarative:** Manage infrastructure and apps with YAML manifests.
-- **Ecosystem:** Huge community and tons of integrations.
+Honestly, mostly to learn it hands-on. I don't need Kubernetes for a homelab this size, but running a real cluster — with GitOps, ingress, cert management, backups — is the best way I've found to actually understand the pieces instead of just reading about them.
 
 ---
 
-## 🪶 Why K3s?
+## Why K3s?
 
 I use **K3s** for my homelab Kubernetes cluster because it's lightweight, simple to install, and ideal for resource-constrained environments.  
 I rely on [techno-tim/k3s-ansible](https://github.com/techno-tim/k3s-ansible) + **Terraform** for automated provisioning.
 
 ---
 
-## 📦 Self-Hosted Apps
+## Self-Hosted Apps
 
 I use [ArgoCD](./argocd/README.md) to deploy and manage everything in my cluster.  
 Here are the most important components running on my Kubernetes cluster:
@@ -44,10 +41,6 @@ Here are the most important components running on my Kubernetes cluster:
 
 ---
 
-## 🛠️ To Improve
+## To Improve
 
 - Automate cluster upgrades and maintenance
-
----
-
-> _Orchestrate your homelab, one pod at a time!_

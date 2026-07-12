@@ -1,10 +1,10 @@
-# ⚡ Automation
+# Automation
 
 This folder contains all the automation tools and scripts used to provision, configure, and manage your homelab infrastructure.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 automation
@@ -14,7 +14,7 @@ automation
 
 ---
 
-## 🚀 Components
+## Components
 
 - **[Ansible](./ansible)** : Automate configuration and application deployment across your vms and containers.  
 
@@ -22,7 +22,7 @@ automation
 
 ---
 
-## 🏁 Getting Started
+## Getting Started
 
 1. **Review prerequisites**  
    Make sure you have Ansible and Terraform installed on your control machine.
@@ -33,7 +33,3 @@ automation
 3. **Run automation**  
    - Use Terraform to provision infrastructure.
    - Use Ansible to configure and deploy services.
-
----
-
-> _Automate everything. Enjoy your homelab!_
