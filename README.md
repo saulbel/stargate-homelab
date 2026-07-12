@@ -56,18 +56,6 @@ The goal of this project is to build a homelab using **Proxmox** as the backbone
 ![grafana](./pictures/grafana.png)
 
 ---
-## 🤝 Contributing
-Contributions are welcome!
-
-1. Fork the repo  
-2. Create a feature branch  
-3. Commit your changes  
-4. Push your branch  
-5. Open a Pull Request  
-
-If you want to share your own homelab ideas or improvements, I’d love to see them.
-
----
 ## 💬 Support & Feedback
 Have questions, suggestions, or want to show your own setup?  
 Open an issue — I’m happy to chat.
@@ -77,8 +65,7 @@ Open an issue — I’m happy to chat.
 - Expand documentation for each module  
 - Add diagrams for network, Kubernetes, and automation flows  
 - Improve Terraform + Ansible integration  
-- Add more observability components  
-- Add CI/CD for homelab automation  
+- Add more observability components
 
 ---
 > _Made with ❤️ for homelab enthusiasts!_
