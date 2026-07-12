@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: krr
+  namespace: krr
+spec:
+  # weekly, same slot as watchtower (Sundays 12:00)
+  schedule: "0 0 12 * * 0"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 3600
+      template:
+        spec:
+          # in-cluster Prometheus is agent-mode only (no query API) - point at the
+          # remote-write target instead, reachable because the k3s nodes already
+          # have Tailscale installed (see automation/terraform/vms.tf)
+          dnsPolicy: Default # inherit node resolv.conf so Tailscale MagicDNS resolves
+          serviceAccountName: krr
+          restartPolicy: Never
+          containers:
+            - name: krr
+              image: robustadev/krr:v1.17.0
+              imagePullPolicy: Always
+              command:
+                - /bin/sh
+                - -c
+                - "python krr.py simple --prometheus-url http://ubuntu-arm.tail991cf.ts.net:9090 --max-workers 3 --width 2048"
+              resources:
+                requests:
+                  memory: 1Gi
+                limits:
+                  memory: 2Gi
