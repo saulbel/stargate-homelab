@@ -1,0 +1,25 @@
+image:
+  repository: louislam/uptime-kuma
+  pullPolicy: IfNotPresent
+  tag: "2.3.0"
+
+fullnameOverride: ""
+
+podLabels:
+  app: uptime-kuma
+
+serviceAccount:
+  create: true
+
+service:
+  type: ClusterIP
+  port: 3001
+
+ingress:
+  enabled: false
+
+volume:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 1Gi
+  storageClassName: "nfs-csi"

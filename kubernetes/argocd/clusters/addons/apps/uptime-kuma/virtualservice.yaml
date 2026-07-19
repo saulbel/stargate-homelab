@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: uptime-kuma
+  namespace: uptime-kuma
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: uptime-kuma.k3s.home
+    external-dns.alpha.kubernetes.io/target: "192.168.1.200"
+spec:
+  hosts:
+    - uptime-kuma.k3s.home
+  gateways:
+    - istio-ingress/homelab-gateway
+  http:
+    - route:
+        - destination:
+            host: uptime-kuma
+            port:
+              number: 3001

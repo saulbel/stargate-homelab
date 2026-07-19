@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: uptime-kuma
+  namespace: argocd
+spec:
+  destination:
+    namespace: uptime-kuma
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - chart: uptime-kuma
+      repoURL: https://dirsigler.github.io/uptime-kuma-helm
+      targetRevision: 4.1.0
+      helm:
+        valueFiles:
+          - $values/kubernetes/argocd/clusters/addons/apps/uptime-kuma/values.yaml
+    - path: kubernetes/argocd/clusters/addons/apps/uptime-kuma
+      repoURL: git@github.com:saulbel/stargate-homelab.git
+      targetRevision: main
+      ref: values
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    managedNamespaceMetadata:
+      labels:
+        istio-injection: enabled
+    automated:
+      prune: true
+      selfHeal: false
