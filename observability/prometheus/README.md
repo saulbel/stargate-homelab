@@ -105,6 +105,7 @@ Import my Grafana dashboards from [here](/docker/prometheus-loki/grafana-dashboa
 - `win-exporter.json`: Dashboard for Windows exporter
 - `loki-k3s.json`: Kubernetes Loki dashboard
 - `prometheus-k3s.json`: Kubernetes Prometheus dashboard
+- `rancher-audit.json`: Rancher audit dashboard
 
 ---
 

@@ -9,8 +9,29 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    environment:
+      - AUDIT_LOG_ENABLED=true
+      # 0=off, 1=metadata (who/what/when, no bodies), 2=+request body, 3=+response body
+      - AUDIT_LEVEL=1
+      - AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log
+      - AUDIT_LOG_MAXAGE=10
+      - AUDIT_LOG_MAXBACKUP=10
+      - AUDIT_LOG_MAXSIZE=100
     volumes:
       - rancher-data:/var/lib/rancher
+      - rancher-auditlog:/var/log/auditlog
+
+  promtail:
+    image: grafana/promtail:latest
+    container_name: rancher-promtail
+    restart: unless-stopped
+    volumes:
+      - rancher-auditlog:/var/log/auditlog:ro
+      - ./promtail-config.yaml:/etc/promtail/config.yml
+    command: -config.file=/etc/promtail/config.yml
+    depends_on:
+      - rancher
 
 volumes:
   rancher-data:
+  rancher-auditlog:
