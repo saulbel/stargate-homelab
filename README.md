@@ -2,7 +2,7 @@
 
 A modular, automated, and exploration‑ready homelab powered by **Proxmox**, **Terraform**, **Ansible**, **Docker**, **Kubernetes**, and more.
 
-Inspired by production‑grade infrastructure patterns — but built for learning, tinkering, and having fun.
+Inspired by production‑grade infrastructure patterns but built for learning, tinkering, and having fun.
 
 ---
 ## Prerequisites
