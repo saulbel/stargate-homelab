@@ -20,8 +20,15 @@ spec:
       ref: values
   project: default
   syncPolicy:
+    retry:
+      limit: 5
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 5m
     syncOptions:
       - CreateNamespace=true
+      - SkipDryRunOnMissingResource=true
       - ServerSideApply=true
     automated:
       prune: true
