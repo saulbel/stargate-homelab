@@ -1,0 +1,14 @@
+# k3s owns the main `coredns` ConfigMap and re-applies it on restarts, so only
+# extend it through `coredns-custom` (imported by the stock Corefile).
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom
+  namespace: kube-system
+data:
+  ts.server: |
+    ts.net:53 {
+        errors
+        cache 30
+        forward . 100.100.100.100
+    }

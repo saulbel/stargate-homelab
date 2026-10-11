@@ -8,11 +8,6 @@ metadata:
     app.kubernetes.io/managed-by: argocd
 data:
   Corefile: |
-    ts.net:53 {
-        forward . 100.100.100.100
-        errors
-        cache 30
-    }
     .:53 {
         errors
         health
@@ -27,7 +22,7 @@ data:
           fallthrough
         }
         prometheus :9153
-        forward . 192.168.1.225
+        forward . /etc/resolv.conf
         cache 30
         loop
         reload
