@@ -147,7 +147,7 @@ resource "proxmox_virtual_environment_container" "homepage" {
   # allow tun access 
   provisioner "remote-exec" {
     inline = [
-      "echo 'lxc.cgroup.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/110.conf",
+      "echo 'lxc.cgroup2.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/110.conf",
       "echo 'lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file' >> /etc/pve/lxc/110.conf",    ]
     connection {
       type        = "ssh"
@@ -337,7 +337,7 @@ resource "proxmox_virtual_environment_container" "kavita" {
     # allow tun access
     provisioner "remote-exec" {
         inline = [
-        "echo 'lxc.cgroup.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/112.conf",
+        "echo 'lxc.cgroup2.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/112.conf",
         "echo 'lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file' >> /etc/pve/lxc/112.conf"
         ]
         connection {
@@ -540,7 +540,7 @@ resource "proxmox_virtual_environment_container" "plex" {
     # allow tun access
     provisioner "remote-exec" {
         inline = [
-        "echo 'lxc.cgroup.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/114.conf",
+        "echo 'lxc.cgroup2.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/114.conf",
         "echo 'lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file' >> /etc/pve/lxc/114.conf"
         ]
         connection {
@@ -1394,7 +1394,7 @@ resource "proxmox_virtual_environment_container" "bookstack" {
   # allow tun access 
   provisioner "remote-exec" {
     inline = [
-      "echo 'lxc.cgroup.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/124.conf",
+      "echo 'lxc.cgroup2.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/124.conf",
       "echo 'lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file' >> /etc/pve/lxc/124.conf",    ]
     connection {
       type        = "ssh"
@@ -1522,7 +1522,7 @@ resource "proxmox_virtual_environment_container" "minio" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.25,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.25,"
     }
 
 }
@@ -1797,8 +1797,8 @@ resource "proxmox_virtual_environment_container" "rancher" {
     # allow tun access 
     provisioner "remote-exec" {
         inline = [
-        "echo 'lxc.cgroup.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/110.conf",
-        "echo 'lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file' >> /etc/pve/lxc/110.conf",    ]
+        "echo 'lxc.cgroup2.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/128.conf",
+        "echo 'lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file' >> /etc/pve/lxc/128.conf",    ]
         connection {
         type        = "ssh"
         user        = "root"
@@ -1822,7 +1822,7 @@ resource "proxmox_virtual_environment_container" "rancher" {
         connection {
         type        = "ssh"
         user        = "root"
-        host        = "192.168.1.10"
+        host        = "192.168.1.28"
         private_key = file ("/home/saul/.ssh/prox_ssh")
         }  
     }
@@ -1835,7 +1835,7 @@ resource "proxmox_virtual_environment_container" "rancher" {
         connection {
         type        = "ssh"
         user        = "root"
-        host        = "192.168.1.10"
+        host        = "192.168.1.28"
         private_key = file ("/home/saul/.ssh/prox_ssh")
         }  
     }
