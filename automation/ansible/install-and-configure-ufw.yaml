@@ -7,15 +7,15 @@
           - ufw
         state: latest
         update_cache: true
-    - name: Enable ufw
-      ufw:
-        state: enabled
-        policy: reject
     - name: Open port 22
       ufw:
         rule: allow
         port: '22'
         proto: tcp
+    - name: Enable ufw
+      ufw:
+        state: enabled
+        policy: reject
     - name: Open port '16262:16272'
       ufw:
         rule: allow
