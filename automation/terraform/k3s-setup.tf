@@ -15,7 +15,7 @@ resource "null_resource" "wait_for_nodes_ready" {
       "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do sleep 5; done",
       "echo 'Cloud-init finished on master'",
       "echo 'Waiting for systemd to settle...'",
-      "while systemctl is-system-running | grep -qE 'starting|degraded'; do sleep 5; done",
+      "while systemctl is-system-running | grep -qE 'initializing|starting'; do sleep 5; done",
       "echo 'Systemd stable on master'"
     ]
 
@@ -34,7 +34,7 @@ resource "null_resource" "wait_for_nodes_ready" {
       "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do sleep 5; done",
       "echo 'Cloud-init finished on worker1'",
       "echo 'Waiting for systemd to settle...'",
-      "while systemctl is-system-running | grep -qE 'starting|degraded'; do sleep 5; done",
+      "while systemctl is-system-running | grep -qE 'initializing|starting'; do sleep 5; done",
       "echo 'Systemd stable on worker1'"
     ]
 
@@ -53,7 +53,7 @@ resource "null_resource" "wait_for_nodes_ready" {
       "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do sleep 5; done",
       "echo 'Cloud-init finished on worker2'",
       "echo 'Waiting for systemd to settle...'",
-      "while systemctl is-system-running | grep -qE 'starting|degraded'; do sleep 5; done",
+      "while systemctl is-system-running | grep -qE 'initializing|starting'; do sleep 5; done",
       "echo 'Systemd stable on worker2'"
     ]
 
