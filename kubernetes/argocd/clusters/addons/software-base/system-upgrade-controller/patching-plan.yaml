@@ -27,10 +27,12 @@ metadata:
 spec:
   concurrency: 1
   serviceAccountName: system-upgrade
-  version: "ubuntu-22.04"
+  # SUC only re-runs a Plan when its spec changes: bump this stamp to patch again
+  version: "2026-10"
   nodeSelector:
-    matchLabels:
-      role: worker
+    matchExpressions:
+      - key: node-role.kubernetes.io/control-plane
+        operator: DoesNotExist
   secrets:
     - name: patching-script
       path: /host/run/system-upgrade/secrets/patching-script
