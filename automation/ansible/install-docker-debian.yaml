@@ -14,8 +14,8 @@
       apt:
         name: docker-compose
         state: present
-    - name: Add Debian user to docker group
+    - name: Add connecting user to docker group
       user:
-        name: debian
+        name: "{{ ansible_user | default(ansible_user_id) }}"
         groups: docker
         append: yes
