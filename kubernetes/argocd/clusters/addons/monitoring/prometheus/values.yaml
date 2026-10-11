@@ -10,6 +10,13 @@ prometheus:
   ingress:
     enabled: false
 
+# Prometheus runs in agent mode and remote-writes, so no local UI/alerting stack
+grafana:
+  enabled: false
+
+alertmanager:
+  enabled: false
+
 kubeApiServer:
   enabled: true
   tlsConfig:
