@@ -22,7 +22,7 @@ data:
           fallthrough
         }
         prometheus :9153
-        forward . /etc/resolv.conf
+        forward . 192.168.1.225
         cache 30
         loop
         reload
