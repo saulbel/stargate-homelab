@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   handbrake:
-    image: jlesage/handbrake
+    image: lscr.io/linuxserver/handbrake:latest
     container_name: handbrake
     restart: unless-stopped
     # Fix AppArmor issue inside LXC
@@ -11,12 +11,16 @@ services:
     devices:
       - /dev/dri:/dev/dri
     ports:
-      - "5800:5800"
+      - "5800:3000"
+    environment:
+      - PUID=0
+      - PGID=0
+      - UMASK=022
+      - TZ=Europe/Madrid
     volumes:
-      - ./config:/config:rw
-      - /mnt/local-storage:/storage:ro
-      - /mnt/local-storage/handbrake/watch:/watch:rw
-      - /mnt/local-storage/handbrake/output:/output:rw
+      - ./config:/config
+      - /mnt/local-storage/handbrake/watch:/watch
+      - /mnt/local-storage/handbrake/output:/output
 
   watchtower:
     image: containrrr/watchtower:latest
