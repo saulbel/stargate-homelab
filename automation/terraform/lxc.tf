@@ -1241,7 +1241,7 @@ resource "proxmox_virtual_environment_container" "handbrake" {
     description = "handbrake lxc"
     unprivileged = false
     start_on_boot = false
-    started = true
+    started = false
 
     features {
         nesting = true
