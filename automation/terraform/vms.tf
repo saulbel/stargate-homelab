@@ -10,7 +10,7 @@ resource "proxmox_virtual_environment_vm" "k3s-master" {
     node_name = "pve1"
     vm_id     = 210
     on_boot = false
-    started = true
+    started = false
 
     agent {
         enabled = true
@@ -120,7 +120,7 @@ resource "proxmox_virtual_environment_vm" "k3s-worker-1" {
     node_name = "pve1"
     vm_id     = 211
     on_boot = false
-    started = true
+    started = false
 
     agent {
         enabled = true
@@ -230,7 +230,7 @@ resource "proxmox_virtual_environment_vm" "k3s-worker-2" {
     node_name = "pve1"
     vm_id     = 212
     on_boot = false
-    started = true
+    started = false
 
     agent {
         enabled = true
