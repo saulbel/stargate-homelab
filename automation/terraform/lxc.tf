@@ -1080,8 +1080,8 @@ resource "proxmox_virtual_environment_container" "playground" {
     vm_id = 121
     description = "playground lxc"
     unprivileged = true
-    start_on_boot = false
-    started = false
+    start_on_boot = true
+    started = true
 
     features {
         nesting = true
