@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metallb
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
+spec:
+  destination:
+    namespace: metallb-system
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - chart: metallb
+      repoURL: https://metallb.github.io/metallb
+      targetRevision: 0.14.9
+      helm:
+        valueFiles:
+          - $values/kubernetes/argocd/clusters/addons/software-base/metallb/values.yaml
+    - path: kubernetes/argocd/clusters/addons/software-base/metallb
+      repoURL: git@github.com:saulbel/stargate-homelab.git
+      targetRevision: main
+      ref: values
+  project: default
+  syncPolicy:
+    retry:
+      limit: 5
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 5m
+    syncOptions:
+      - CreateNamespace=true
+      - SkipDryRunOnMissingResource=true
+    automated:
+      prune: true
+      selfHeal: true
