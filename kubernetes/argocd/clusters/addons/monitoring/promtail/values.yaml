@@ -4,7 +4,7 @@ config:
   logFormat: logfmt
   serverPort: 3101
   clients:
-    - url: http://ubuntu-arm.tail991cf.ts.net:3100/loki/api/v1/push
+    - url: http://ubuntu-arm.tailscale.svc.cluster.local:3100/loki/api/v1/push
   positions:
     filename: /run/promtail/positions.yaml
   enableTracing: false

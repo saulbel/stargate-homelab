@@ -27,7 +27,7 @@ spec:
               command:
                 - /bin/sh
                 - -c
-                - "python krr.py simple --prometheus-url http://ubuntu-arm.tail991cf.ts.net:9090 --max-workers 3 --width 2048"
+                - "python krr.py simple --prometheus-url http://ubuntu-arm.tailscale.svc.cluster.local:9090 --max-workers 3 --width 2048"
               resources:
                 requests:
                   memory: 1Gi

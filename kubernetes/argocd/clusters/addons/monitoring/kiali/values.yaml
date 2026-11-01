@@ -27,7 +27,7 @@ external_services:
     component_status:
       enabled: false
   prometheus:
-    url: http://ubuntu-arm.tail991cf.ts.net:9090
+    url: http://ubuntu-arm.tailscale.svc.cluster.local:9090
   tracing:
     enabled: false
   grafana:
