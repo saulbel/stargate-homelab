@@ -10,7 +10,7 @@ spec:
   sources:
     - chart: gateway
       repoURL: https://istio-release.storage.googleapis.com/charts
-      targetRevision: 1.24.2
+      targetRevision: 1.29.10
       helm:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/software-base/istio-ingressgateway/values.yaml
