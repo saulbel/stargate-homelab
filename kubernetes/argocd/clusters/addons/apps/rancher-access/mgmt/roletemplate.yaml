@@ -1,0 +1,18 @@
+apiVersion: management.cattle.io/v3
+kind: RoleTemplate
+metadata:
+  name: homelab-dev
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+displayName: Homelab Dev
+context: project
+description: Read-only plus basic workload management
+roleTemplateNames:
+  - read-only
+rules:
+  - apiGroups: ["apps"]
+    resources: ["deployments", "statefulsets"]
+    verbs: ["get", "list", "watch", "create", "update", "patch"]
+  - apiGroups: [""]
+    resources: ["pods", "pods/log", "configmaps"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]

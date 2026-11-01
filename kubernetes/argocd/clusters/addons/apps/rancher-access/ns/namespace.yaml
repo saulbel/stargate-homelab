@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: myteam-demo
+  annotations:
+    field.cattle.io/projectId: c-fgq68:p-myteam
+  labels:
+    field.cattle.io/projectId: p-myteam

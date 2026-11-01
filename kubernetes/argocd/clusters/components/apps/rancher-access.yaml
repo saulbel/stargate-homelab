@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rancher-access
+  namespace: argocd
+spec:
+  destination:
+    # cluster registered in ArgoCD pointing at https://192.168.1.28/k8s/clusters/local
+    name: rancher-local
+  source:
+    path: kubernetes/argocd/clusters/addons/apps/rancher-access/mgmt
+    repoURL: git@github.com:saulbel/stargate-homelab.git
+    targetRevision: main
+  project: default
+  syncPolicy:
+    retry:
+      limit: 5
+      backoff:
+        duration: 30s
+        factor: 2
+        maxDuration: 5m
+    syncOptions:
+      - SkipDryRunOnMissingResource=true
+    automated:
+      prune: true
+      selfHeal: false

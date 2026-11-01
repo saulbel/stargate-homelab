@@ -1,0 +1,11 @@
+apiVersion: management.cattle.io/v3
+kind: ProjectRoleTemplateBinding
+metadata:
+  name: prtb-myteam-dev
+  namespace: p-myteam
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+projectName: c-fgq68:p-myteam
+roleTemplateName: homelab-dev
+# TODO: replace with the id of the local test user (kubectl get users.management.cattle.io)
+userPrincipalName: local://u-REPLACE_ME
