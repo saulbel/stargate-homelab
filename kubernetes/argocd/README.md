@@ -18,18 +18,15 @@ argocd
 └── clusters
     └── addons
         └── apps
-        └── jobs
         └── monitoring
         └── software-base
     └── bootstrap
         └── apps.yaml
-        └── jobs.yaml
         └── kustomization.yaml
         └── monitoring.yaml
         └── software-base.yaml
     └── components
         └── apps
-        └── jobs
         └── monitoring
         └── software-base
 ```
