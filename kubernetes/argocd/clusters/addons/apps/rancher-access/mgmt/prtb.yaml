@@ -2,9 +2,9 @@ apiVersion: management.cattle.io/v3
 kind: ProjectRoleTemplateBinding
 metadata:
   name: prtb-myteam-dev
-  namespace: c-fgq68-p-myteam
+  namespace: c-m-xsldsgdg-p-myteam
   annotations:
     argocd.argoproj.io/sync-wave: "1"
-projectName: c-fgq68:p-myteam
+projectName: c-m-xsldsgdg:p-myteam
 roleTemplateName: homelab-dev
 userPrincipalName: local://u-zdvkj

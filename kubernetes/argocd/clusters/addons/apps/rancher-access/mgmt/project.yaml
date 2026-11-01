@@ -2,9 +2,9 @@ apiVersion: management.cattle.io/v3
 kind: Project
 metadata:
   name: p-myteam
-  namespace: c-fgq68
+  namespace: c-m-xsldsgdg
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
-  clusterName: c-fgq68
+  clusterName: c-m-xsldsgdg
   displayName: myteam

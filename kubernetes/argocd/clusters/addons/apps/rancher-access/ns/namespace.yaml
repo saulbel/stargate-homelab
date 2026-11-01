@@ -3,6 +3,6 @@ kind: Namespace
 metadata:
   name: myteam-demo
   annotations:
-    field.cattle.io/projectId: c-fgq68:p-myteam
+    field.cattle.io/projectId: c-m-xsldsgdg:p-myteam
   labels:
     field.cattle.io/projectId: p-myteam
