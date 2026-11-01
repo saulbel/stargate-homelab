@@ -83,8 +83,6 @@ kubectl apply -f /home/saul/k3s/argocd/argocd-repo-secret.yaml
 echo "Bootstrapping ArgoCD apps..."
 kubectl apply -f /home/saul/k3s/argocd/bootstrap.yaml
 ```
-
-MetalLB is not part of this script: it is deployed as an ArgoCD app with an address pool inside `192.168.1.80-100`.
 ---
 
 ## To Improve
