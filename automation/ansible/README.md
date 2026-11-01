@@ -33,8 +33,8 @@ ansible
 
 ## Kubernetes (K3s)
 
-Want to set up a self-hosted, highly available Kubernetes cluster?  
-Check out [techno-tim/k3s-ansible](https://github.com/techno-tim/k3s-ansible), the repo I use in my **Terraform** config for K3s cluster setup.
+I no longer install K3s with Ansible: Rancher provisions the clusters (see [Kubernetes](/kubernetes/README.md)).  
+If you want the Ansible route, [techno-tim/k3s-ansible](https://github.com/techno-tim/k3s-ansible) is the repo I used before.
 
 ---
 

@@ -8,7 +8,9 @@ Terraform is an Infrastructure as Code (**IaC**) tool that lets you declarativel
 
 I don't want to click through the Proxmox UI every time I need a new VM or LXC. With Terraform I describe the node once (IP, resources, provisioners) and can tear it down and rebuild it identically in minutes if I break something testing.
 
-For this project, I use the [`Proxmox`](https://registry.terraform.io/providers/bpg/proxmox/latest/docs) provider to automate VM and resource creation.
+For this project, I use the [`Proxmox`](https://registry.terraform.io/providers/bpg/proxmox/latest/docs) provider to automate LXC creation.
+
+Kubernetes clusters are **not** created here anymore: Rancher provisions their VMs on Proxmox through a node driver (see [Kubernetes](/kubernetes/README.md)).
 
 ---
 
@@ -18,11 +20,9 @@ All my Terraform files for self-hosting are here and ready to use:
 
 ```
 terraform
-└── k3s-setup.tf
 └── lxc.tf
 └── provider.tf
 └── variables.tf
-└── vms.tf
 ```
 
 ---

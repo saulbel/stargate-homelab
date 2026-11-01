@@ -51,7 +51,7 @@ In this repo, [bootstrap](/kubernetes/argocd/clusters/bootstrap) is the parent d
 
 ## Getting Started
 
-After K3s is set up, the following script is executed by Terraform to install ArgoCD and bootstrap your apps:
+Once Rancher has provisioned the cluster, I run the following script by hand against it (kubeconfig from Rancher) to install ArgoCD and bootstrap the apps:
 
 ```bash
 #!/bin/bash
@@ -84,15 +84,7 @@ echo "Bootstrapping ArgoCD apps..."
 kubectl apply -f /home/saul/k3s/argocd/bootstrap.yaml
 ```
 
-This script is called in `main.tf` after K3s setup:
-
-```hcl
-# install argocd and apps
-provisioner "local-exec" {
-    working_dir = "/home/saul/k3s"
-    command = "./install.sh"
-}
-```
+MetalLB is not part of this script: it is deployed as an ArgoCD app with an address pool inside `192.168.1.80-100`.
 ---
 
 ## To Improve

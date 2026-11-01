@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.8.0] - Rancher-provisioned clusters
+- Kubernetes clusters are now created by Rancher (LXC `rancher`) on Proxmox through the pve node driver, instead of Terraform + k3s-ansible
+- Removed `vms.tf` and `k3s-setup.tf` (old K3s VMs 210-212 and their install pipeline); Terraform now only manages LXCs
+- Cloud-init template is VMID 200 (`debian-13`) in the `rancher-managed` pool; K3s runs with `servicelb` and `traefik` disabled
+
 ## [1.7.0] - Terraform Security & Organization
 - Terraform: Split monolithic `main.tf` into separate files (`lxc.tf`, `vms.tf`, `k3s-setup.tf`)
 - Terraform: Added `sensitive = true` to password and auth key variables
