@@ -2,7 +2,7 @@ apiVersion: management.cattle.io/v3
 kind: ProjectRoleTemplateBinding
 metadata:
   name: prtb-myteam-dev
-  namespace: p-myteam
+  namespace: c-fgq68-p-myteam
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 projectName: c-fgq68:p-myteam
