@@ -43,6 +43,7 @@ Currently hosted on my NUC:
 ### LXCs
 - [Adguard](/docker/adguard): Adblock + DNS server
 - [Amule](/docker/amule): P2P downloads
+- Bots: Telegram bots (LXC 129)
 - [Bookstack](/docker/bookstack): Wiki
 - [Caddy](/docker/caddy): Reverse proxy
 - [Deluge](/docker/deluge): Torrent downloads
@@ -55,7 +56,6 @@ Currently hosted on my NUC:
 - [Plex](/docker/plex): Media player
 - [Radarr](/docker/radarr): Movie manager
 - [Rancher](/docker/rancher): Kubernetes management
-- [Rundeck](/docker/rundeck): Automation
 - [Sonarr](/docker/sonarr): TV show manager
 - [Tautulli](/docker/tautulli): Plex stats
 - [Vaultwarden](/docker/vaultwarden): Password vault

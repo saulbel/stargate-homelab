@@ -1866,12 +1866,12 @@ resource "proxmox_virtual_environment_container" "rancher" {
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for rundeck --> rundeck 129          #
+# Ubuntu 22 lxc ct for bots --> bots 129                #
 #########################################################
-resource "proxmox_virtual_environment_container" "rundeck" {
+resource "proxmox_virtual_environment_container" "bots" {
     node_name = "pve1"
     vm_id = 129
-    description = "rundeck lxc"
+    description = "bots lxc"
     unprivileged = true
     start_on_boot = false
     started = true
@@ -1882,7 +1882,7 @@ resource "proxmox_virtual_environment_container" "rundeck" {
     }
 
     initialization {
-        hostname = "rundeck"
+        hostname = "bots"
         ip_config {
             ipv4 {
                 address = "192.168.1.29/24"
