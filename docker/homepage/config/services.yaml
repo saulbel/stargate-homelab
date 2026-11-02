@@ -94,11 +94,10 @@
         description: Secrets
         siteMonitor: http://infisical.home/
 
-    - Rundeck:
-        icon: /icons/rundeck.png
-        href: http://rundeck.home/
-        description: Automation
-        siteMonitor: http://rundeck.home/
+    - Telegram:
+        icon: /icons/bots.png
+        description: Bots
+        ping: 192.168.1.29
 
     - Playground:
         icon: /icons/playground-1.png
