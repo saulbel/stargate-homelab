@@ -33,14 +33,13 @@ services:
       - rancher
 
   watchtower:
-    image: containrrr/watchtower:latest
+    image: nickfedor/watchtower:1.23.2
     container_name: watchtower
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - TZ=Europe/Madrid
-      - DOCKER_API_VERSION=1.44
       - WATCHTOWER_MONITOR_ONLY=true
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_INCLUDE_RESTARTING=true

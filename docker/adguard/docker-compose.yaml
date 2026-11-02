@@ -35,7 +35,7 @@ services:
         #- ./certs/example.com:/certs # optional: if you have your own SSL certs
 
   watchtower:
-    image: containrrr/watchtower:latest
+    image: nickfedor/watchtower:1.23.2
     env_file: .env
     container_name: watchtower
     restart: unless-stopped
@@ -43,7 +43,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - TZ=Europe/Madrid
-      - DOCKER_API_VERSION=1.44
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_INCLUDE_RESTARTING=true
       - WATCHTOWER_INCLUDE_STOPPED=true
