@@ -60,6 +60,26 @@ services:
     networks:
       - infisical
 
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TZ=Europe/Madrid
+      - DOCKER_API_VERSION=1.44
+      - WATCHTOWER_MONITOR_ONLY=true
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_RESTARTING=true
+      - WATCHTOWER_INCLUDE_STOPPED=true
+      - WATCHTOWER_TIMEOUT=30s
+      - WATCHTOWER_NOTIFICATIONS_HOSTNAME=infisical
+      - WATCHTOWER_SCHEDULE=0 0 12 * * 0
+      - WATCHTOWER_DEBUG=false
+      # monitor only: logs new images, never updates
+      # - WATCHTOWER_NOTIFICATION_URL=
+
 volumes:
   pg_data:
     driver: local
