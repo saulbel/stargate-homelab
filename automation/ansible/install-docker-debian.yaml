@@ -1,19 +1,41 @@
 - hosts: all
-  become: yes
+  become: false  # connect as root, debian 13 template has no sudo
   tasks:
     - name: Install some tools
       apt:
+        update_cache: true
         pkg:
           - curl
           - vim
-    - name: Install Docker
-      apt:
-        name: docker.io
+          - ca-certificates
+          - gnupg
+      register: apt_action
+      retries: 100
+      until: apt_action is success or ('Failed to lock apt for exclusive operation' not in apt_action.msg and '/var/lib/dpkg/lock' not in apt_action.msg)
+    - name: Create apt keyrings directory
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+    - name: Add Docker GPG apt Key
+      get_url:
+        url: https://download.docker.com/linux/debian/gpg
+        dest: /etc/apt/keyrings/docker.asc
+        mode: '0644'
+    - name: Add Docker Repository
+      apt_repository:
+        repo: "deb [arch={{ 'arm64' if ansible_architecture == 'aarch64' else 'amd64' }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable"
+        filename: docker
         state: present
-    - name: Install Docker Compose
+    - name: Update apt and install docker-ce and the compose plugin
       apt:
-        name: docker-compose
-        state: present
+        pkg:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-compose-plugin
+        state: latest
+        update_cache: true
     - name: Add connecting user to docker group
       user:
         name: "{{ ansible_user | default(ansible_user_id) }}"
