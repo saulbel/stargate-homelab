@@ -1484,7 +1484,7 @@ resource "proxmox_virtual_environment_container" "minio" {
 
     disk {
         datastore_id = "local-lvm"
-        size = 50
+        size = 10
     }
 
     cpu {
