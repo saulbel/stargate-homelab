@@ -19,13 +19,12 @@ ansible
 └── install-and-configure-firewalld.yaml
 └── install-and-configure-ufw.yaml
 └── install-docker-debian.yaml
-└── install-docker-ubuntu.yaml  
 └── install-tools.yaml 
 └── reboot-host.yaml 
 ```
 
 - **Firewall setup:** `firewalld` and `ufw`
-- **Docker installation:** For Debian and Ubuntu
+- **Docker installation:** For Debian
 - **Essential tools:** Common utilities for your hosts
 - **Host management:** Reboot and maintenance tasks
 
