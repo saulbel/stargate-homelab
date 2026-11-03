@@ -85,7 +85,7 @@ resource "proxmox_virtual_environment_container" "pbs" {
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for homepage --> homepage 110        #
+# Debian 13 lxc ct for homepage --> homepage 110        #
 #########################################################
 resource "proxmox_virtual_environment_container" "homepage" {
     node_name = "pve1"
@@ -140,8 +140,8 @@ resource "proxmox_virtual_environment_container" "homepage" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
   # allow tun access 
@@ -193,13 +193,13 @@ resource "proxmox_virtual_environment_container" "homepage" {
   # install docker 
   provisioner "local-exec" {
     working_dir = "/home/saul/ansible/"
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.10,"
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.10,"
   }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for adguard --> adguard 111          #
+# Debian 13 lxc ct for adguard --> adguard 111          #
 #########################################################
 resource "proxmox_virtual_environment_container" "adguard" {
     node_name = "pve1"
@@ -248,8 +248,8 @@ resource "proxmox_virtual_environment_container" "adguard" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -270,13 +270,13 @@ resource "proxmox_virtual_environment_container" "adguard" {
     # install docker 
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.11,"
+        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.11,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for kavita --> kavita 112            #
+# Debian 13 lxc ct for kavita --> kavita 112            #
 #########################################################
 resource "proxmox_virtual_environment_container" "kavita" {
     node_name = "pve1"
@@ -330,8 +330,8 @@ resource "proxmox_virtual_environment_container" "kavita" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # allow tun access
@@ -384,13 +384,13 @@ resource "proxmox_virtual_environment_container" "kavita" {
     # install docker 
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.12,"
+        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.12,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for vaulwarden --> vaultwarden 113   #
+# Debian 13 lxc ct for vaulwarden --> vaultwarden 113   #
 #########################################################
 resource "proxmox_virtual_environment_container" "vaultwarden" {
     node_name = "pve1"
@@ -439,8 +439,8 @@ resource "proxmox_virtual_environment_container" "vaultwarden" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -461,13 +461,13 @@ resource "proxmox_virtual_environment_container" "vaultwarden" {
     # install docker 
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.13,"
+        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.13,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for plex --> plex 114                #
+# Debian 13 lxc ct for plex --> plex 114                #
 #########################################################
 resource "proxmox_virtual_environment_container" "plex" {
     node_name = "pve1"
@@ -533,8 +533,8 @@ resource "proxmox_virtual_environment_container" "plex" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # allow tun access
@@ -587,13 +587,13 @@ resource "proxmox_virtual_environment_container" "plex" {
     # install docker 
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.14,"
+        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.14,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for deluge --> deluge 115            #
+# Debian 13 lxc ct for deluge --> deluge 115            #
 #########################################################
 resource "proxmox_virtual_environment_container" "deluge" {
     node_name = "pve1"
@@ -647,8 +647,8 @@ resource "proxmox_virtual_environment_container" "deluge" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -669,13 +669,13 @@ resource "proxmox_virtual_environment_container" "deluge" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.15,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.15,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for jackett --> jackett 116          #
+# Debian 13 lxc ct for jackett --> jackett 116          #
 #########################################################
 resource "proxmox_virtual_environment_container" "jackett" {
     node_name = "pve1"
@@ -683,7 +683,7 @@ resource "proxmox_virtual_environment_container" "jackett" {
     description = "jackett lxc"
     unprivileged = true
     start_on_boot = true
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -725,8 +725,8 @@ resource "proxmox_virtual_environment_container" "jackett" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -747,13 +747,13 @@ resource "proxmox_virtual_environment_container" "jackett" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.16,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.16,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for radarr --> radarr 117            #
+# Debian 13 lxc ct for radarr --> radarr 117            #
 #########################################################
 resource "proxmox_virtual_environment_container" "radarr" {
     node_name = "pve1"
@@ -761,7 +761,7 @@ resource "proxmox_virtual_environment_container" "radarr" {
     description = "radarr lxc"
     unprivileged = true
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -808,8 +808,8 @@ resource "proxmox_virtual_environment_container" "radarr" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -830,13 +830,13 @@ resource "proxmox_virtual_environment_container" "radarr" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.17,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.17,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for sonarr --> sonarr 118            #
+# Debian 13 lxc ct for sonarr --> sonarr 118            #
 #########################################################
 resource "proxmox_virtual_environment_container" "sonarr" {
     node_name = "pve1"
@@ -844,7 +844,7 @@ resource "proxmox_virtual_environment_container" "sonarr" {
     description = "sonarr lxc"
     unprivileged = true
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -891,8 +891,8 @@ resource "proxmox_virtual_environment_container" "sonarr" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -913,13 +913,13 @@ resource "proxmox_virtual_environment_container" "sonarr" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.18,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.18,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for tautuilli --> tautulli 119       #
+# Debian 13 lxc ct for tautuilli --> tautulli 119       #
 #########################################################
 resource "proxmox_virtual_environment_container" "tautulli" {
     node_name = "pve1"
@@ -968,8 +968,8 @@ resource "proxmox_virtual_environment_container" "tautulli" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -990,13 +990,13 @@ resource "proxmox_virtual_environment_container" "tautulli" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.19,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.19,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for caddy --> caddy 120              #
+# Debian 13 lxc ct for caddy --> caddy 120              #
 #########################################################
 resource "proxmox_virtual_environment_container" "caddy" {
     node_name = "pve1"
@@ -1045,8 +1045,8 @@ resource "proxmox_virtual_environment_container" "caddy" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -1067,13 +1067,13 @@ resource "proxmox_virtual_environment_container" "caddy" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.20,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.20,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for playground --> playground 121    #
+# Debian 13 lxc ct for playground --> playground 121    #
 #########################################################
 resource "proxmox_virtual_environment_container" "playground" {
     node_name = "pve1"
@@ -1123,8 +1123,8 @@ resource "proxmox_virtual_environment_container" "playground" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -1145,13 +1145,13 @@ resource "proxmox_virtual_environment_container" "playground" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.21,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.21,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for amule --> amule 122              #
+# Debian 13 lxc ct for amule --> amule 122              #
 #########################################################
 resource "proxmox_virtual_environment_container" "amule" {
     node_name = "pve1"
@@ -1205,8 +1205,8 @@ resource "proxmox_virtual_environment_container" "amule" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -1227,13 +1227,13 @@ resource "proxmox_virtual_environment_container" "amule" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.22,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.22,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for handbrake --> handbrake 123      #
+# Debian 13 lxc ct for handbrake --> handbrake 123      #
 #########################################################
 resource "proxmox_virtual_environment_container" "handbrake" {
     node_name = "pve1"
@@ -1241,7 +1241,7 @@ resource "proxmox_virtual_environment_container" "handbrake" {
     description = "handbrake lxc"
     unprivileged = false
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -1288,8 +1288,8 @@ resource "proxmox_virtual_environment_container" "handbrake" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
 
@@ -1327,13 +1327,13 @@ resource "proxmox_virtual_environment_container" "handbrake" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.23,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.23,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for bookstack --> bookstack 124      #
+# Debian 13 lxc ct for bookstack --> bookstack 124      #
 #########################################################
 resource "proxmox_virtual_environment_container" "bookstack" {
     node_name = "pve1"
@@ -1387,8 +1387,8 @@ resource "proxmox_virtual_environment_container" "bookstack" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
   # allow tun access 
@@ -1440,13 +1440,13 @@ resource "proxmox_virtual_environment_container" "bookstack" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.24,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.24,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for minio --> minio 125              #
+# Debian 13 lxc ct for minio --> minio 125              #
 #########################################################
 resource "proxmox_virtual_environment_container" "minio" {
     node_name = "pve1"
@@ -1454,7 +1454,7 @@ resource "proxmox_virtual_environment_container" "minio" {
     description = "minio lxc"
     unprivileged = true
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -1496,8 +1496,8 @@ resource "proxmox_virtual_environment_container" "minio" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -1522,13 +1522,13 @@ resource "proxmox_virtual_environment_container" "minio" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.25,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.25,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for nfs --> nfs 126                  #
+# Debian 13 lxc ct for nfs --> nfs 126                  #
 #########################################################
 resource "proxmox_virtual_environment_container" "nfs" {
     node_name = "pve1"
@@ -1536,7 +1536,7 @@ resource "proxmox_virtual_environment_container" "nfs" {
     description = "nfs lxc"
     unprivileged = false
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -1583,8 +1583,8 @@ resource "proxmox_virtual_environment_container" "nfs" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -1650,13 +1650,13 @@ resource "proxmox_virtual_environment_container" "nfs" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.26,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.26,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for infisical --> infisical 127      #
+# Debian 13 lxc ct for infisical --> infisical 127      #
 #########################################################
 resource "proxmox_virtual_environment_container" "infisical" {
     node_name = "pve1"
@@ -1664,7 +1664,7 @@ resource "proxmox_virtual_environment_container" "infisical" {
     description = "infisical lxc"
     unprivileged = true
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -1711,8 +1711,8 @@ resource "proxmox_virtual_environment_container" "infisical" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -1733,13 +1733,13 @@ resource "proxmox_virtual_environment_container" "infisical" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.27,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.27,"
     }
 
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for rancher --> rancher 128          #
+# Debian 13 lxc ct for rancher --> rancher 128          #
 #########################################################
 resource "proxmox_virtual_environment_container" "rancher" {
     node_name = "pve1"
@@ -1747,7 +1747,7 @@ resource "proxmox_virtual_environment_container" "rancher" {
     description = "rancher lxc"
     unprivileged = false
     start_on_boot = false
-    started = false
+    started = true
 
     features {
         nesting = true
@@ -1790,8 +1790,8 @@ resource "proxmox_virtual_environment_container" "rancher" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # allow tun access 
@@ -1861,12 +1861,12 @@ resource "proxmox_virtual_environment_container" "rancher" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.28,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.28,"
     }
 }
 
 #########################################################
-# Ubuntu 22 lxc ct for bots --> bots 129                #
+# Debian 13 lxc ct for bots --> bots 129                #
 #########################################################
 resource "proxmox_virtual_environment_container" "bots" {
     node_name = "pve1"
@@ -1917,8 +1917,8 @@ resource "proxmox_virtual_environment_container" "bots" {
     }
 
     operating_system {
-        template_file_id = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
-        type             = "ubuntu"
+        template_file_id = "local:vztmpl/debian-13-standard_13.6-1_amd64.tar.zst"
+        type             = "debian"
     }
 
     # do not change dns
@@ -1939,6 +1939,6 @@ resource "proxmox_virtual_environment_container" "bots" {
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
-        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-ubuntu.yaml -i root@192.168.1.29,"
+        command     = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook install-docker-debian.yaml -i root@192.168.1.29,"
     }
 }

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.9.0] - Debian 13 LXCs
+- All Ubuntu 22.04 LXCs (110-129) were recreated from the Debian 13 template, with their data restored
+- `pbs` was upgraded in place to Debian 13; its `debian-12` template in `lxc.tf` is left as is, because changing it would plan a replacement of the backup server
+
 ## [1.8.0] - Rancher-provisioned clusters
 - Kubernetes clusters are now created by Rancher (LXC `rancher`) on Proxmox through the pve node driver, instead of Terraform + k3s-ansible
 - Removed `vms.tf` and `k3s-setup.tf` (old K3s VMs 210-212 and their install pipeline); Terraform now only manages LXCs
