@@ -10,7 +10,6 @@ prometheus-loki
     └── loki-k3s.json
     └── prometheus-k3s.json
     └── proxmox.json
-    └── win-exporter.json
 └── docker-compose.yaml
 ```
 ## Notes
