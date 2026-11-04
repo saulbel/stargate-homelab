@@ -25,5 +25,5 @@ services:
     volumes:
       - ./config:/home/amule/.aMule
       - /mnt/local-storage/amule:/incoming
-      - /mnt/local-storage/amule:/temp
+      - /mnt/local-storage/amule-temp:/temp
     restart: unless-stopped
