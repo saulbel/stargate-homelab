@@ -212,6 +212,5 @@
 
     - Loki:
         icon: /icons/loki.png
-        href: "{{HOMEPAGE_VAR_LOKI_URL}}"
         description: Logs
         siteMonitor: "{{HOMEPAGE_VAR_LOKI_URL}}/ready"
