@@ -1,0 +1,57 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: metallb
+  namespace: infra
+spec:
+  interval: 1h
+  subscriptions:
+    - chart:
+        repoURL: https://metallb.github.io/metallb
+        name: metallb
+        semverConstraint: "^0.14.9"
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: metallb
+  namespace: infra
+spec:
+  requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: metallb
+      sources:
+        direct: true
+  promotionTemplate:
+    spec:
+      vars:
+        - name: repoURL
+          value: git@github.com:saulbel/stargate-homelab.git
+        - name: chartVersion
+          value: ${{ trimPrefix(chartFrom("https://metallb.github.io/metallb", "metallb").Version, "v") }}
+      steps:
+        - uses: git-clone
+          config:
+            repoURL: ${{ vars.repoURL }}
+            checkout:
+              - branch: main
+                path: ./src
+        - uses: yaml-update
+          config:
+            path: ./src/kubernetes/argocd/clusters/components/software-base/metallb.yaml
+            updates:
+              - key: spec.sources.0.targetRevision
+                value: ${{ vars.chartVersion }}
+        - uses: git-commit
+          config:
+            path: ./src
+            message: bump metallb chart to ${{ vars.chartVersion }}
+        - uses: git-push
+          config:
+            path: ./src
+        - uses: argocd-update
+          config:
+            apps:
+              - name: metallb
+                namespace: argocd

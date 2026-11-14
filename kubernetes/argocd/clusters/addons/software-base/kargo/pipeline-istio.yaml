@@ -1,0 +1,85 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: istio
+  namespace: infra
+spec:
+  interval: 1h
+  subscriptions:
+    - chart:
+        repoURL: https://istio-release.storage.googleapis.com/charts
+        name: base
+        semverConstraint: "~1.29.10"
+    - chart:
+        repoURL: https://istio-release.storage.googleapis.com/charts
+        name: istiod
+        semverConstraint: "~1.29.10"
+    - chart:
+        repoURL: https://istio-release.storage.googleapis.com/charts
+        name: gateway
+        semverConstraint: "~1.29.10"
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: istio
+  namespace: infra
+spec:
+  requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: istio
+      sources:
+        direct: true
+  promotionTemplate:
+    spec:
+      vars:
+        - name: repoURL
+          value: git@github.com:saulbel/stargate-homelab.git
+        - name: version0
+          value: ${{ trimPrefix(chartFrom("https://istio-release.storage.googleapis.com/charts", "base").Version, "v") }}
+        - name: version1
+          value: ${{ trimPrefix(chartFrom("https://istio-release.storage.googleapis.com/charts", "istiod").Version, "v") }}
+        - name: version2
+          value: ${{ trimPrefix(chartFrom("https://istio-release.storage.googleapis.com/charts", "gateway").Version, "v") }}
+      steps:
+        - uses: git-clone
+          config:
+            repoURL: ${{ vars.repoURL }}
+            checkout:
+              - branch: main
+                path: ./src
+        - uses: yaml-update
+          config:
+            path: ./src/kubernetes/argocd/clusters/components/software-base/istio-base.yaml
+            updates:
+              - key: spec.sources.0.targetRevision
+                value: ${{ vars.version0 }}
+        - uses: yaml-update
+          config:
+            path: ./src/kubernetes/argocd/clusters/components/software-base/istiod.yaml
+            updates:
+              - key: spec.sources.0.targetRevision
+                value: ${{ vars.version1 }}
+        - uses: yaml-update
+          config:
+            path: ./src/kubernetes/argocd/clusters/components/software-base/istio-ingressgateway.yaml
+            updates:
+              - key: spec.sources.0.targetRevision
+                value: ${{ vars.version2 }}
+        - uses: git-commit
+          config:
+            path: ./src
+            message: bump istio chart to ${{ vars.version0 }}
+        - uses: git-push
+          config:
+            path: ./src
+        - uses: argocd-update
+          config:
+            apps:
+              - name: istio-base
+                namespace: argocd
+              - name: istiod
+                namespace: argocd
+              - name: istio-ingressgateway
+                namespace: argocd

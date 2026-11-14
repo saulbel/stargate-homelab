@@ -1,0 +1,57 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: promtail
+  namespace: infra
+spec:
+  interval: 1h
+  subscriptions:
+    - chart:
+        repoURL: https://grafana.github.io/helm-charts
+        name: promtail
+        semverConstraint: "^6.15.5"
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: promtail
+  namespace: infra
+spec:
+  requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: promtail
+      sources:
+        direct: true
+  promotionTemplate:
+    spec:
+      vars:
+        - name: repoURL
+          value: git@github.com:saulbel/stargate-homelab.git
+        - name: chartVersion
+          value: ${{ trimPrefix(chartFrom("https://grafana.github.io/helm-charts", "promtail").Version, "v") }}
+      steps:
+        - uses: git-clone
+          config:
+            repoURL: ${{ vars.repoURL }}
+            checkout:
+              - branch: main
+                path: ./src
+        - uses: yaml-update
+          config:
+            path: ./src/kubernetes/argocd/clusters/components/monitoring/promtail.yaml
+            updates:
+              - key: spec.sources.0.targetRevision
+                value: ${{ vars.chartVersion }}
+        - uses: git-commit
+          config:
+            path: ./src
+            message: bump promtail chart to ${{ vars.chartVersion }}
+        - uses: git-push
+          config:
+            path: ./src
+        - uses: argocd-update
+          config:
+            apps:
+              - name: promtail
+                namespace: argocd

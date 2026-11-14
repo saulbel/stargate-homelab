@@ -1,0 +1,57 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: nfs
+  namespace: infra
+spec:
+  interval: 1h
+  subscriptions:
+    - chart:
+        repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+        name: csi-driver-nfs
+        semverConstraint: "^4.12.0"
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: nfs
+  namespace: infra
+spec:
+  requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: nfs
+      sources:
+        direct: true
+  promotionTemplate:
+    spec:
+      vars:
+        - name: repoURL
+          value: git@github.com:saulbel/stargate-homelab.git
+        - name: chartVersion
+          value: ${{ trimPrefix(chartFrom("https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts", "csi-driver-nfs").Version, "v") }}
+      steps:
+        - uses: git-clone
+          config:
+            repoURL: ${{ vars.repoURL }}
+            checkout:
+              - branch: main
+                path: ./src
+        - uses: yaml-update
+          config:
+            path: ./src/kubernetes/argocd/clusters/components/software-base/nfs.yaml
+            updates:
+              - key: spec.sources.0.targetRevision
+                value: ${{ vars.chartVersion }}
+        - uses: git-commit
+          config:
+            path: ./src
+            message: bump nfs chart to ${{ vars.chartVersion }}
+        - uses: git-push
+          config:
+            path: ./src
+        - uses: argocd-update
+          config:
+            apps:
+              - name: nfs
+                namespace: argocd

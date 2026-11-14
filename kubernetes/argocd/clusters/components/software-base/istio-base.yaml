@@ -4,6 +4,7 @@ metadata:
   name: istio-base
   namespace: argocd
   annotations:
+    kargo.akuity.io/authorized-stage: "infra:istio"
     argocd.argoproj.io/sync-wave: "-2"
 spec:
   destination:

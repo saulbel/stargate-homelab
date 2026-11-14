@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: istio-ingressgateway
   namespace: argocd
+  annotations:
+    kargo.akuity.io/authorized-stage: "infra:istio"
 spec:
   destination:
     namespace: istio-ingress

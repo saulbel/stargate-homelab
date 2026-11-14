@@ -1,0 +1,57 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: prometheus
+  namespace: infra
+spec:
+  interval: 1h
+  subscriptions:
+    - chart:
+        repoURL: https://prometheus-community.github.io/helm-charts
+        name: kube-prometheus-stack
+        semverConstraint: "^58.2.1"
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: prometheus
+  namespace: infra
+spec:
+  requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: prometheus
+      sources:
+        direct: true
+  promotionTemplate:
+    spec:
+      vars:
+        - name: repoURL
+          value: git@github.com:saulbel/stargate-homelab.git
+        - name: chartVersion
+          value: ${{ trimPrefix(chartFrom("https://prometheus-community.github.io/helm-charts", "kube-prometheus-stack").Version, "v") }}
+      steps:
+        - uses: git-clone
+          config:
+            repoURL: ${{ vars.repoURL }}
+            checkout:
+              - branch: main
+                path: ./src
+        - uses: yaml-update
+          config:
+            path: ./src/kubernetes/argocd/clusters/components/monitoring/prometheus.yaml
+            updates:
+              - key: spec.sources.0.targetRevision
+                value: ${{ vars.chartVersion }}
+        - uses: git-commit
+          config:
+            path: ./src
+            message: bump prometheus chart to ${{ vars.chartVersion }}
+        - uses: git-push
+          config:
+            path: ./src
+        - uses: argocd-update
+          config:
+            apps:
+              - name: prometheus
+                namespace: argocd
