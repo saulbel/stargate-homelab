@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: kargo
+  namespace: kargo
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: kargo.k3s.home
+    external-dns.alpha.kubernetes.io/target: "192.168.1.80"
+spec:
+  hosts:
+    - kargo.k3s.home
+  gateways:
+    - istio-ingress/homelab-gateway
+  http:
+    - route:
+        - destination:
+            host: kargo-api
+            port:
+              number: 443
