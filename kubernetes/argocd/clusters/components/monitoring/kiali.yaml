@@ -12,7 +12,7 @@ spec:
   sources:
     - chart: kiali-server
       repoURL: https://kiali.org/helm-charts
-      targetRevision: 2.1.0
+      targetRevision: 2.34.1
       helm:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/monitoring/kiali/values.yaml
