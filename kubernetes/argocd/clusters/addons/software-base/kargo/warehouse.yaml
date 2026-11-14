@@ -1,0 +1,12 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: velero
+  namespace: infra
+spec:
+  interval: 1h
+  subscriptions:
+    - chart:
+        repoURL: https://vmware-tanzu.github.io/helm-charts
+        name: velero
+        semverConstraint: ">=6.0.0 <7.0.0"

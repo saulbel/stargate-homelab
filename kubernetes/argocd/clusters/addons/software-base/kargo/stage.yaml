@@ -1,0 +1,46 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: homelab
+  namespace: infra
+spec:
+  requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: velero
+      sources:
+        direct: true
+  promotionTemplate:
+    spec:
+      vars:
+        - name: repoURL
+          value: git@github.com:saulbel/stargate-homelab.git
+        - name: chartRepo
+          value: https://vmware-tanzu.github.io/helm-charts
+        - name: chartVersion
+          value: ${{ chartFrom(vars.chartRepo, "velero").Version }}
+      steps:
+        - uses: git-clone
+          config:
+            repoURL: ${{ vars.repoURL }}
+            checkout:
+              - branch: main
+                path: ./src
+        - uses: yaml-update
+          config:
+            path: ./src/kubernetes/argocd/clusters/components/software-base/velero.yaml
+            updates:
+              - key: spec.sources.0.targetRevision
+                value: ${{ vars.chartVersion }}
+        - uses: git-commit
+          config:
+            path: ./src
+            message: bump velero chart to ${{ vars.chartVersion }}
+        - uses: git-push
+          config:
+            path: ./src
+        - uses: argocd-update
+          config:
+            apps:
+              - name: velero
+                namespace: argocd
