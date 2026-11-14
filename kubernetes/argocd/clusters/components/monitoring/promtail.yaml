@@ -12,7 +12,7 @@ spec:
   sources:
     - chart: promtail
       repoURL: https://grafana.github.io/helm-charts
-      targetRevision: 6.15.5
+      targetRevision: 6.17.1
       helm:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/monitoring/promtail/values.yaml
