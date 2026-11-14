@@ -13,7 +13,7 @@ spec:
   sources:
     - chart: cert-manager
       repoURL: https://charts.jetstack.io
-      targetRevision: 1.17.2
+      targetRevision: 1.21.3
       helm:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/software-base/cert-manager/values.yaml
