@@ -5,6 +5,7 @@ services:
     image: rancher/rancher:v2.13.1
     container_name: rancher
     restart: unless-stopped
+    stop_grace_period: 120s
     privileged: true
     ports:
       - "80:80"
