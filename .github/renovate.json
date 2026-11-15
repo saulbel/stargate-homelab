@@ -21,30 +21,9 @@
       "automerge": true
     },
     {
-      "matchUpdateTypes": ["major"],
-      "automerge": false,
-      "dependencyDashboardApproval": true
-    },
-    {
       "matchFileNames": ["kubernetes/argocd/clusters/components/software-base/istio*.yaml"],
       "groupName": "istio",
       "commitMessageTopic": "istio chart"
-    },
-    {
-      "matchFileNames": [
-        "kubernetes/argocd/clusters/components/software-base/istio*.yaml",
-        "kubernetes/argocd/clusters/components/software-base/cert-manager.yaml",
-        "kubernetes/argocd/clusters/components/software-base/metallb.yaml",
-        "kubernetes/argocd/clusters/components/software-base/external-secrets.yaml",
-        "kubernetes/argocd/clusters/components/software-base/velero.yaml",
-        "kubernetes/argocd/clusters/components/apps/vaultwarden.yaml"
-      ],
-      "automerge": false,
-      "labels": ["critical"]
-    },
-    {
-      "matchFileNames": ["kubernetes/argocd/clusters/components/software-base/kargo.yaml"],
-      "enabled": false
     }
   ]
 }
