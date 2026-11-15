@@ -1,11 +1,6 @@
-kubectl:
-  image:
-    repository: bitnamilegacy/kubectl
-    tag: 1.33.3
-
 initContainers:
   - name: velero-plugin-for-aws
-    image: velero/velero-plugin-for-aws:v1.9.0
+    image: velero/velero-plugin-for-aws:v1.13.1
     imagePullPolicy: IfNotPresent
     volumeMounts:
       - mountPath: /target
@@ -37,7 +32,7 @@ configuration:
       key:
     config: {}
 
-  uploaderType: restic
+  uploaderType: kopia
   backupSyncPeriod:
   fsBackupTimeout:
   clientBurst:
@@ -61,7 +56,7 @@ configuration:
   defaultSnapshotMoveData:
   features:
   namespace: velero
-  extraEnvVars: {}
+  extraEnvVars: []
   defaultVolumesToFsBackup: true
   defaultRepoMaintainFrequency:
 
