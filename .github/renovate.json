@@ -8,6 +8,8 @@
   "minimumReleaseAge": "3 days",
   "internalChecksFilter": "strict",
   "semanticCommits": "disabled",
+  "commitMessageAction": "update",
+  "commitMessageTopic": "{{depName}}",
   "automergeType": "pr",
   "platformAutomerge": false,
   "automergeStrategy": "rebase",
