@@ -10,7 +10,7 @@ spec:
   sources:
     - chart: external-dns
       repoURL: registry-1.docker.io/bitnamicharts
-      targetRevision: 6.38.0
+      targetRevision: 9.0.3
       helm:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/software-base/external-dns/values.yaml
