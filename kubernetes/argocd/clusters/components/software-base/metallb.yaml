@@ -4,7 +4,6 @@ metadata:
   name: metallb
   namespace: argocd
   annotations:
-    kargo.akuity.io/authorized-stage: "infra:metallb"
     argocd.argoproj.io/sync-wave: "-3"
 spec:
   destination:

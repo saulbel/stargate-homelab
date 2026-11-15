@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: kiali
   namespace: argocd
-  annotations:
-    kargo.akuity.io/authorized-stage: "infra:kiali"
 spec:
   destination:
     namespace: istio-system
