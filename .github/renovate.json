@@ -1,0 +1,25 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "enabledManagers": ["argocd"],
+  "argocd": {
+    "managerFilePatterns": ["/^kubernetes/argocd/clusters/components/.+\\.yaml$/"]
+  },
+  "minimumReleaseAge": "3 days",
+  "internalChecksFilter": "strict",
+  "semanticCommits": "disabled",
+  "automergeType": "pr",
+  "platformAutomerge": false,
+  "automergeStrategy": "rebase",
+  "ignoreTests": true,
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "matchFileNames": ["kubernetes/argocd/clusters/components/software-base/istio*.yaml"],
+      "groupName": "istio"
+    }
+  ]
+}
