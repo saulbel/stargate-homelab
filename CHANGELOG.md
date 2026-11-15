@@ -2,10 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.10.0] - Renovate
-- Helm chart bumps in ArgoCD Applications now come from Renovate PRs instead of Kargo promotions
-- Patch bumps automerge after 3 days; major bumps wait for dashboard approval; istio, cert-manager, metallb, external-secrets, velero and vaultwarden need manual review
+## [1.10.0] - Kargo removal
 - Removed the kargo app, its addons and the kargo stage annotations
+- Helm chart versions are bumped by hand in `components/<category>/<app>.yaml`
+- Enabled `ServerSideApply` in the external-secrets app, because its CRDs are too large for client-side apply
 
 ## [1.9.0] - Debian 13 LXCs
 - All Ubuntu 22.04 LXCs (110-129) were recreated from the Debian 13 template, with their data restored
