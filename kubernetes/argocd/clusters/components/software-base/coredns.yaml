@@ -12,6 +12,12 @@ spec:
       repoURL: git@github.com:saulbel/stargate-homelab.git
       targetRevision: main
   project: default
+  ignoreDifferences:
+    - kind: ConfigMap
+      name: coredns
+      namespace: kube-system
+      jsonPointers:
+        - /data/NodeHosts
   syncPolicy:
     retry:
       limit: 5
@@ -22,6 +28,7 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - SkipDryRunOnMissingResource=true
+      - RespectIgnoreDifferences=true
     automated:
       prune: true
       selfHeal: true
