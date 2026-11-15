@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: nfs
   namespace: argocd
-  annotations:
-    kargo.akuity.io/authorized-stage: "infra:nfs"
 spec:
   destination:
     namespace: kube-system

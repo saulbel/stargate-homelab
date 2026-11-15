@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: promtail
   namespace: argocd
-  annotations:
-    kargo.akuity.io/authorized-stage: "infra:promtail"
 spec:
   destination:
     namespace: promtail

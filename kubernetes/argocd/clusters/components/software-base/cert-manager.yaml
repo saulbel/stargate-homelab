@@ -4,7 +4,6 @@ metadata:
   name: cert-manager
   namespace: argocd
   annotations:
-    kargo.akuity.io/authorized-stage: "infra:cert-manager"
     argocd.argoproj.io/sync-wave: "-2"
 spec:
   destination:

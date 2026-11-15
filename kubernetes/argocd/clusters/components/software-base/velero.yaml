@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: velero
   namespace: argocd
-  annotations:
-    kargo.akuity.io/authorized-stage: "infra:velero"
 spec:
   destination:
     namespace: velero
