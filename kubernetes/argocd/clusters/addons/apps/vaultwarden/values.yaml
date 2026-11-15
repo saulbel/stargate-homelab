@@ -177,12 +177,16 @@ orgGroupsEnabled: "false"
 
 yubico:
   clientId: ""
-  secretKey: ""
+  secretKey:
+    value: ""
+    existingSecretKey: ""
   server: ""
 
 duo:
-  ikey: ""
-  secretKey: ""
+  iKey: ""
+  sKey:
+    value: ""
+    existingSecretKey: ""
   hostname: ""
 
 smtp:
