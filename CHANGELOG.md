@@ -2,14 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.11.0] - Renovate in GitHub Actions
+## [1.10.0] - Renovate in GitHub Actions
 - Renovate runs once a day from `.github/workflows/renovate.yml` and opens PRs for Helm chart bumps in the ArgoCD Applications
 - Commits use the owner as author; patch bumps automerge after 3 days, the rest wait for a manual merge
-
-## [1.10.0] - Kargo removal
-- Removed the kargo app, its addons and the kargo stage annotations
-- Helm chart versions are bumped by hand in `components/<category>/<app>.yaml`
-- Enabled `ServerSideApply` in the external-secrets app, because its CRDs are too large for client-side apply
 
 ## [1.9.0] - Debian 13 LXCs
 - All Ubuntu 22.04 LXCs (110-129) were recreated from the Debian 13 template, with their data restored
