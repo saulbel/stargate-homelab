@@ -1,6 +1,0 @@
-api:
-  host: kargo.k3s.home
-  secret:
-    name: kargo-admin-secret
-  tls:
-    enabled: false

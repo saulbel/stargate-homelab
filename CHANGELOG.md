@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.10.0] - Kargo removal
+- Removed the kargo app, its addons and the kargo stage annotations
+- Helm chart versions are bumped by hand in `components/<category>/<app>.yaml`
+- Enabled `ServerSideApply` in the external-secrets app, because its CRDs are too large for client-side apply
+
 ## [1.9.0] - Debian 13 LXCs
 - All Ubuntu 22.04 LXCs (110-129) were recreated from the Debian 13 template, with their data restored
 - `pbs` was upgraded in place to Debian 13; its `debian-12` template in `lxc.tf` is left as is, because changing it would plan a replacement of the backup server
