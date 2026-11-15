@@ -75,10 +75,6 @@ deployNodeAgent: true
 nodeAgent:
   podVolumePath: /var/lib/kubelet/pods
   priorityClassName: ""
-  tolerations:
-    - key: node-role.kubernetes.io/control-plane
-      operator: Exists
-      effect: NoSchedule
   resources:
     requests:
       cpu: 500m
