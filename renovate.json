@@ -1,0 +1,50 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "enabledManagers": ["argocd"],
+  "argocd": {
+    "managerFilePatterns": ["/^kubernetes/argocd/clusters/components/.+\\.yaml$/"]
+  },
+  "minimumReleaseAge": "3 days",
+  "internalChecksFilter": "strict",
+  "semanticCommits": "disabled",
+  "commitMessageAction": "bump",
+  "commitMessageTopic": "{{replace '.*/(.+)\\.yaml$' '$1' packageFile}} chart",
+  "commitMessageExtra": "to {{newVersion}}",
+  "automergeType": "pr",
+  "platformAutomerge": false,
+  "automergeStrategy": "rebase",
+  "ignoreTests": true,
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "dependencyDashboardApproval": true
+    },
+    {
+      "matchFileNames": ["kubernetes/argocd/clusters/components/software-base/istio*.yaml"],
+      "groupName": "istio",
+      "commitMessageTopic": "istio chart"
+    },
+    {
+      "matchFileNames": [
+        "kubernetes/argocd/clusters/components/software-base/istio*.yaml",
+        "kubernetes/argocd/clusters/components/software-base/cert-manager.yaml",
+        "kubernetes/argocd/clusters/components/software-base/metallb.yaml",
+        "kubernetes/argocd/clusters/components/software-base/external-secrets.yaml",
+        "kubernetes/argocd/clusters/components/software-base/velero.yaml",
+        "kubernetes/argocd/clusters/components/apps/vaultwarden.yaml"
+      ],
+      "automerge": false,
+      "labels": ["critical"]
+    },
+    {
+      "matchFileNames": ["kubernetes/argocd/clusters/components/software-base/kargo.yaml"],
+      "enabled": false
+    }
+  ]
+}
