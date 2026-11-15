@@ -72,14 +72,15 @@ podDisruptionBudget:
   minAvailable: 1
   maxUnavailable: null
 
-data: 
-  name: "vaultwarden-data"
-  size: "1Gi"
-  class: "nfs-csi"
-  path: "/data"
-  keepPvc: true
-
-attachments: {}
+storage:
+  data:
+    name: "vaultwarden-data"
+    size: "1Gi"
+    class: "nfs-csi"
+    path: "/data"
+    keepPvc: true
+    accessMode: "ReadWriteOnce"
+  attachments: {}
 
 webVaultEnabled: "true"
 

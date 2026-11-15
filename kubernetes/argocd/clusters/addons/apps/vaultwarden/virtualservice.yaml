@@ -12,14 +12,6 @@ spec:
   gateways:
     - istio-ingress/homelab-gateway
   http:
-    - match:
-        - uri:
-            prefix: /notifications/hub
-      route:
-        - destination:
-            host: vaultwarden
-            port:
-              number: 3012
     - route:
         - destination:
             host: vaultwarden
