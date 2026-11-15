@@ -9,8 +9,8 @@ spec:
     server: 'https://kubernetes.default.svc'
   sources:
     - chart: external-dns
-      repoURL: registry-1.docker.io/bitnamicharts
-      targetRevision: 9.0.3
+      repoURL: https://kubernetes-sigs.github.io/external-dns/
+      targetRevision: 1.23.0
       helm:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/software-base/external-dns/values.yaml
