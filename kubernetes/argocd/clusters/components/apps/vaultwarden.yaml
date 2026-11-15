@@ -10,7 +10,7 @@ spec:
   sources:
     - chart: vaultwarden
       repoURL: https://guerzon.github.io/vaultwarden
-      targetRevision: 0.22.5
+      targetRevision: 0.46.4
       helm:
         valueFiles:
           - $values/kubernetes/argocd/clusters/addons/apps/vaultwarden/values.yaml
