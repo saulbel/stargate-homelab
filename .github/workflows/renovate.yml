@@ -2,7 +2,8 @@ name: renovate
 
 on:
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "0 10 * * 0"
+    - cron: "0 11 * * 0"
   workflow_dispatch:
 
 permissions:
@@ -16,8 +17,19 @@ jobs:
   renovate:
     runs-on: ubuntu-latest
     steps:
+      - name: only first sunday of the month at 12:00 madrid time
+        id: gate
+        run: |
+          export TZ=Europe/Madrid
+          if [ "${{ github.event_name }}" = "schedule" ] && { [ "$(date +%-d)" -gt 7 ] || [ "$(date +%-H)" -ne 12 ]; }; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
       - uses: actions/checkout@v7.0.1
+        if: steps.gate.outputs.run == 'true'
       - uses: renovatebot/github-action@v46.3.13
+        if: steps.gate.outputs.run == 'true'
         with:
           token: ${{ secrets.RENOVATE_TOKEN }}
         env:

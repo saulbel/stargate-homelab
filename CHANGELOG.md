@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [1.10.0] - Renovate in GitHub Actions
-- Renovate runs once a day from `.github/workflows/renovate.yml` and opens PRs for Helm chart bumps in the ArgoCD Applications
+- Renovate runs once a month from `.github/workflows/renovate.yml` and opens PRs for Helm chart bumps in the ArgoCD Applications
 - Commits use the owner as author; patch bumps automerge after 3 days, the rest wait for a manual merge
 
 ## [1.9.0] - Debian 13 LXCs
