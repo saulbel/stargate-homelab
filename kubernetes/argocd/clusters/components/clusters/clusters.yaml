@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: clusters
+  namespace: argocd
+spec:
+  goTemplate: true
+  generators:
+    - git:
+        repoURL: git@github.com:saulbel/stargate-homelab.git
+        revision: HEAD
+        directories:
+          - path: kubernetes/clusters/*
+  template:
+    metadata:
+      name: 'cluster-{{.path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: git@github.com:saulbel/stargate-homelab.git
+        targetRevision: HEAD
+        path: '{{.path.path}}'
+      destination:
+        name: rancher-local
+        namespace: fleet-default
+      # Manual sync on purpose: a sync can upgrade or delete a cluster.
+      syncPolicy:
+        syncOptions:
+          - ServerSideApply=true
+      ignoreDifferences:
+        - group: provisioning.cattle.io
+          kind: Cluster
+          jqPathExpressions:
+            - '.spec.rkeConfig.machinePools[]?.dynamicSchemaSpec'

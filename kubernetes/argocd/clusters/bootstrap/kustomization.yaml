@@ -2,3 +2,4 @@ resources:
   - software-base.yaml
   - monitoring.yaml
   - apps.yaml
+  - clusters.yaml
