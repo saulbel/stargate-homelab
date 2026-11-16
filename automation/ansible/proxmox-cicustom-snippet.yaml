@@ -10,6 +10,8 @@
 #
 # Dry run first:
 #   ansible-playbook -i proxmox, proxmox-cicustom-snippet.yaml --check --diff
+# The keys are added with runcmd. The ssh_authorized_keys key does not work here:
+# the Rancher user-data also sets it, and cloud-init does not merge the two lists.
 # Only new machines use the snippet. Machines that already exist keep their current keys.
 
 - name: Read the SSH keys from Infisical
@@ -74,7 +76,10 @@
           package_update: true
           packages:
             - nfs-common
-          ssh_authorized_keys:
+          runcmd:
+            - install -d -m 700 -o debian -g debian /home/debian/.ssh
           {% for key in hostvars['localhost'].node_ssh_keys %}
-            - {{ key }}
+            - {{ ('echo ' ~ (key | quote) ~ ' >> /home/debian/.ssh/authorized_keys') | to_json }}
           {% endfor %}
+            - chown debian:debian /home/debian/.ssh/authorized_keys
+            - chmod 600 /home/debian/.ssh/authorized_keys
