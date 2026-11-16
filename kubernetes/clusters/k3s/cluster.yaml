@@ -32,18 +32,18 @@ spec:
       workerRole: true
     upgradeStrategy:
       controlPlaneDrainOptions:
-        deleteEmptyDirData: false
+        deleteEmptyDirData: true
         disableEviction: false
-        enabled: false
+        enabled: true
         force: false
-        gracePeriod: 0
+        gracePeriod: -1
         skipWaitForDeleteTimeoutSeconds: 0
         timeout: 0
       workerDrainOptions:
-        deleteEmptyDirData: false
+        deleteEmptyDirData: true
         disableEviction: false
-        enabled: false
+        enabled: true
         force: false
-        gracePeriod: 0
+        gracePeriod: -1
         skipWaitForDeleteTimeoutSeconds: 0
         timeout: 0
