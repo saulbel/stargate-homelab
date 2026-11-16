@@ -28,7 +28,7 @@ spec:
         kind: PveConfig
         name: k3s-workers
       name: workers
-      quantity: 3
+      quantity: 2
       workerRole: true
     upgradeStrategy:
       controlPlaneDrainOptions:
