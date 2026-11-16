@@ -1,0 +1,80 @@
+---
+# Writes the cloud-init vendor snippet that Rancher nodes use (cicustom: vendor=local:snippets/rancher.yaml).
+# The SSH public keys come from Infisical, so they are not stored in git.
+#
+# Needs these environment variables (machine identity with read access to the secret):
+#   INFISICAL_CLIENT_ID, INFISICAL_CLIENT_SECRET
+# The defaults below match the homelab Infisical (same project as External Secrets).
+# Optional extra vars: infisical_url, infisical_project_slug, infisical_env, infisical_secret_name, infisical_secret_path
+# The secret holds the keys, one key for each line.
+#
+# Dry run first:
+#   ansible-playbook -i proxmox, proxmox-cicustom-snippet.yaml --check --diff
+# Only new machines use the snippet. Machines that already exist keep their current keys.
+
+- name: Read the SSH keys from Infisical
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    infisical_url: http://infisical.home:80
+    infisical_project_slug: k3s-f-nf-k
+    infisical_env: dev
+    infisical_secret_path: /
+    infisical_secret_name: RANCHER_NODE_SSH_KEYS
+  tasks:
+    - name: Log in with the machine identity
+      ansible.builtin.uri:
+        url: "{{ infisical_url }}/api/v1/auth/universal-auth/login"
+        method: POST
+        body_format: json
+        body:
+          clientId: "{{ lookup('ansible.builtin.env', 'INFISICAL_CLIENT_ID', default=undef()) }}"
+          clientSecret: "{{ lookup('ansible.builtin.env', 'INFISICAL_CLIENT_SECRET', default=undef()) }}"
+      register: infisical_login
+      no_log: true
+      check_mode: false
+
+    - name: Read the secret with the keys
+      ansible.builtin.uri:
+        url: >-
+          {{ infisical_url }}/api/v3/secrets/raw/{{ infisical_secret_name }}?workspaceSlug={{ infisical_project_slug }}&environment={{ infisical_env }}&secretPath={{ infisical_secret_path }}
+        method: GET
+        headers:
+          Authorization: "Bearer {{ infisical_login.json.accessToken }}"
+        return_content: true
+      register: infisical_secret
+      no_log: true
+      check_mode: false
+
+    - name: Keep the keys as a list
+      ansible.builtin.set_fact:
+        node_ssh_keys: "{{ infisical_secret.json.secret.secretValue.splitlines() | select('match', '^ssh-') | list }}"
+
+    - name: Stop when no key was found
+      ansible.builtin.assert:
+        that: node_ssh_keys | length > 0
+        fail_msg: The secret has no line that starts with ssh-.
+
+- name: Write the snippet on Proxmox
+  hosts: all
+  gather_facts: false
+  vars:
+    snippet_path: /var/lib/vz/snippets/rancher.yaml
+  tasks:
+    - name: Write the vendor snippet
+      ansible.builtin.copy:
+        dest: "{{ snippet_path }}"
+        owner: root
+        group: root
+        mode: "0644"
+        backup: true
+        content: |
+          #cloud-config
+          package_update: true
+          packages:
+            - nfs-common
+          ssh_authorized_keys:
+          {% for key in hostvars['localhost'].node_ssh_keys %}
+            - {{ key }}
+          {% endfor %}

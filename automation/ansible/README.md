@@ -21,12 +21,14 @@ ansible
 └── install-docker-debian.yaml
 └── install-tools.yaml 
 └── reboot-host.yaml 
+└── proxmox-cicustom-snippet.yaml
 ```
 
 - **Firewall setup:** `firewalld` and `ufw`
 - **Docker installation:** For Debian
 - **Essential tools:** Common utilities for your hosts
 - **Host management:** Reboot and maintenance tasks
+- **Rancher node snippet:** Writes the cloud-init vendor snippet on Proxmox (`nfs-common` and the SSH keys, read from Infisical)
 
 ---
 
