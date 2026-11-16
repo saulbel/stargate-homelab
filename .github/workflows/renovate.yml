@@ -2,7 +2,6 @@ name: renovate
 
 on:
   schedule:
-    - cron: "0 10 * * 0"
     - cron: "0 11 * * 0"
   workflow_dispatch:
 
@@ -17,11 +16,10 @@ jobs:
   renovate:
     runs-on: ubuntu-latest
     steps:
-      - name: only first sunday of the month at 12:00 madrid time
+      - name: only first sunday of the month
         id: gate
         run: |
-          export TZ=Europe/Madrid
-          if [ "${{ github.event_name }}" = "schedule" ] && { [ "$(date +%-d)" -gt 7 ] || [ "$(date +%-H)" -ne 12 ]; }; then
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%-d)" -gt 7 ]; then
             echo "run=false" >> "$GITHUB_OUTPUT"
           else
             echo "run=true" >> "$GITHUB_OUTPUT"
