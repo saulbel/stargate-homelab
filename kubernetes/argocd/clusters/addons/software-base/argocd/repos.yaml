@@ -12,17 +12,3 @@ stringData:
   name: docker-registry
   enableOCI: "true"
   type: "helm"
-
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: ghcr-lockdep
-  namespace: argocd
-  labels:
-    argocd.argoproj.io/secret-type: repository
-stringData:
-  url: ghcr.io/lockdep/helm-charts
-  name: ghcr-lockdep
-  enableOCI: "true"
-  type: "helm"
