@@ -1,5 +1,5 @@
-- hosts: all
-  become: true
+- hosts: "{{ target }}"
+  become: false  # connect as root, debian 13 template has no sudo
   tasks:
     - name: Install system package
       apt:

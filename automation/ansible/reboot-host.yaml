@@ -1,5 +1,5 @@
 - hosts: all
-  become: yes
+  become: false  # connect as root, debian 13 template has no sudo
   tasks:
     - name: Reboot the host
       reboot:
