@@ -11,7 +11,7 @@ services:
     volumes:
       - prometheus-data:/prometheus
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./rules.yml:/prometheus/rules.yml
+      - ./rules.yml:/etc/prometheus/rules.yml
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.retention.time=180d'
@@ -40,6 +40,9 @@ services:
       - /sys:/host/sys:ro
       - /:/rootfs:ro
     command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--path.rootfs=/rootfs'
       - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
 
   grafana:
@@ -71,23 +74,6 @@ services:
       - /var/log:/var/log
       - ./promtail-config.yaml:/etc/promtail/config.yml
     command: -config.file=/etc/promtail/config.yml
-
-  #network debbuging
-  netshoot:
-    image: nicolaka/netshoot
-    container_name: netshoot
-    depends_on:
-      - nginx
-    command: tcpdump -i eth0 -w /data/nginx.pcap
-    network_mode: service:nginx
-    volumes:
-      - $PWD/data:/data
-  #network debbuging
-  nginx:
-    image: nginx:alpine
-    container_name: nginx
-    ports:
-      - 80:80
 
   watchtower:
     image: nickfedor/watchtower:1.23.2

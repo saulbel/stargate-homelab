@@ -26,7 +26,7 @@ scrape_configs:
     static_configs:
       - targets:
         # proxmox's node ip
-        - ip:9221
+        - 100.107.252.80:9221
     metrics_path: /pve
     params:
       module: [default]
