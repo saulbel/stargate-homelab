@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: stackradar
+  namespace: stackradar
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: stackradar.k3s.home
+    external-dns.alpha.kubernetes.io/target: "192.168.1.80"
+spec:
+  hosts:
+    - stackradar.k3s.home
+  gateways:
+    - istio-ingress/homelab-gateway
+  http:
+    - route:
+        - destination:
+            host: stackradar-client
+            port:
+              number: 3000

@@ -1,0 +1,22 @@
+externalUrl: http://stackradar.k3s.home
+
+# external Postgres in the playground LXC (docker/playground)
+postgresql:
+  enabled: false
+
+database:
+  existingSecret:
+    name: stackradar
+    urlKey: url
+
+secrets:
+  existingSecret:
+    name: stackradar
+
+scanner:
+  stackradar:
+    existingSecret: stackradar
+
+# only the ones that differ from defaults
+vulnerabilityData:
+  osvEcosystems: ""
