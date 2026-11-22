@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: git@github.com:saulbel/stargate-homelab.git
-    targetRevision: HEAD
+    targetRevision: main
     path: kubernetes/argocd/clusters/components/software-base
   destination:
     namespace: argocd

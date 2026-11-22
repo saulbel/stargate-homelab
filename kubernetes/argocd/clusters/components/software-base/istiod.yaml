@@ -26,6 +26,11 @@ spec:
       kind: ValidatingWebhookConfiguration
       jqPathExpressions:
         - '.webhooks[].failurePolicy'
+        - '.webhooks[]?.clientConfig.caBundle'
+    - group: admissionregistration.k8s.io
+      kind: MutatingWebhookConfiguration
+      jqPathExpressions:
+        - '.webhooks[]?.clientConfig.caBundle'
   syncPolicy:
     retry:
       limit: 5

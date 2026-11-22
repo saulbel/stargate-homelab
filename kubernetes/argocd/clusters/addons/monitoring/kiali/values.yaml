@@ -6,6 +6,7 @@ auth:
 
 deployment:
   replicas: 1
+  view_only_mode: true
   resources:
     requests:
       cpu: 50m
