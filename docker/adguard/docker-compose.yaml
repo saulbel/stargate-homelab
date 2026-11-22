@@ -1,4 +1,3 @@
-version: "3.9"
 networks:
   default:
     driver: bridge
@@ -11,11 +10,11 @@ networks:
       config:
         - subnet: "192.168.1.0/24"
           ip_range: "192.168.1.225/32"
-          gateway: "192.168.1.1"
+          gateway: "192.168.1.1" # second router; the LXC default route is 192.168.1.127
 services:
   adguardhome:
     container_name: adguardhome
-    image: adguard/adguardhome
+    image: adguard/adguardhome:v1.0.0
     restart: unless-stopped
     networks:
       dockervlan:
@@ -50,6 +49,7 @@ services:
       - WATCHTOWER_NO_RESTART=false
       - WATCHTOWER_TIMEOUT=30s
       - WATCHTOWER_NOTIFICATIONS_HOSTNAME=adguard
+      - WATCHTOWER_MONITOR_ONLY=true
       - WATCHTOWER_SCHEDULE=0 0 12 * * 0
       - WATCHTOWER_DEBUG=false
       # included in .env file

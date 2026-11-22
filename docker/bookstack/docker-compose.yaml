@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   bookstack:
     image: lscr.io/linuxserver/bookstack

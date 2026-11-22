@@ -1,4 +1,3 @@
-version: '3.9'
 services:
   handbrake:
     image: lscr.io/linuxserver/handbrake:latest

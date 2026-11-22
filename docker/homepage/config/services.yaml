@@ -185,7 +185,7 @@
         #widget:
         #    type: radarr
         #    fields: ["wanted", "queued", "movies"]
-        #    url: "{{HOMEPAGE_VAR_RADARR_KEY}}"
+        #    url: "{{HOMEPAGE_VAR_RADARR_URL}}"
         #    key: "{{HOMEPAGE_VAR_RADARR_KEY}}"
 
 - Monitoring:

@@ -1,4 +1,3 @@
-version: '3.9'
 services:
   amule:
     image: ngosang/amule
@@ -7,7 +6,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Europe/Madrid
       # included in .env file
       # - GUI_PWD= 
       # - WEBUI_PWD=
