@@ -29,14 +29,11 @@ docker
 └── kavita
 └── lookbusy
 └── minio
-└── nginx
 └── plex
 └── prometheus-loki
-└── pzserver
 └── radarr
 └── sonarr
 └── tautulli
-└── teamspeak
 └── vaultwarden
 ```
 
