@@ -1,7 +1,6 @@
 image:
   registry: docker.io
   repository: vaultwarden/server
-  tag: "1.30.3-alpine"
   pullPolicy: IfNotPresent
   pullSecrets: []
 
@@ -19,7 +18,6 @@ commonLabels: {}
 
 podLabels:
   app: vaultwarden
-  version: "1.30.3"
 
 initContainers: []
 
@@ -121,7 +119,7 @@ userSendLimit: ""
 
 trashAutoDeleteDays: ""
 
-signupsAllowed: true
+signupsAllowed: false
 
 signupsVerify: "true"
 
@@ -207,11 +205,6 @@ smtp:
   acceptInvalidHostnames: "false"
   acceptInvalidCerts: "false"
   debug: false
-
-websocket:
-  enabled: true
-  address: "0.0.0.0"
-  port: 3012
 
 rocket:
   address: "0.0.0.0"
