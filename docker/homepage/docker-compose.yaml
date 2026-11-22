@@ -3,6 +3,8 @@ services:
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: homepage
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=homepage.home,localhost,127.0.0.1
     env_file: .env
     ports:
       - 3000:3000

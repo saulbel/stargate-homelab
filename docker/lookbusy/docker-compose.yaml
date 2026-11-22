@@ -6,7 +6,7 @@ services:
     hostname: lookbusy
     restart: always
     environment:
-      - CPU_UTIL=20-30
-      - CPU_CORE=1
-      - MEM_UTIL=15
+      - CPU_UTIL=25-30
+      - CPU_CORE=4
+      - MEM_UTIL=25
       - SPEEDTEST_INTERVAL=120
