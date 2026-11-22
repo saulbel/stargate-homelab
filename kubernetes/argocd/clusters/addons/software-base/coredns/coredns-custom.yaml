@@ -5,10 +5,8 @@ kind: ConfigMap
 metadata:
   name: coredns-custom
   namespace: kube-system
-data:
-  ts.server: |
-    ts.net:53 {
-        errors
-        cache 30
-        forward . 100.100.100.100
-    }
+# No custom server blocks. A `ts.net` block forwarding to 100.100.100.100 was
+# removed: CoreDNS runs on a node where that address does not answer, and the
+# search domain of the nodes made every external lookup wait 5 s for it.
+# Pods reach the tailnet through the `ubuntu-arm` egress Service instead.
+data: {}
