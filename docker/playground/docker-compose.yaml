@@ -1,24 +1,27 @@
 services:
-  stackradar-db:
+  postgres:
     image: postgres:17-alpine
-    container_name: stackradar-db
     env_file: .env
     environment:
       - TZ=Europe/Madrid
       # included in .env file
-      # - POSTGRES_USER=
+      # - POSTGRES_USER=postgres
       # - POSTGRES_PASSWORD=
-      # - POSTGRES_DB=
     volumes:
       - ./pg_data:/var/lib/postgresql/data
     ports:
       - 5432:5432
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
       interval: 10s
       timeout: 5s
       retries: 5
     restart: unless-stopped
+
+  # one role and one database for each app:
+  # docker compose exec postgres psql -U postgres \
+  #   -c "CREATE ROLE <app> LOGIN PASSWORD '<password>'" \
+  #   -c "CREATE DATABASE <app> OWNER <app>"
 
   watchtower:
     image: nickfedor/watchtower:1.23.2
