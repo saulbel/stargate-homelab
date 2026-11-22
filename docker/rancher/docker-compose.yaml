@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   rancher:
-    image: rancher/rancher:v2.14.3
+    image: rancher/rancher:v2.15.3
     container_name: rancher
     restart: unless-stopped
     stop_grace_period: 120s
