@@ -24,13 +24,7 @@ configuration:
       s3ForcePathStyle: true
       s3Url: http://minio.home
 
-  volumeSnapshotLocation:
-  - name: default
-    provider: aws
-    credential:
-      name:
-      key:
-    config: {}
+  volumeSnapshotLocation: []
 
   uploaderType: kopia
   backupSyncPeriod:
@@ -69,7 +63,7 @@ credentials:
   extraSecretRef: ""
 
 backupsEnabled: true
-snapshotsEnabled: true
+snapshotsEnabled: false
 deployNodeAgent: true
 
 nodeAgent:
@@ -77,8 +71,16 @@ nodeAgent:
   priorityClassName: ""
   resources:
     requests:
-      cpu: 500m
-      memory: 512Mi
+      cpu: 100m
+      memory: 256Mi
     limits:
       cpu: 1000m
       memory: 1024Mi
+
+schedules:
+  daily:
+    disabled: false
+    schedule: "0 3 * * *"
+    template:
+      ttl: 168h
+      defaultVolumesToFsBackup: true
