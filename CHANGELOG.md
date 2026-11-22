@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.11.0] - Cleanup after the first review
+- Removed the unused `nginx`, `tools`, `pzserver` and `teamspeak` composes, and the `nginx`/`netshoot` debug services of `prometheus-loki`
+- `prometheus-loki`: alert rules now load (mounted in `/etc/prometheus`), `InstanceDown` waits 5 minutes and the `pve1` target uses the Proxmox Tailscale IP
+- Velero: daily backup `Schedule` (TTL 7 days), no volume snapshots, smaller node-agent requests
+- Vaultwarden (K3s): image follows the chart `appVersion` and signups are closed; the Docker one is pinned and monitor-only in Watchtower
+- Ansible playbooks connect as root (no `become`) and the firewall playbooks need `-e target=<group>`
+
 ## [1.10.0] - Renovate in GitHub Actions
 - Renovate runs once a month from `.github/workflows/renovate.yml` and opens PRs for Helm chart bumps in the ArgoCD Applications
 - Commits use the owner as author; patch bumps automerge after 3 days, the rest wait for a manual merge

@@ -22,11 +22,13 @@ argocd
         └── software-base
     └── bootstrap
         └── apps.yaml
+        └── clusters.yaml
         └── kustomization.yaml
         └── monitoring.yaml
         └── software-base.yaml
     └── components
         └── apps
+        └── clusters
         └── monitoring
         └── software-base
 ```

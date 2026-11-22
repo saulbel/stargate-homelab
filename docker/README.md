@@ -21,6 +21,7 @@ docker
 └── adguard
 └── amule
 └── bookstack
+└── caddy
 └── deluge
 └── handbrake
 └── homepage
@@ -29,12 +30,15 @@ docker
 └── kavita
 └── lookbusy
 └── minio
+└── playground
 └── plex
 └── prometheus-loki
 └── radarr
+└── rancher
 └── sonarr
 └── tautulli
 └── vaultwarden
+└── watchtower
 ```
 
 ---

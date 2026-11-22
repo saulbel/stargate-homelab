@@ -30,7 +30,7 @@ I use [ArgoCD](./argocd/README.md) to deploy and manage everything in my cluster
 Here are the most important components running on my Kubernetes cluster:
 
 - [ArgoCD](/kubernetes/argocd/clusters/addons/software-base/argocd): GitOps for automated deployments
-- [Certmanager](/kubernetes/argocd/clusters/addons/software-base/cert-manager): Automated certificate management
+- [Certmanager](/kubernetes/argocd/clusters/addons/software-base/cert-manager): Installed, no issuer configured yet
 - [External-dns](/kubernetes/argocd/clusters/addons/software-base/external-dns): Dynamic DNS updater
 - [External-secrets](/kubernetes/argocd/clusters/addons/software-base/external-secrets): Secure secrets management
 - [MetalLB](/kubernetes/argocd/clusters/addons/software-base/metallb): Layer 2 LoadBalancer (pool `192.168.1.80-100`)
@@ -42,6 +42,8 @@ Here are the most important components running on my Kubernetes cluster:
 - [Prometheus](/kubernetes/argocd/clusters/addons/monitoring/prometheus): Metrics and monitoring (remote writer)
 - [Promtail](/kubernetes/argocd/clusters/addons/monitoring/promtail): Centralized logging
 - [Tailscale](/kubernetes/argocd/clusters/addons/software-base/tailscale): Zero-config VPN for secure networking
+- [Vaultwarden](/kubernetes/argocd/clusters/addons/apps/vaultwarden): Password manager (HTTP only for now)
+- [Uptime Kuma](/kubernetes/argocd/clusters/addons/apps/uptime-kuma): Uptime monitoring
 - [Velero](/kubernetes/argocd/clusters/addons/software-base/velero): Backup and restore solution
 
 ---
