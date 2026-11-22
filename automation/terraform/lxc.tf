@@ -1778,7 +1778,7 @@ resource "proxmox_virtual_environment_container" "rancher" {
 
     disk {
         datastore_id = "local-lvm"
-        size = 20
+        size = 30
     }
 
     cpu {
