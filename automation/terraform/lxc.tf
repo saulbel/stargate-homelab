@@ -164,9 +164,9 @@ resource "proxmox_virtual_environment_container" "homepage" {
       "apt upgrade -y",
       "apt install curl -y",
       "curl -fsSL https://tailscale.com/install.sh | sh",
-      "echo 'net.ipv4.ip_forward = 1' | tee -a /etc/sysctl.conf",
-      "echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.conf",
-      "sysctl -p /etc/sysctl.conf",
+      "echo 'net.ipv4.ip_forward = 1' | tee /etc/sysctl.d/99-tailscale.conf",
+      "echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.d/99-tailscale.conf",
+      "sysctl --system",
       "reboot -f"
     ]
     connection {
@@ -355,9 +355,9 @@ resource "proxmox_virtual_environment_container" "kavita" {
         "apt upgrade -y",
         "apt install curl -y",
         "curl -fsSL https://tailscale.com/install.sh | sh",
-        "echo 'net.ipv4.ip_forward = 1' | tee -a /etc/sysctl.conf",
-        "echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.conf",
-        "sysctl -p /etc/sysctl.conf",
+        "echo 'net.ipv4.ip_forward = 1' | tee /etc/sysctl.d/99-tailscale.conf",
+        "echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.d/99-tailscale.conf",
+        "sysctl --system",
         "reboot -f"
         ]
         connection {
@@ -558,9 +558,9 @@ resource "proxmox_virtual_environment_container" "plex" {
         "apt upgrade -y",
         "apt install curl -y",
         "curl -fsSL https://tailscale.com/install.sh | sh",
-        "echo 'net.ipv4.ip_forward = 1' | tee -a /etc/sysctl.conf",
-        "echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.conf",
-        "sysctl -p /etc/sysctl.conf",
+        "echo 'net.ipv4.ip_forward = 1' | tee /etc/sysctl.d/99-tailscale.conf",
+        "echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.d/99-tailscale.conf",
+        "sysctl --system",
         "reboot -f"
         ]
         connection {
@@ -1411,9 +1411,9 @@ resource "proxmox_virtual_environment_container" "bookstack" {
       "apt upgrade -y",
       "apt install curl -y",
       "curl -fsSL https://tailscale.com/install.sh | sh",
-      "echo 'net.ipv4.ip_forward = 1' | tee -a /etc/sysctl.conf",
-      "echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.conf",
-      "sysctl -p /etc/sysctl.conf",
+      "echo 'net.ipv4.ip_forward = 1' | tee /etc/sysctl.d/99-tailscale.conf",
+      "echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.d/99-tailscale.conf",
+      "sysctl --system",
       "reboot -f"
     ]
     connection {
@@ -1814,9 +1814,9 @@ resource "proxmox_virtual_environment_container" "rancher" {
         "apt upgrade -y",
         "apt install curl -y",
         "curl -fsSL https://tailscale.com/install.sh | sh",
-        "echo 'net.ipv4.ip_forward = 1' | tee -a /etc/sysctl.conf",
-        "echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.conf",
-        "sysctl -p /etc/sysctl.conf",
+        "echo 'net.ipv4.ip_forward = 1' | tee /etc/sysctl.d/99-tailscale.conf",
+        "echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.d/99-tailscale.conf",
+        "sysctl --system",
         "reboot -f"
         ]
         connection {
