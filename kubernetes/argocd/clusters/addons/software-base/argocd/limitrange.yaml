@@ -9,4 +9,4 @@ spec:
         cpu: 50m
         memory: 64Mi
       default:
-        memory: 1Gi
+        memory: 2Gi
