@@ -4,11 +4,23 @@
     "config:recommended"
   ],
   "enabledManagers": [
-    "argocd"
+    "argocd",
+    "helm-values",
+    "docker-compose"
   ],
   "argocd": {
     "managerFilePatterns": [
       "/^kubernetes/argocd/clusters/components/.+\\.yaml$/"
+    ]
+  },
+  "helm-values": {
+    "managerFilePatterns": [
+      "/^kubernetes/argocd/clusters/addons/.+/values\\.yaml$/"
+    ]
+  },
+  "docker-compose": {
+    "managerFilePatterns": [
+      "/^docker/.+/docker-compose\\.ya?ml$/"
     ]
   },
   "minimumReleaseAge": "3 days",
