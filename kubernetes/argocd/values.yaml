@@ -1,0 +1,44 @@
+controller:
+  resources:
+    requests:
+      cpu: 250m
+      memory: 1Gi
+    limits:
+      memory: 2Gi
+
+repoServer:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      memory: 1Gi
+
+configs:
+  params:
+    server.insecure: "true"
+  cm:
+    statusbadge.enabled: 'true'
+    resourceExclusionsAdditional:
+      - apiGroups:
+          - fleet.cattle.io
+          - management.cattle.io
+        kinds:
+          - Cluster
+        clusters:
+          - https://192.168.1.28/k8s/clusters/local
+    resource.customizations.health.argoproj.io_Application: |
+      hs = {}
+      hs.status = "Progressing"
+      hs.message = ""
+      if obj.status ~= nil then
+        if type(obj.status.health) == "table" then
+          hs.status = obj.status.health.status
+          if obj.status.health.message ~= nil then
+            hs.message = obj.status.health.message
+          end
+        elseif type(obj.status.health) == "string" then
+          hs.status = obj.status.health
+        end
+      end
+      return hs

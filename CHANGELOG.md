@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 - `prometheus-loki`: alert rules now load (mounted in `/etc/prometheus`), `InstanceDown` waits 5 minutes and the `pve1` target uses the Proxmox Tailscale IP
 - Velero: no volume snapshots, smaller node-agent requests
 - LimitRange `default-resources` in each app addons folder: default requests (50m CPU, 64Mi memory) and a memory limit, no CPU limit and no `ResourceQuota`
+- ArgoCD Helm values in `kubernetes/argocd/values.yaml`, with requests for the application-controller and the repo-server
 - Vaultwarden (K3s): image follows the chart `appVersion` and signups are closed; the Docker one is pinned and monitor-only in Watchtower
 - Ansible playbooks connect as root (no `become`) and the firewall playbooks need `-e target=<group>`
 

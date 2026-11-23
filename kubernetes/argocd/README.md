@@ -74,7 +74,7 @@ helm repo update
 helm upgrade --install argocd argo/argo-cd \
   --namespace argocd \
   --create-namespace \
-  --values /home/saul/k3s/argocd/config.yaml
+  --values kubernetes/argocd/values.yaml
 
 echo "Adding Git SSH secret..."
 kubectl apply -f /home/saul/k3s/argocd/argocd-repo-secret.yaml
