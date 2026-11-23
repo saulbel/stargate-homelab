@@ -5,7 +5,8 @@ All notable changes to this project will be documented in this file.
 ## [1.11.0] - Cleanup after the first review
 - Removed the unused `nginx`, `tools`, `pzserver` and `teamspeak` composes, and the `nginx`/`netshoot` debug services of `prometheus-loki`
 - `prometheus-loki`: alert rules now load (mounted in `/etc/prometheus`), `InstanceDown` waits 5 minutes and the `pve1` target uses the Proxmox Tailscale IP
-- Velero: daily backup `Schedule` (TTL 7 days), no volume snapshots, smaller node-agent requests
+- Velero: no volume snapshots, smaller node-agent requests
+- `limitranges` Application: default requests (50m CPU, 64Mi memory) and a memory limit per container in the app namespaces, no CPU limit and no `ResourceQuota`
 - Vaultwarden (K3s): image follows the chart `appVersion` and signups are closed; the Docker one is pinned and monitor-only in Watchtower
 - Ansible playbooks connect as root (no `become`) and the firewall playbooks need `-e target=<group>`
 

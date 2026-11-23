@@ -76,11 +76,3 @@ nodeAgent:
     limits:
       cpu: 1000m
       memory: 1024Mi
-
-schedules:
-  daily:
-    disabled: false
-    schedule: "0 3 * * *"
-    template:
-      ttl: 168h
-      defaultVolumesToFsBackup: true
