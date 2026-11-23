@@ -3,7 +3,7 @@ storageClass:
   name: nfs-csi
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
-    argocd.argoproj.io/sync-options: Replace=true
+    argocd.argoproj.io/sync-options: Force=true,Replace=true
   parameters:
     server: 192.168.1.26
     share: /mnt/nfs
