@@ -4,6 +4,12 @@ prometheus:
   agentMode: true
 
   prometheusSpec:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 512Mi
+      limits:
+        memory: 1Gi
     remoteWrite: 
       - url: "http://ubuntu-arm.tailscale.svc.cluster.local:9090/api/v1/write"
 
