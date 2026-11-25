@@ -685,7 +685,7 @@ resource "proxmox_virtual_environment_container" "jackett" {
     description = "jackett lxc"
     unprivileged = true
     start_on_boot = true
-    started = true
+    started = false
 
     features {
         nesting = true
@@ -764,7 +764,7 @@ resource "proxmox_virtual_environment_container" "radarr" {
     description = "radarr lxc"
     unprivileged = true
     start_on_boot = false
-    started = true
+    started = false
 
     features {
         nesting = true
@@ -848,7 +848,7 @@ resource "proxmox_virtual_environment_container" "sonarr" {
     description = "sonarr lxc"
     unprivileged = true
     start_on_boot = false
-    started = true
+    started = false
 
     features {
         nesting = true
@@ -1249,7 +1249,7 @@ resource "proxmox_virtual_environment_container" "handbrake" {
     description = "handbrake lxc"
     unprivileged = false
     start_on_boot = false
-    started = true
+    started = false
 
     features {
         nesting = true
