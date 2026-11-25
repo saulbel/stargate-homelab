@@ -1705,7 +1705,7 @@ resource "proxmox_virtual_environment_container" "infisical" {
 
     disk {
         datastore_id = "local-lvm"
-        size = 10
+        size = 20
     }
 
     mount_point {
@@ -1718,7 +1718,7 @@ resource "proxmox_virtual_environment_container" "infisical" {
     }
 
     memory {
-        dedicated = 1024
+        dedicated = 3072
     }
 
     operating_system {
