@@ -31,8 +31,6 @@ services:
     container_name: infisical-dev-redis
     env_file: .env
     restart: always
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
     networks:
       - infisical
     volumes:
@@ -86,12 +84,6 @@ services:
       - WATCHTOWER_SCHEDULE=0 0 12 * * 0
       - WATCHTOWER_DEBUG=false
       # monitor only: logs new images, never updates
-
-volumes:
-  pg_data:
-    driver: local
-  redis_data:
-    driver: local
 
 networks:
   infisical:
