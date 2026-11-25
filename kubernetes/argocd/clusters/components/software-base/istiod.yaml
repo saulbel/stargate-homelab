@@ -41,6 +41,7 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - SkipDryRunOnMissingResource=true
+      - RespectIgnoreDifferences=true
     automated:
       prune: true
       selfHeal: true
