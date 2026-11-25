@@ -23,7 +23,7 @@ services:
     container_name: nodeexporter
     restart: unless-stopped
     ports:
-      - 9100:9100
+      - 127.0.0.1:9100:9100
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -35,14 +35,14 @@ services:
       - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
 
   grafana:
-   image: grafana/grafana:latest
-   container_name: grafana
-   restart: unless-stopped
-   ports:
-     - 3000:3000
-   volumes:
-     - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
-     - grafana-data:/var/lib/grafana
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - grafana-data:/var/lib/grafana
 
   loki:
     image: grafana/loki:latest

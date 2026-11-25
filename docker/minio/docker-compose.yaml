@@ -8,8 +8,8 @@ services:
       # - MINIO_ROOT_USER=
       # - MINIO_ROOT_PASSWORD=
     ports:
-      - "9000:9000"
-      - "9001:9001"
+      - "192.168.1.25:9000:9000"
+      - "192.168.1.25:9001:9001"
     restart: unless-stopped
     volumes:
       - ./minio_data:/data

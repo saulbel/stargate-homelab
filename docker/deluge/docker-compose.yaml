@@ -11,7 +11,7 @@ services:
       - ./config:/config
       - /mnt/local-storage/deluge/downloads:/downloads
     ports:
-      - 8112:8112
+      - 192.168.1.15:8112:8112
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
