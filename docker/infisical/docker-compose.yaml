@@ -16,7 +16,7 @@ services:
         condition: service_healthy
       redis:
         condition: service_started
-    image: infisical/infisical:latest-postgres@sha256:36438985877fb5ab99c76ee1a9c73611e44d8518b44a77304b5d4c05451f8c62
+    image: infisical/infisical:v0.167.15
     pull_policy: always
     env_file: .env
     ports:
@@ -27,7 +27,7 @@ services:
       - infisical
 
   redis:
-    image: redis:8.2.0
+    image: redis:8.12.0
     container_name: infisical-dev-redis
     env_file: .env
     restart: always
@@ -56,7 +56,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    image: infisical/infisical:latest-postgres@sha256:36438985877fb5ab99c76ee1a9c73611e44d8518b44a77304b5d4c05451f8c62
+    image: infisical/infisical:v0.167.15
     env_file: .env
     command: npm run migration:latest
     pull_policy: always
