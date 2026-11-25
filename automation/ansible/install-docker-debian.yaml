@@ -34,10 +34,5 @@
           - docker-ce-cli
           - containerd.io
           - docker-compose-plugin
-        state: latest
+        state: present
         update_cache: true
-    - name: Add connecting user to docker group
-      user:
-        name: "{{ ansible_user | default(ansible_user_id) }}"
-        groups: docker
-        append: yes

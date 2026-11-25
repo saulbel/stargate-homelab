@@ -5,7 +5,7 @@
       apt:
         pkg:
           - ufw
-        state: latest
+        state: present
         update_cache: true
     - name: Open port 22
       ufw:

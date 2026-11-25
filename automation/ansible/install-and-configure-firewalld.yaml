@@ -5,14 +5,13 @@
       apt:
         pkg:
           - firewalld
-        state: latest
+        state: present
         update_cache: true
     - name: Enable firewalld
-      service:
-        name: firewalld.service
+      ansible.builtin.systemd:
+        name: firewalld
         enabled: true
         state: started
-        use: service
     - name: Open port 9987
       firewalld:
         zone: public
