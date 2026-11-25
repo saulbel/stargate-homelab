@@ -18,15 +18,6 @@ services:
       - '--web.enable-remote-write-receiver'
         #- '--log.level=debug'
 
-  alertmanager:
-    image: prom/alertmanager:latest
-    container_name: alertmanager
-    restart: unless-stopped
-    ports:
-      - 9093:9093
-    volumes:
-      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
-
   nodeexporter:
     image: prom/node-exporter:latest
     container_name: nodeexporter

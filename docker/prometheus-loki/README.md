@@ -2,7 +2,6 @@
 ```
 prometheus-loki
 └── config
-    └── alertmanager.yml
     └── prometheus.yml
     └── promtail-config.yaml
     └── rules.yml

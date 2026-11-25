@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [1.11.0] - Cleanup after the first review
 - Removed the unused `nginx`, `tools`, `pzserver` and `teamspeak` composes, and the `nginx`/`netshoot` debug services of `prometheus-loki`
+- Removed the unused Alertmanager from `prometheus-loki`
 - `prometheus-loki`: alert rules now load (mounted in `/etc/prometheus`), `InstanceDown` waits 5 minutes and the `pve1` target uses the Proxmox Tailscale IP
 - Velero: no volume snapshots, smaller node-agent requests
 - LimitRange `default-resources` in each app addons folder: default requests (50m CPU, 64Mi memory) and a memory limit, no CPU limit and no `ResourceQuota`
