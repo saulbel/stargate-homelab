@@ -2,7 +2,7 @@
   become: false  # connect as root, debian 13 template has no sudo
   tasks:
     - name: Install system packages
-      apt:
+      ansible.builtin.apt:
         pkg:
           - curl
           - net-tools

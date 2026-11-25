@@ -2,7 +2,7 @@
   become: false  # connect as root, debian 13 template has no sudo
   tasks:
     - name: Install system package
-      apt:
+      ansible.builtin.apt:
         pkg:
           - firewalld
         state: present
@@ -12,31 +12,10 @@
         name: firewalld
         enabled: true
         state: started
-    - name: Open port 9987
-      firewalld:
+    - name: Allow ssh
+      ansible.posix.firewalld:
         zone: public
-        port: 9987/udp
-        permanent: true
-        immediate: true
-        state: enabled
-    - name: Open port 8000
-      firewalld:
-        zone: public
-        port: 8000/tcp
-        permanent: true
-        immediate: true
-        state: enabled
-    - name: Open port 10011
-      firewalld:
-        zone: public
-        port: 10011/tcp
-        permanent: true
-        immediate: true
-        state: enabled
-    - name: Open port 30033
-      firewalld:
-        zone: public
-        port: 30033/tcp
+        service: ssh
         permanent: true
         immediate: true
         state: enabled
