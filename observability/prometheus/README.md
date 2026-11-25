@@ -117,5 +117,4 @@ Find all Prometheus configuration files [here](/docker/prometheus-loki/).
 
 ## To Improve
 
-- Configure **Alertmanager** and send alerts to a Telegram channel
 - Evaluate adding **Promtail** to the Proxmox node or each LXC individually

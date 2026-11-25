@@ -10,7 +10,6 @@ services:
     volumes:
       - prometheus-data:/prometheus
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./config/rules.yml:/etc/prometheus/rules.yml
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.retention.time=180d'

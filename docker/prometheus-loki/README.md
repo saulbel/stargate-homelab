@@ -4,7 +4,6 @@ prometheus-loki
 └── config
     └── prometheus.yml
     └── promtail-config.yaml
-    └── rules.yml
 └── grafana-dashboards
     └── loki-k3s.json
     └── prometheus-k3s.json

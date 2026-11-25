@@ -4,9 +4,6 @@ global:
   evaluation_interval: 15s # Evaluate rules every 30 seconds. The default is every 1 minute.
   scrape_timeout: 10s
 
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
-  - "rules.yml"
 
 # A scrape configuration containing exactly one endpoint to scrape:
 scrape_configs:
