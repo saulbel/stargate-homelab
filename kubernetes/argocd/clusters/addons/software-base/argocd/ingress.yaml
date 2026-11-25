@@ -4,11 +4,11 @@ metadata:
   name: argocd
   namespace: argocd
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: argocd.home
+    external-dns.alpha.kubernetes.io/hostname: argocd.k3s.home
     external-dns.alpha.kubernetes.io/target: "192.168.1.80"
 spec:
   hosts:
-    - argocd.home
+    - argocd.k3s.home
   gateways:
     - istio-ingress/homelab-gateway
   http:

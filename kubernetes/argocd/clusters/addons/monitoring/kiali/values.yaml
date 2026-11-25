@@ -17,7 +17,7 @@ deployment:
     enabled: false
 
 server:
-  web_fqdn: kiali.home
+  web_fqdn: kiali.k3s.home
   web_root: /
 
 external_services:

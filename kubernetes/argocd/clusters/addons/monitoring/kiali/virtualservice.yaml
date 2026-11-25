@@ -4,11 +4,11 @@ metadata:
   name: kiali
   namespace: istio-system
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: kiali.home
+    external-dns.alpha.kubernetes.io/hostname: kiali.k3s.home
     external-dns.alpha.kubernetes.io/target: "192.168.1.80"
 spec:
   hosts:
-    - kiali.home
+    - kiali.k3s.home
   gateways:
     - istio-ingress/homelab-gateway
   http:

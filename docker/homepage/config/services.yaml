@@ -113,15 +113,15 @@
 
     - ArgoCD:
         icon: /icons/argocd.png
-        href: http://argocd.home/
+        href: http://argocd.k3s.home/
         description: GitOps
-        siteMonitor: http://argocd.home/
+        siteMonitor: http://argocd.k3s.home/
 
     - Kiali:
         icon: /icons/istio.png
-        href: http://kiali.home/
+        href: http://kiali.k3s.home/
         description: Istio
-        siteMonitor: http://kiali.home/
+        siteMonitor: http://kiali.k3s.home/
 
 - Media:
     - Plex:
