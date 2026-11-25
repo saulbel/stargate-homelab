@@ -30,8 +30,9 @@ terraform
 ## State Management
 
 **Important:**  
-Always secure your `.tfstate` file!  
-You can use an S3 bucket (for example, with [MinIO](/docker/minio) to store your state remotely and safely.
+The state is local (no `backend` block) and gitignored, together with `secrets.auto.tfvars`. Back up `terraform.tfstate` yourself.  
+The provider lock file `.terraform.lock.hcl` is tracked, so `terraform init` uses the same provider versions and hashes on each machine.  
+A remote S3 backend (for example, on [MinIO](/docker/minio)) is an option for later.
 
 ---
 

@@ -18,9 +18,6 @@ terraform.tfstate.*.backup
 # terraform modules
 .terraform/
 
-# terraform locks
-.terraform.lock*
-
 # ansible files
 inventory
 ansible.cfg

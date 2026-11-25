@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.12.0] - Second review
+- `prometheus-loki`: removed `rules.yml`; with no Alertmanager the rules had no notification route
+- Terraform: `.terraform.lock.hcl` is now tracked, so provider hashes are pinned and Renovate can update them
+
 ## [1.11.0] - Cleanup after the first review
 - Removed the unused `nginx`, `tools`, `pzserver` and `teamspeak` composes, and the `nginx`/`netshoot` debug services of `prometheus-loki`
 - Removed the unused Alertmanager from `prometheus-loki`
