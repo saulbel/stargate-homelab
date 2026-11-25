@@ -8,7 +8,7 @@ spec:
   generators:
     - git:
         repoURL: git@github.com:saulbel/stargate-homelab.git
-        revision: HEAD
+        revision: main
         directories:
           - path: kubernetes/clusters/*
   template:

@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   sources:
     - chart: csi-driver-nfs
-      repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+      repoURL: https://kubernetes-csi.github.io/csi-driver-nfs
       targetRevision: 4.13.6
       helm:
         valueFiles:
