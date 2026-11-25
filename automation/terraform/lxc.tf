@@ -5,7 +5,7 @@
 # Debian 12 lxc ct for pbs --> pbs 109                  #
 #########################################################
 resource "proxmox_virtual_environment_container" "pbs" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 109
     description = "pbs lxc"
     unprivileged = false
@@ -89,7 +89,7 @@ resource "proxmox_virtual_environment_container" "pbs" {
 # Debian 13 lxc ct for homepage --> homepage 110        #
 #########################################################
 resource "proxmox_virtual_environment_container" "homepage" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 110
     description = "homepage lxc"
     unprivileged = true
@@ -203,7 +203,7 @@ resource "proxmox_virtual_environment_container" "homepage" {
 # Debian 13 lxc ct for adguard --> adguard 111          #
 #########################################################
 resource "proxmox_virtual_environment_container" "adguard" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 111
     description = "adguard lxc"
     unprivileged = true
@@ -280,7 +280,7 @@ resource "proxmox_virtual_environment_container" "adguard" {
 # Debian 13 lxc ct for kavita --> kavita 112            #
 #########################################################
 resource "proxmox_virtual_environment_container" "kavita" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 112
     description = "kavita lxc"
     unprivileged = true
@@ -394,7 +394,7 @@ resource "proxmox_virtual_environment_container" "kavita" {
 # Debian 13 lxc ct for vaulwarden --> vaultwarden 113   #
 #########################################################
 resource "proxmox_virtual_environment_container" "vaultwarden" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 113
     description = "vaultwarden lxc"
     unprivileged = true
@@ -471,7 +471,7 @@ resource "proxmox_virtual_environment_container" "vaultwarden" {
 # Debian 13 lxc ct for plex --> plex 114                #
 #########################################################
 resource "proxmox_virtual_environment_container" "plex" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 114
     description = "plex lxc"
     unprivileged = true
@@ -597,7 +597,7 @@ resource "proxmox_virtual_environment_container" "plex" {
 # Debian 13 lxc ct for deluge --> deluge 115            #
 #########################################################
 resource "proxmox_virtual_environment_container" "deluge" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 115
     description = "deluge lxc"
     unprivileged = true
@@ -680,7 +680,7 @@ resource "proxmox_virtual_environment_container" "deluge" {
 # Debian 13 lxc ct for jackett --> jackett 116          #
 #########################################################
 resource "proxmox_virtual_environment_container" "jackett" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 116
     description = "jackett lxc"
     unprivileged = true
@@ -759,7 +759,7 @@ resource "proxmox_virtual_environment_container" "jackett" {
 # Debian 13 lxc ct for radarr --> radarr 117            #
 #########################################################
 resource "proxmox_virtual_environment_container" "radarr" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 117
     description = "radarr lxc"
     unprivileged = true
@@ -843,7 +843,7 @@ resource "proxmox_virtual_environment_container" "radarr" {
 # Debian 13 lxc ct for sonarr --> sonarr 118            #
 #########################################################
 resource "proxmox_virtual_environment_container" "sonarr" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 118
     description = "sonarr lxc"
     unprivileged = true
@@ -927,7 +927,7 @@ resource "proxmox_virtual_environment_container" "sonarr" {
 # Debian 13 lxc ct for tautuilli --> tautulli 119       #
 #########################################################
 resource "proxmox_virtual_environment_container" "tautulli" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 119
     description = "tautulli lxc"
     unprivileged = true
@@ -1005,7 +1005,7 @@ resource "proxmox_virtual_environment_container" "tautulli" {
 # Debian 13 lxc ct for caddy --> caddy 120              #
 #########################################################
 resource "proxmox_virtual_environment_container" "caddy" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 120
     description = "caddy lxc"
     unprivileged = true
@@ -1083,7 +1083,7 @@ resource "proxmox_virtual_environment_container" "caddy" {
 # Debian 13 lxc ct for playground --> playground 121    #
 #########################################################
 resource "proxmox_virtual_environment_container" "playground" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 121
     description = "playground lxc"
     unprivileged = true
@@ -1161,7 +1161,7 @@ resource "proxmox_virtual_environment_container" "playground" {
 # Debian 13 lxc ct for amule --> amule 122              #
 #########################################################
 resource "proxmox_virtual_environment_container" "amule" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 122
     description = "amule lxc"
     unprivileged = true
@@ -1244,7 +1244,7 @@ resource "proxmox_virtual_environment_container" "amule" {
 # Debian 13 lxc ct for handbrake --> handbrake 123      #
 #########################################################
 resource "proxmox_virtual_environment_container" "handbrake" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 123
     description = "handbrake lxc"
     unprivileged = false
@@ -1345,7 +1345,7 @@ resource "proxmox_virtual_environment_container" "handbrake" {
 # Debian 13 lxc ct for bookstack --> bookstack 124      #
 #########################################################
 resource "proxmox_virtual_environment_container" "bookstack" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 124
     description = "bookstack lxc"
     unprivileged = true
@@ -1458,7 +1458,7 @@ resource "proxmox_virtual_environment_container" "bookstack" {
 # Debian 13 lxc ct for minio --> minio 125              #
 #########################################################
 resource "proxmox_virtual_environment_container" "minio" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 125
     description = "minio lxc"
     unprivileged = true
@@ -1540,7 +1540,7 @@ resource "proxmox_virtual_environment_container" "minio" {
 # Debian 13 lxc ct for nfs --> nfs 126                  #
 #########################################################
 resource "proxmox_virtual_environment_container" "nfs" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 126
     description = "nfs lxc"
     unprivileged = false
@@ -1596,6 +1596,19 @@ resource "proxmox_virtual_environment_container" "nfs" {
         type             = "debian"
     }
 
+    # add unconfined
+    provisioner "remote-exec" {
+        inline = [
+        "echo 'lxc.apparmor.profile: unconfined' >> /etc/pve/lxc/126.conf"
+        ]
+        connection {
+        type        = "ssh"
+        user        = "root"
+        host        = "192.168.1.127"
+        private_key = file ("/home/saul/.ssh/prox_ssh")
+        }  
+    }
+
     # do not change dns
     provisioner "remote-exec" {
         inline = [
@@ -1608,19 +1621,6 @@ resource "proxmox_virtual_environment_container" "nfs" {
         type        = "ssh"
         user        = "root"
         host        = "192.168.1.26"
-        private_key = file ("/home/saul/.ssh/prox_ssh")
-        }  
-    }
-
-    # add unconfined
-    provisioner "remote-exec" {
-        inline = [
-        "echo 'lxc.apparmor.profile: unconfined' >> /etc/pve/lxc/126.conf"
-        ]
-        connection {
-        type        = "ssh"
-        user        = "root"
-        host        = "192.168.1.127"
         private_key = file ("/home/saul/.ssh/prox_ssh")
         }  
     }
@@ -1670,7 +1670,7 @@ resource "proxmox_virtual_environment_container" "nfs" {
 # Debian 13 lxc ct for infisical --> infisical 127      #
 #########################################################
 resource "proxmox_virtual_environment_container" "infisical" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 127
     description = "infisical lxc"
     unprivileged = true
@@ -1754,7 +1754,7 @@ resource "proxmox_virtual_environment_container" "infisical" {
 # Debian 13 lxc ct for rancher --> rancher 128          #
 #########################################################
 resource "proxmox_virtual_environment_container" "rancher" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 128
     description = "rancher lxc"
     unprivileged = false
@@ -1819,6 +1819,24 @@ resource "proxmox_virtual_environment_container" "rancher" {
         }  
     }
   
+    # add unconfined and more permissions
+    provisioner "remote-exec" {
+        inline = [
+        "echo 'lxc.apparmor.profile: unconfined' >> /etc/pve/lxc/128.conf",
+        "echo 'lxc.cap.drop:' >> /etc/pve/lxc/128.conf",
+        "echo 'lxc.cgroup2.devices.allow: a' >> /etc/pve/lxc/128.conf",
+        "echo 'lxc.mount.auto: cgroup:rw' >> /etc/pve/lxc/128.conf",
+        "echo 'lxc.apparmor.allow_nesting: 1' >> /etc/pve/lxc/128.conf",
+        "echo 'lxc.mount.entry: /dev/kmsg dev/kmsg none bind,create=file,optional' >> /etc/pve/lxc/128.conf"
+        ]
+        connection {
+        type        = "ssh"
+        user        = "root"
+        host        = "192.168.1.127"
+        private_key = file("/home/saul/.ssh/prox_ssh")
+        }
+    }
+
     # install tailscale on lxc 
     provisioner "remote-exec" {
         inline = [
@@ -1852,24 +1870,6 @@ resource "proxmox_virtual_environment_container" "rancher" {
         }  
     }
 
-    # add unconfined and more permissions
-    provisioner "remote-exec" {
-        inline = [
-        "echo 'lxc.apparmor.profile: unconfined' >> /etc/pve/lxc/128.conf",
-        "echo 'lxc.cap.drop:' >> /etc/pve/lxc/128.conf",
-        "echo 'lxc.cgroup2.devices.allow: a' >> /etc/pve/lxc/128.conf",
-        "echo 'lxc.mount.auto: cgroup:rw' >> /etc/pve/lxc/128.conf",
-        "echo 'lxc.apparmor.allow_nesting: 1' >> /etc/pve/lxc/128.conf",
-        "echo 'lxc.mount.entry: /dev/kmsg dev/kmsg none bind,create=file,optional' >> /etc/pve/lxc/128.conf"
-        ]
-        connection {
-        type        = "ssh"
-        user        = "root"
-        host        = "192.168.1.127"
-        private_key = file("/home/saul/.ssh/prox_ssh")
-        }
-    }
-
     # install docker
     provisioner "local-exec" {
         working_dir = "/home/saul/ansible/"
@@ -1881,7 +1881,7 @@ resource "proxmox_virtual_environment_container" "rancher" {
 # Debian 13 lxc ct for bots --> bots 129                #
 #########################################################
 resource "proxmox_virtual_environment_container" "bots" {
-    node_name = "pve1"
+    node_name = var.proxmox_node_name
     vm_id = 129
     description = "bots lxc"
     unprivileged = true
