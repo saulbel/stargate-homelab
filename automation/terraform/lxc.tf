@@ -68,6 +68,7 @@ resource "proxmox_virtual_environment_container" "pbs" {
     # install pbs
     provisioner "remote-exec" {
         inline = [
+        "apt update",
         "apt upgrade -y",
         "echo 'deb http://download.proxmox.com/debian/pbs bookworm pbs-no-subscription' >> /etc/apt/sources.list",
         "wget https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg",
@@ -654,6 +655,7 @@ resource "proxmox_virtual_environment_container" "deluge" {
     # do not change dns
     provisioner "remote-exec" {
         inline = [
+        "apt update",
         "apt upgrade -y",
         "touch /etc/.pve-ignore.resolv.conf",
         "reboot -f"
@@ -732,6 +734,7 @@ resource "proxmox_virtual_environment_container" "jackett" {
     # do not change dns
     provisioner "remote-exec" {
         inline = [
+        "apt update",
         "apt upgrade -y",
         "touch /etc/.pve-ignore.resolv.conf",
         "reboot -f"
@@ -815,6 +818,7 @@ resource "proxmox_virtual_environment_container" "radarr" {
     # do not change dns
     provisioner "remote-exec" {
         inline = [
+        "apt update",
         "apt upgrade -y",
         "touch /etc/.pve-ignore.resolv.conf",
         "reboot -f"
@@ -898,6 +902,7 @@ resource "proxmox_virtual_environment_container" "sonarr" {
     # do not change dns
     provisioner "remote-exec" {
         inline = [
+        "apt update",
         "apt upgrade -y",
         "touch /etc/.pve-ignore.resolv.conf",
         "reboot -f"
@@ -975,6 +980,7 @@ resource "proxmox_virtual_environment_container" "tautulli" {
     # do not change dns
     provisioner "remote-exec" {
         inline = [
+        "apt update",
         "apt upgrade -y",
         "touch /etc/.pve-ignore.resolv.conf",
         "reboot -f"
@@ -1052,6 +1058,7 @@ resource "proxmox_virtual_environment_container" "caddy" {
     # do not change dns
     provisioner "remote-exec" {
         inline = [
+        "apt update",
         "apt upgrade -y",
         "touch /etc/.pve-ignore.resolv.conf",
         "reboot -f"
@@ -1212,6 +1219,7 @@ resource "proxmox_virtual_environment_container" "amule" {
     # do not change dns
     provisioner "remote-exec" {
         inline = [
+        "apt update",
         "apt upgrade -y",
         "touch /etc/.pve-ignore.resolv.conf",
         "reboot -f"
@@ -1312,6 +1320,7 @@ resource "proxmox_virtual_environment_container" "handbrake" {
     # do not change dns
     provisioner "remote-exec" {
         inline = [
+        "apt update",
         "apt upgrade -y",
         "touch /etc/.pve-ignore.resolv.conf",
         "reboot -f"
@@ -1590,6 +1599,7 @@ resource "proxmox_virtual_environment_container" "nfs" {
     # do not change dns
     provisioner "remote-exec" {
         inline = [
+        "apt update",
         "apt upgrade -y",
         "touch /etc/.pve-ignore.resolv.conf",
         "reboot -f"
@@ -1618,6 +1628,7 @@ resource "proxmox_virtual_environment_container" "nfs" {
     # install nfs
     provisioner "remote-exec" {
         inline = [
+        "apt update",
         "apt upgrade -y",
         "apt install nfs-kernel-server -y"
         ]
@@ -1718,6 +1729,7 @@ resource "proxmox_virtual_environment_container" "infisical" {
     # do not change dns
     provisioner "remote-exec" {
         inline = [
+        "apt update",
         "apt upgrade -y",
         "touch /etc/.pve-ignore.resolv.conf",
         "reboot -f"
@@ -1924,6 +1936,7 @@ resource "proxmox_virtual_environment_container" "bots" {
     # do not change dns
     provisioner "remote-exec" {
         inline = [
+        "apt update",
         "apt upgrade -y",
         "touch /etc/.pve-ignore.resolv.conf",
         "reboot -f"
