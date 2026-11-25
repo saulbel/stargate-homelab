@@ -6,7 +6,8 @@
   "enabledManagers": [
     "argocd",
     "helm-values",
-    "docker-compose"
+    "terraform",
+    "github-actions"
   ],
   "argocd": {
     "managerFilePatterns": [
@@ -16,11 +17,6 @@
   "helm-values": {
     "managerFilePatterns": [
       "/^kubernetes/argocd/clusters/addons/.+/values\\.yaml$/"
-    ]
-  },
-  "docker-compose": {
-    "managerFilePatterns": [
-      "/^docker/.+/docker-compose\\.ya?ml$/"
     ]
   },
   "minimumReleaseAge": "3 days",
