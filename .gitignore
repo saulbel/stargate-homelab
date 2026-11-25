@@ -23,3 +23,22 @@ terraform.tfstate.backup
 # ansible files
 inventory
 ansible.cfg
+
+# container data directories
+docker/*/config/
+docker/*/conf/
+docker/*/work/
+docker/*/data/
+docker/*/certs/
+docker/*/grafana/
+docker/*/pg_data/
+docker/*/redis_data/
+docker/*/minio_data/
+docker/*/vaultwarden/
+docker/*/bookstack/
+docker/*/bookstack_db/
+
+# tracked config directories
+!docker/homepage/config/
+!docker/prometheus-loki/config/
+docker/homepage/config/logs/
