@@ -9,13 +9,12 @@ services:
       - 9090:9090
     volumes:
       - prometheus-data:/prometheus
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./rules.yml:/etc/prometheus/rules.yml
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./config/rules.yml:/etc/prometheus/rules.yml
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.retention.time=180d'
       - '--web.enable-lifecycle'
-      - '--web.enable-admin-api'
       - '--web.enable-remote-write-receiver'
         #- '--log.level=debug'
 
@@ -71,7 +70,7 @@ services:
     restart: unless-stopped
     volumes:
       - /var/log:/var/log
-      - ./promtail-config.yaml:/etc/promtail/config.yml
+      - ./config/promtail-config.yaml:/etc/promtail/config.yml
     command: -config.file=/etc/promtail/config.yml
 
   watchtower:
