@@ -28,7 +28,7 @@ automation
    Make sure you have Ansible and Terraform installed on your control machine.
 
 2. **Customize variables**  
-   Edit variable files in `ansible` and `terraform` folders to match your environment.
+   Ansible has no variable files. Terraform needs a gitignored `secrets.auto.tfvars` in `terraform` with these variables: `proxmox_node_url`, `proxmox_node_name`, `proxmox_user`, `proxmox_password`, `proxmox_ssh_key`, `ansible_ssh_key` and `tailscale_auth_key`.
 
 3. **Run automation**  
    - Use Terraform to provision infrastructure.

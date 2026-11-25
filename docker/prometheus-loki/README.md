@@ -4,12 +4,13 @@ prometheus-loki
 └── config
     └── alertmanager.yml
     └── prometheus.yml
-    └── promtail-config.yml
+    └── promtail-config.yaml
     └── rules.yml
 └── grafana-dashboards
     └── loki-k3s.json
     └── prometheus-k3s.json
     └── proxmox.json
+    └── rancher-audit.json
 └── docker-compose.yaml
 ```
 ## Notes

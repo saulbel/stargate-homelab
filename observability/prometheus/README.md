@@ -93,6 +93,7 @@ Add to your `prometheus.yml`:
       - 127.0.0.1:9221 # Use your Tailscale IP here if needed
   metrics_path: /pve
   params:
+    module: [default]
 ```
 
 ---
@@ -102,7 +103,6 @@ Add to your `prometheus.yml`:
 Import my Grafana dashboards from [here](/docker/prometheus-loki/grafana-dashboards/):
 
 - `proxmox.json`: Shows all metrics from PVE exporter
-- `win-exporter.json`: Dashboard for Windows exporter
 - `loki-k3s.json`: Kubernetes Loki dashboard
 - `prometheus-k3s.json`: Kubernetes Prometheus dashboard
 - `rancher-audit.json`: Rancher audit dashboard

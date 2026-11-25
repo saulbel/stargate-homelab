@@ -6,7 +6,7 @@ Ansible is a powerful automation tool for configuring, deploying, and updating s
 
 ## Why Ansible?
 
-It's agentless, so I don't have to install anything extra on every VM/LXC before I can configure it — just SSH access. Terraform calls `install-docker-debian.yaml` via `local-exec` right after a node comes up. The other playbooks (base tooling, firewall, reboot) I run by hand with `-i inventory`; the firewall ones need `-e target=<group>`.
+It's agentless, so I don't have to install anything extra on every VM/LXC before I can configure it — just SSH access. Terraform calls `install-docker-debian.yaml` via `local-exec` right after a node comes up. Terraform runs the copy of the playbook in `/home/saul/ansible/` (see `working_dir` in `lxc.tf`), not the one in this folder. The other playbooks (base tooling, firewall, reboot) I run by hand with `-i inventory`; the firewall ones need `-e target=<group>`.
 
 ---
 

@@ -19,8 +19,8 @@ Each cluster is a `provisioning.cattle.io/v1 Cluster` in `fleet-default` with on
 
 - **Template:** VMID `200` (`debian-13`, in the `rancher-managed` pool), see [Proxmox](/proxmox/README.md#proxmox-template-creation).
 - **VMIDs / IPs per role:** masters `210-219` → `192.168.1.50-59`, workers `220-239` → `192.168.1.60-79` (IP = start + VMID offset). `192.168.1.80-100` is reserved for MetalLB.
-- **K3s flags:** `machineGlobalConfig.disable: [servicelb, traefik]`, since MetalLB and Istio replace them. CNI is the K3s default (flannel).
-- **SSH:** the keys from `proxmox_ssh_key` and `ansible_ssh_key` are injected with `sshkeys` in the `PveConfig`.
+- **K3s flags:** `machineGlobalConfig.disable: [servicelb, traefik, local-storage]`. MetalLB and Istio replace `servicelb` and `traefik`. CNI is the K3s default (flannel).
+- **SSH:** `sshkeys` in the `PveConfig` is not in git on purpose. The live value is kept (server-side apply does not remove it). For a new cluster, add `sshkeys` to the Rancher object by hand or put the key in the `cicustom` snippet.
 
 ---
 

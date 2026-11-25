@@ -44,7 +44,7 @@ This parent app (often called "bootstrap") references other ArgoCD Application m
 - Easy onboarding and scaling of new services
 - Consistent GitOps workflows
 
-In this repo, [bootstrap](/kubernetes/argocd/clusters/bootstrap) is the parent directory that syncs all core and addon applications.
+In this repo, [bootstrap](/kubernetes/argocd/clusters/bootstrap) holds the manifests for the core and addon applications. No Application in this repo targets that directory. The script below applies `/home/saul/k3s/argocd/bootstrap.yaml`, which is outside the repo.
 
 ---
 
