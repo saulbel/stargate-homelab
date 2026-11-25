@@ -15,6 +15,7 @@ services:
   watchtower:
     image: nickfedor/watchtower:1.23.2
     container_name: watchtower
+    # secrets in .env (gitignored): WATCHTOWER_NOTIFICATION_URL
     env_file: .env
     restart: unless-stopped
     volumes:

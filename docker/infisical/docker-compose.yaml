@@ -1,4 +1,12 @@
 
+# secrets in .env (gitignored):
+# - ENCRYPTION_KEY=
+# - AUTH_SECRET=
+# - DB_CONNECTION_URI=
+# - REDIS_URL=
+# - POSTGRES_USER=
+# - POSTGRES_PASSWORD=
+# - POSTGRES_DB=
 services:
   backend:
     container_name: infisical-backend

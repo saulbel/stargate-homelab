@@ -92,7 +92,7 @@ services:
       - WATCHTOWER_NOTIFICATIONS_HOSTNAME=ubuntu-arm
       - WATCHTOWER_MONITOR_ONLY=true
       - WATCHTOWER_SCHEDULE=0 0 12 * * 0
-      # included in .env file
+      # included in watchtower.env file
       # - WATCHTOWER_NOTIFICATION_URL=
   
 volumes:
