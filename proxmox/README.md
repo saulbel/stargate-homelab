@@ -25,20 +25,7 @@ Currently hosted on my NUC:
 ![proxmox](../pictures/proxmox.png)
 
 ### VMs (K3s cluster)
-- [ArgoCD](/kubernetes/argocd/clusters/addons/software-base/argocd): GitOps for automated deployments
-- [Certmanager](/kubernetes/argocd/clusters/addons/software-base/cert-manager): Automated certificate management
-- [External-dns](/kubernetes/argocd/clusters/addons/software-base/external-dns): Dynamic DNS updater
-- [External-secrets](/kubernetes/argocd/clusters/addons/software-base/external-secrets): Secure secrets management
-- [MetalLB](/kubernetes/argocd/clusters/addons/software-base/metallb): Layer 2 LoadBalancer (pool `192.168.1.80-100`)
-- [Istio Base](/kubernetes/argocd/clusters/addons/software-base/istio-base): Istio CRDs
-- [Istiod](/kubernetes/argocd/clusters/addons/software-base/istiod): Istio control plane
-- [Istio Ingress Gateway](/kubernetes/argocd/clusters/addons/software-base/istio-ingressgateway): Istio ingress proxy (LoadBalancer)
-- [Kiali](/kubernetes/argocd/clusters/addons/monitoring/kiali): Service mesh observability dashboard
-- [NFS](/kubernetes/argocd/clusters/addons/software-base/nfs): CSI driver
-- [Prometheus](/kubernetes/argocd/clusters/addons/monitoring/prometheus): Metrics and monitoring (remote writer)
-- [Promtail](/kubernetes/argocd/clusters/addons/monitoring/promtail): Centralized logging
-- [Tailscale](/kubernetes/argocd/clusters/addons/software-base/tailscale): Zero-config VPN for secure networking
-- [Velero](/kubernetes/argocd/clusters/addons/software-base/velero): Backup and restore solution
+Rancher creates the K3s nodes. See [Kubernetes](/kubernetes/README.md#self-hosted-apps) for the apps in the cluster.
 
 ### LXCs
 - [Adguard](/docker/adguard): Adblock + DNS server
@@ -53,6 +40,9 @@ Currently hosted on my NUC:
 - [Jackett](/docker/jackett): Trackers
 - [Kavita](/docker/kavita): Library
 - [Minio](/docker/minio): S3 storage
+- [NFS](/automation/terraform/lxc.tf): NFS server for the K3s CSI driver (LXC 126)
+- PBS: Proxmox Backup Server (LXC 109)
+- [Playground](/docker/playground): Test LXC (LXC 121)
 - [Plex](/docker/plex): Media player
 - [Radarr](/docker/radarr): Movie manager
 - [Rancher](/docker/rancher): Kubernetes management

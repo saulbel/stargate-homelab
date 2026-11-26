@@ -51,6 +51,5 @@ I've experimented with these, but currently don't have an active use case.
 
 ## To Improve
 
-- Add more playbooks for common tasks and services
-- Organize playbooks into roles for better reusability
-- Add example inventory files and usage instructions
+- Make Terraform run `install-docker-debian.yaml` from this folder instead of `/home/saul/ansible/`
+- Use `-e target=<group>` in `install-docker-debian.yaml` and `install-tools.yaml` too, instead of `hosts: all`

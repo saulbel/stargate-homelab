@@ -22,14 +22,14 @@ curl -fsSL https://tailscale.com/install.sh | sh
 # Register manually
 sudo tailscale up
 # Or automatically with auth key
-sudo tailscale up --authkey ${var.tailscale_auth_key}
+sudo tailscale up --authkey <auth-key>
 ```
 
 ### On LXC Container
 ```sh
 # Allow tun access on Proxmox host
-echo 'lxc.cgroup.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/114.conf
-echo 'lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file' >> /etc/pve/lxc/114.conf
+echo 'lxc.cgroup2.devices.allow: c 10:200 rwm' >> /etc/pve/lxc/<vmid>.conf
+echo 'lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file' >> /etc/pve/lxc/<vmid>.conf
 
 # Install Tailscale on LXC
 apt update
@@ -44,7 +44,7 @@ reboot -f
 # Register Tailscale
 tailscale up
 # Or automatically
-tailscale up --authkey ${var.tailscale_auth_key}
+tailscale up --authkey <auth-key>
 ```
 
 ### On Kubernetes (K8s)
@@ -67,3 +67,5 @@ spec:
       port: 81
       targetPort: 8080
 ```
+
+In this repo the operator also creates an egress Service to ubuntu-arm, used by the Prometheus remote write (see [egress.yaml](/kubernetes/argocd/clusters/addons/software-base/tailscale/egress.yaml)).

@@ -31,20 +31,36 @@ argocd
         └── clusters
         └── monitoring
         └── software-base
+└── values.yaml
 ```
 ---
 
 ## App of Apps Pattern
 
-ArgoCD supports the **App of Apps** pattern, which allows you to manage multiple applications through a single parent application.  
-This parent app (often called "bootstrap") references other ArgoCD Application manifests, enabling you to declaratively bootstrap your entire cluster from one place.
+The root Application `bootstrap` points to [bootstrap](/kubernetes/argocd/clusters/bootstrap). That folder holds one Application for each category (`software-base`, `monitoring`, `apps`, `clusters`), and each one points to its folder in `components/`.
 
-**Benefits:**
-- Centralized management of all apps
-- Easy onboarding and scaling of new services
-- Consistent GitOps workflows
+The root Application is not in this repo. The script below applies it from `/home/saul/k3s/argocd/bootstrap.yaml`:
 
-In this repo, [bootstrap](/kubernetes/argocd/clusters/bootstrap) holds the manifests for the core and addon applications. No Application in this repo targets that directory. The script below applies `/home/saul/k3s/argocd/bootstrap.yaml`, which is outside the repo.
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bootstrap
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:saulbel/stargate-homelab.git
+    targetRevision: main
+    path: kubernetes/argocd/clusters/bootstrap
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
 
 ---
 
@@ -86,6 +102,4 @@ kubectl apply -f /home/saul/k3s/argocd/bootstrap.yaml
 
 ## To Improve
 
-- Add more example applications and Helm charts
-- Document best practices for GitOps workflows
-- Integrate notifications and automated rollbacks
+- Add ArgoCD notifications (for example, to the Telegram channel that Watchtower uses)

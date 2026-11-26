@@ -85,16 +85,7 @@ http://192.168.1.127:9221/pve?target=192.168.1.127&cluster=1&node=1
 ```
 
 ### 7. Add to Prometheus Configuration
-Add to your `prometheus.yml`:
-```yaml
-- job_name: 'pve-exporter'
-  static_configs:
-    - targets:
-      - 127.0.0.1:9221 # Use your Tailscale IP here if needed
-  metrics_path: /pve
-  params:
-    module: [default]
-```
+The live config is the `pve1` job in [prometheus.yml](/docker/prometheus-loki/config/prometheus.yml). It scrapes the exporter through the Proxmox Tailscale IP on port `9221` with `metrics_path: /pve`.
 
 ---
 

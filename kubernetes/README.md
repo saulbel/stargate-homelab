@@ -50,4 +50,5 @@ Here are the most important components running on my Kubernetes cluster:
 
 ## To Improve
 
-- Automate cluster upgrades and maintenance
+- Configure a cert-manager issuer
+- Serve Vaultwarden over HTTPS

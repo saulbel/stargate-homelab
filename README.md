@@ -15,12 +15,14 @@ Before you start, make sure you have:
 ## Repository Structure
 ```
 stargate-homelab
+└── .github
 └── automation
     └── ansible    
     └── terraform
 └── docker  
 └── kubernetes
     └── argocd
+    └── clusters
 └── observability
     └── prometheus  
 └── pictures
@@ -57,8 +59,6 @@ The goal of this project is to build a homelab using **Proxmox** as the backbone
 
 ---
 ## Roadmap
-- Expand documentation for each module  
-- Add diagrams for network, Kubernetes, and automation flows  
-- Improve Terraform + Ansible integration  
-- Add more observability components  
-- Add CI/CD for homelab automation  
+- Add diagrams for network, Kubernetes, and automation flows
+- Move the Terraform state to a remote backend (MinIO)
+- Configure a cert-manager issuer and serve Vaultwarden over HTTPS
